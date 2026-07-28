@@ -7,7 +7,8 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "node --watch --env-file=.env.dev src/index.js",
-    "dbml2sql": "dbml2sql src/database/SF_DB.dbml -o src/database/schema.sql"
+    "dbml2sql": "dbml2sql src/database/SF_DB.dbml -o src/database/schema.sql",
+    "db:rebuild": "node --env-file=.env.dev src/utils/dbRebuild.js"
   },
   "keywords": [],
   "author": "",

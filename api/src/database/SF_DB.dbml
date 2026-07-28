@@ -214,9 +214,9 @@ Ref fk_contactevent__contact_id {
 Table bizcardtemplate {
   id bigint [pk, not null, increment]
   code varchar(26) [not null]
-  bizcardtemplate_name varchar(64) [not null]
-  bizcardtemplate_description varchar(256) [default: NULL]
-  bizcardtemplate_data jsonb [not null]
+  bizcard_name varchar(64) [not null]
+  bizcard_description varchar(256) [default: NULL]
+  bizcard_data jsonb [not null]
   updated_on timestamp [default: `NOW()`]
 
   Indexes {
