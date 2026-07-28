@@ -1,26 +1,18 @@
 //----------------------------------------------------------
-import api from 'src/code/app/ServerApis'
-//----------------------------------------------------------
 export default class Permission {
-  permissionName = null;
-  permissionLabel = null;
-  //----------------------------
+
+  permission_name = null;       // text
+  permission_label = null;      // text
+  
   constructor(options) {
     if(options) {
       this.init(options);
     }
   }
-  //-----------------------------------------------------
+  
   init(options) {
-    this.permissionName = options.permissionName || this.permissionName;
-    this.permissionLabel = options.permissionLabel || this.permissionLabel;
-  }
-  //-----------------------------------------------------
-  async save() {
-    if(this.permissionName.includes(' ')) { return; }  //cannot have a space
-    if(this.permissionName && this.permissionLabel) {
-      return await api.permissions.upsert(this);
-    }
+    this.permission_name = options.permission_name || this.permission_name;
+    this.permission_label = options.permission_label || this.permission_label;
   }
 
 }

@@ -19,8 +19,6 @@ TablePartial personalData {
   middle_name varchar(64) [default: NULL]
   title varchar(64) [default: NULL]
   suffix varchar(64) [default: NULL]
-  date_of_birth varchar(64) [default: NULL]
-  sex varchar(64) [default: NULL]
   company varchar(128) [default: NULL]
   job_title varchar(64) [default: NULL]
   web_address varchar(128) [default: NULL]

@@ -1,60 +1,5 @@
-//----------------------------------------------------------------------------
-// QrCodeModels
-//----------------------------------------------------------------------------
-import api from 'src/code/app/ServerApis.js'
-import { getKeyCode } from 'src/code/app/CodeGen.js'
-//----------------------------------------------------------------------------
-//#region QrCode Classes
-//----------------------------------------------------------------------------
-export class QrCodeDbRecord {
-  qrCodeId = 0;
-  userAccountId = 0;
-  qrCodeCode = getKeyCode(16);
-  qrCodeName = 'My New Qr Code';
-  qrCodeDescription = null;
-
-  qrCodeData = new QrCodeData();
-  
-  constructor(options) {
-    if(options) { this.init(options); }
-  }
-
-  init(options) {
-    this.qrCodeId = parseInt(options.qrCodeId) || this.qrCodeId;
-    this.userAccountId = parseInt(options.userAccountId) || this.userAccountId;
-    this.qrCodeCode = options.qrCodeCode || this.qrCodeCode;
-    this.qrCodeName = options.qrCodeName || this.qrCodeName;
-    this.qrCodeDescription = options.qrCodeDescription || this.qrCodeDescription;
-    this.qrCodeData = new QrCodeData(options.qrCodeData) || this.qrCodeData;
-  }
-
-}
-//----------------------------------------------------------------------------
-export class QrCodeTemplateDbRecord {
-  qrCodeTemplateId = 0;
-  qrCodeName = 'My New Qr Code';
-  qrCodeDescription = null;
-  qrCodeData = new QrCodeData();
-  
-  constructor(options) {
-    if(options) { this.init(options); }
-  }
-
-  init(options) {
-    this.qrCodeTemplateId = parseInt(options.qrCodeTemplateId) || this.qrCodeTemplateId;
-    this.qrCodeName = options.qrCodeName || this.qrCodeName;
-    this.qrCodeDescription = options.qrCodeDescription || this.qrCodeDescription;
-    this.qrCodeData = new QrCodeData(options.qrCodeData) || this.qrCodeData;
-  }
-
-}
-
-//----------------------------------------------------------------------------
-//#endregion
-//----------------------------------------------------------------------------
-//#region QrCode Data
-//----------------------------------------------------------------------------
-export class QrCodeData {
+//------------------------------------------------------------------------
+export default class QrCodeData {
 
   width = 300;
   height = 300;
@@ -93,6 +38,9 @@ export class QrCodeData {
   }
 
 }
+
+//----------------------------------------------------------------------------
+// #region support classes
 //----------------------------------------------------------------------------
 export class QrOptions {
   typeNumber = 0;                                    // 0 - 40
@@ -204,83 +152,6 @@ export class QrCodeGradientStops {
     this.offset = options.offset || this.offset;
     this.color = options.color || this.color;
   }
-}
-//----------------------------------------------------------------------------
-//#endregion
-//----------------------------------------------------------------------------
-//#region Core Functions
-//----------------------------------------------------------------------------
-/**
- * Creates URL for a QrCode.
- * @param {string} root - The root URL of the server.
- * @param {string} userAccountCode - The userAccount Id Code.
- * @param {string} QrCode - The Qr Id Code.
- * @return {string} - The url string that points to the QrCode.
- */
-export function getQrCodeUrl(root, userAccountCode, qrCode) { 
-  return `${root}/user-data/${userAccountCode}/qr/Q_${qrCode}.png`;
-}
-//----------------------------------------------------------------------------
-/**
- * Saves Blob image to server.
- * @param {Blob} blob - image data for QrCode
- * @param {*} userAccountCode - The userAccount Id Code.
- * @param {*} qrCodeCode - The Qr Id Code. 
- * @returns - The fileName string that points to the QrCode.
- */
-export async function saveQrCodeImage(blob, userAccountCode, qrCodeCode) {
-  const fileName = `Q_${qrCodeCode}.png`;
-  const res = await api.utils.upload(blob, {
-    fileName: fileName,
-    userAccountCode: userAccountCode,
-    subfolder: 'qr'
-  });
-  console.log('saveQrImage?', res);
-  return fileName;
-}
-//----------------------------------------------------------------------------
-//#endregion
-//----------------------------------------------------------------------------
-//#region CONSTANTS
-//----------------------------------------------------------------------------
-export const DOT_STYLE = {
-  SQUARE: "square",
-  DOTS: "dots",
-  ROUNDED: "rounded",
-  EXTRA_ROUNDED: "extra-rounded",
-  CLASSY: "classy",
-  CLASSY_ROUNDED: "classy-rounded"
-}
-
-export const CORNER_STYLE = {
-  SQUARE: "square",
-  DOT: "dot",
-  EXTRA_ROUNDED: "extra-rounded"
-}
-
-export const CORNER_DOT_STYLE = {
-  SQUARE: "square",
-  DOT: "dot",
-  EXTRA_ROUNDED: "extra-rounded"
-}
-
-export const QR_MODE = {
-  ALPHANUMERIC: "Alphanumeric",
-  BYTE: "Byte",
-  KANJI: "Kkanji",
-  NUMERIC: "Numeric",
-}
-
-export const ERROR_CORRECTION_LEVEL = {
-  L: "L",
-  M: "M",
-  Q: "Q",
-  H: "H",
-}
-
-export const GRADIENT_TYPE = {
-  LINEAR: "linear",
-  RADIAL: "radial"
 }
 //----------------------------------------------------------------------------
 //#endregion

@@ -1,39 +1,30 @@
 //----------------------------------------------------------
-import api from 'src/code/app/ServerApis'
-//----------------------------------------------------------
 export default class Plan {
 
-  planCode = null;
-  planName = null;
-  planDescription = null;
-  planCost = 0.0;
-  planDetails = null;
-  permissions = null;
-  sortOrder = 0;
-  isPublic = 0;
+  plan_name = null;                     // text
+  code = null;                          // text
+  plan_cost = 0.0;                      // decimal
+  plan_description = null;              // text
+  plan_details = null;                  // json
+  permissions = null;                   // text
+  sort_order = 0;                       // int
+  is_public = true;                     // boolean
 
-  //----------------------------
   constructor(options) {
     if(options) {
       this.init(options);
     }
   }
-  //-----------------------------------------------------
+  
   init(options) {
-    this.planCode = options.planCode || this.planCode;
-    this.planName = options.planName || this.planName;
-    this.planDescription = options.planDescription || this.planDescription;
-    this.planCost = parseFloat(options.planCost) || this.planCost;
-    this.planDetails = options.planDetails || this.planDetails;
+    this.plan_name = options.plan_name || this.plan_name;
+    this.code = options.code || this.code;
+    this.plan_cost = parseFloat(options.plan_cost) || this.plan_cost;
+    this.plan_description = options.plan_description || this.plan_description;
+    this.plan_details = options.plan_details || this.plan_details;
     this.permissions = options.permissions || this.permissions;
-    this.sortOrder = parseInt(options.sortOrder) || this.sortOrder;
-    this.isPublic = parseInt(options.isPublic) || this.isPublic;
-  }
-  //-----------------------------------------------------
-  async save() {
-    if(this.planCode && this.planName) {
-      return await api.plans.upsert(this);
-    }
+    this.sort_order = parseInt(options.sort_order) || this.sort_order;
+    this.is_public = [1,true].includes(options.is_public) ? true : false;
   }
 
 }
