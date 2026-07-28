@@ -1,0 +1,84 @@
+{
+  "plans": [
+    
+    {
+      "plan_name": "App Admin",
+      "code": "SF_P_APPADMIN",
+      "plan_description": "Just the Free BizCard",
+      "sort_order": 1,
+      "plan_details": null,
+      "permissions": null,
+      "is_public": false,
+      "plan_cost": 0
+    },
+    {
+      "plan_name": "Forever FREE",
+      "code": "SF_P_FREE",
+      "plan_description": "Just the Free BizCard",
+      "sort_order": 1,
+      "plan_details": null,
+      "permissions": null,
+      "is_public": true,
+      "plan_cost": 0
+    },
+    {
+      "plan_name": "Connections",
+      "code": "SF_P_CONNECTIONS",
+      "plan_description": "BizCards and Contacts",
+      "sort_order": 2,
+      "plan_details": null,
+      "permissions": null,
+      "is_public": true,
+      "plan_cost": 29.99
+    },
+    {
+      "plan_name": "Advanced",
+      "code": "SF_P_Advanced",
+      "plan_description": "BizCards, Contacts and Landing Pages",
+      "sort_order": 3,
+      "plan_details": null,
+      "permissions": null,
+      "is_public": false,
+      "plan_cost": 59.99
+    }
+  ],
+  "permissions": [
+    {
+      "permission_name": "AppAdmin",
+      "permission_label": "App Administrator"
+    },
+    {
+      "permission_name": "User",
+      "permission_label": "User"
+    }
+  ],
+  "users": [
+    {
+      "code": "01KYMCCQK7ZSPY3MFJCWES307V",
+      "email_address": "gimzani@gmail.com",
+      "password_hash": "Innov8i0n!",
+      "login_on": "2025-8-1",
+      "login_count": 0,
+      "is_active": true,
+      "plan_code": "SF_P_APPADMIN",
+      "created_on": "2025-8-1",
+      "updated_on": "2025-8-1",
+      "userprofile": {
+        "first_name": "Benjamin",
+        "last_name": "Hall",
+        "middle_name": "Scott",
+        "title": null,
+        "suffix": null,
+        "date_of_birth": null,
+        "sex": null,
+        "company": "Swift Followup, LLC",
+        "job_title": "Founder and CEO",
+        "web_address": "https://swiftfollowup.com",
+        "mobile_number": "3176968375",
+        "avatar_url": null,
+        "preferences": null,
+        "is_default": true
+      }
+    }
+  ]
+}

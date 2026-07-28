@@ -1,0 +1,292 @@
+{
+  "version": "2.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "currentViewName": null,
+  "defaultView": {
+    "detailLevel": "All",
+    "tablePositions": [
+      {
+        "name": "systemdata",
+        "schemaName": "public",
+        "x": 1643.523368155757,
+        "y": 273.72803587560134
+      },
+      {
+        "name": "useraccount",
+        "schemaName": "public",
+        "x": 1094.038738609356,
+        "y": 823.7620810073329
+      },
+      {
+        "name": "userprofile",
+        "schemaName": "public",
+        "x": 1105.850457359356,
+        "y": 1311.5679910310998
+      },
+      {
+        "name": "session",
+        "schemaName": "public",
+        "x": 1150.4707475782564,
+        "y": 544.9657564035413
+      },
+      {
+        "name": "emailverificationtoken",
+        "schemaName": "public",
+        "x": 461.75229712263024,
+        "y": 711.8497390402015
+      },
+      {
+        "name": "passwordresettoken",
+        "schemaName": "public",
+        "x": 753.9659548682685,
+        "y": 584.0344420611858
+      },
+      {
+        "name": "contact",
+        "schemaName": "public",
+        "x": 1543.6212070027823,
+        "y": 653.0385401446287
+      },
+      {
+        "name": "contentrequest",
+        "schemaName": "public",
+        "x": 1562.6861453657486,
+        "y": 1323.465458706451
+      },
+      {
+        "name": "plan",
+        "schemaName": "public",
+        "x": 252.69016424388872,
+        "y": 331.9804322305952
+      },
+      {
+        "name": "permission",
+        "schemaName": "public",
+        "x": 568.0626029269308,
+        "y": 331.9804322305952
+      },
+      {
+        "name": "contactevent",
+        "schemaName": "public",
+        "x": 1608.1958300180875,
+        "y": 1602.4511798088513
+      },
+      {
+        "name": "bizcardtemplate",
+        "schemaName": "public",
+        "x": 213.65525213451374,
+        "y": 1289.7233423979771
+      },
+      {
+        "name": "bizcard",
+        "schemaName": "public",
+        "x": 273.1137482282637,
+        "y": 945.490116882934
+      },
+      {
+        "name": "useraccount_bizcard",
+        "schemaName": "public",
+        "x": 626.3932703595444,
+        "y": 1082.5482247969676
+      },
+      {
+        "name": "qrcodetemplate",
+        "schemaName": "public",
+        "x": 617.6309908874846,
+        "y": 1575.3050169324947
+      },
+      {
+        "name": "qrcode",
+        "schemaName": "public",
+        "x": 617.6309908874846,
+        "y": 1296.7763599049322
+      }
+    ],
+    "tableGroupCollapseStates": [],
+    "stickyNoteLayouts": [],
+    "referencePaths": [
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "useraccount",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "useraccount_id"
+        ],
+        "secondTableName": "userprofile",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "useraccount",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "useraccount_id"
+        ],
+        "secondTableName": "session",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "useraccount",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "useraccount_id"
+        ],
+        "secondTableName": "emailverificationtoken",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "useraccount",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "useraccount_id"
+        ],
+        "secondTableName": "passwordresettoken",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "useraccount",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "useraccount_id"
+        ],
+        "secondTableName": "contact",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "useraccount",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "useraccount_id"
+        ],
+        "secondTableName": "contentrequest",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "contact",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "contact_id"
+        ],
+        "secondTableName": "contentrequest",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "contact",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "contact_id"
+        ],
+        "secondTableName": "contactevent",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "useraccount",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "useraccount_id"
+        ],
+        "secondTableName": "bizcard",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "bizcard",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "bizcard_id"
+        ],
+        "secondTableName": "useraccount_bizcard",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "useraccount",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "useraccount_id"
+        ],
+        "secondTableName": "useraccount_bizcard",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "useraccount",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "useraccount_id"
+        ],
+        "secondTableName": "qrcode",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      }
+    ]
+  },
+  "views": {}
+}

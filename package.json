@@ -1,0 +1,8 @@
+{
+  "name": "swiftfollowup",
+  "workspaces": [
+    "api",
+    "client",
+    "packages/*"
+  ]
+}

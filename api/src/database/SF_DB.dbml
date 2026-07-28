@@ -1,0 +1,299 @@
+//------------------------------------------------------------------------
+Project swiftfollowup {
+  database_type: 'postgres'
+  Note: 'Swift Followup Database Schema'
+}
+//========================================================================
+// partials
+//======================================================================== 
+//------------------------------------------------------------------------
+TablePartial dateAudit {
+  created_on timestamp [not null, default: `NOW()`]
+  updated_on timestamp [not null, default: `NOW()`]
+}
+
+//------------------------------------------------------------------------
+TablePartial personalData {
+  first_name varchar(64) [not null]
+  last_name varchar(64) [not null]
+  middle_name varchar(64) [default: NULL]
+  title varchar(64) [default: NULL]
+  suffix varchar(64) [default: NULL]
+  date_of_birth varchar(64) [default: NULL]
+  sex varchar(64) [default: NULL]
+  company varchar(128) [default: NULL]
+  job_title varchar(64) [default: NULL]
+  web_address varchar(128) [default: NULL]
+  mobile_number varchar(16) [default: NULL]
+}
+
+//========================================================================
+// System Tables
+//========================================================================
+Table systemdata {
+  id bigint [pk, not null, increment]
+  datakey varchar(64) [not null]
+  value varchar(64) [not null]
+  label varchar(64) [not null]
+  sort_order int  [not null, default: 0]
+  is_default boolean [not null, default: false]
+  Note: '(settings, dropdowns, enums, selections, etc.)'
+}
+
+//========================================================================
+// ACCESS CONTROL
+//========================================================================
+Table plan {
+  plan_name varchar(64) [not null]
+  code varchar(16) [pk, not null, unique]
+  plan_cost decimal(10,2) [not null]
+  sort_order int [default: 0]
+  plan_description varchar(512) [default: NULL]
+  plan_details jsonb [default: NULL]
+  permissions varchar(512) [default: NULL]
+  is_public boolean [default: true]
+
+  Indexes {
+    code [unique, name: "uq_plan_code"]
+  }
+  Note: 'These are the \\"Products\\" that can be purchased by the user.'
+}
+
+//----------------------------------------------------------
+Table permission {
+  permission_name varchar(64) [pk, not null, unique]
+  permission_label varchar(64) [not null]
+
+  Indexes {
+    permission_name [unique, name: "uq_permission_permission_name"]
+  }
+  Note: 'Permissions assigned to plans.'
+}
+
+//------------------------------------------------------------------------ User Accounts
+Table useraccount {
+  id bigint [pk, not null, increment]
+  code varchar(26) [not null, unique]
+  email_address varchar(64) [not null, unique]
+  password_hash varchar(128) [default: NULL]
+  login_on timestamp [default: NULL]
+  login_count int [not null, default: 0]
+  is_active boolean [not null, default: false]
+  plan_code varchar(16) [not null]
+  source varchar(45) [default: 'email']
+  oauth_id varchar(128) [default: NULL]
+  email_verified_on timestamp
+  ~dateAudit
+
+  Indexes {
+    code [unique, name: "uq_useraccount_code"]
+    email_address [name: "uq_useraccount_emailaddress"]
+  }
+  Note: 'The root account denoting a user and their access credentials.'
+}
+
+//----------------------------------------------------------
+Table userprofile {
+  useraccount_id bigint [pk, not null]
+  ~personalData
+  avatar_url varchar(128) [default: NULL]
+  preferences jsonb [default: NULL]
+  is_default boolean [not null, default: false]
+
+  Indexes {
+    useraccount_id [unique, name: "uq_userprofile_useraccount_id"]
+  }
+  Note: 'A larger set of searchable user information.'
+}
+Ref fk_userprofile__useraccount_id {
+ useraccount.id < userprofile.useraccount_id
+}
+
+//======================================================================== 
+// Auth
+//======================================================================== 
+
+Table session {
+  id uuid [pk, not null, increment]
+  useraccount_id bigint [not null]
+  session_token text
+  ip_address inet
+  user_agent text
+  ~dateAudit
+}
+Ref fk_session_useraccount__useraccount_id {
+  useraccount.id < session.useraccount_id [delete: cascade]
+}
+
+Table emailverificationtoken {
+  id bigint [pk, not null, increment]
+  useraccount_id bigint [not null]
+  token text
+  expires_on timestamp
+}
+Ref fk_emailverificationtoken_useraccount__useraccount_id {
+  useraccount.id < emailverificationtoken.useraccount_id [delete: cascade]
+}
+
+Table passwordresettoken {
+  id bigint [pk, not null, increment]
+  useraccount_id bigint [not null]
+  token text
+  expires_on timestamp
+}
+Ref fk_passwordresettoken_useraccount__useraccount_id {
+  useraccount.id < passwordresettoken.useraccount_id [delete: cascade]
+}
+
+//======================================================================== 
+// Connections
+//======================================================================== 
+
+Table contact {
+  id bigint [pk, not null, increment]
+  code varchar(26) [not null, unique]
+  useraccount_id bigint [not null] 
+  contact_useraccount_id bigint [null]            // nullable... contact_useraccount_id means they are a SwiftUser
+  relationship varchar(32)                        // lead, prospect, pending, closed lost | closed won, friend, other
+  tags varchar(512)
+  ~personalData
+  ~dateAudit
+
+  Indexes {
+    code [unique, name: "uq_contact_code"]
+  }
+
+  Note: 'Represents a person.'
+}
+Ref fk_contact__useraccount_id {
+  useraccount.id < contact.useraccount_id [delete: cascade]
+}
+
+
+//----------------------------------------------------------
+Table contentrequest {
+  id bigint [pk, not null, increment]
+  useraccount_id bigint [not null]
+  contact_id bigint [not null]
+  content_type varchar(32)         // BizCard, Brochure, Landing Page
+  content_code varchar(26) [not null, note: 'This is created when an SF user sends a bizCard via SMS to another person.']
+  created_on timestamp [not null, default: `NOW()`]
+  viewed_on timestamp [default: NULL]
+
+  Indexes {
+    useraccount_id [name: "idx_contentrequest_useraccount_id"]
+  }
+  Note: 'Record of a message sent to a mobile number with a link to a bizCard - (is paired with contact on creation).'
+}
+Ref fk_contentrequest__useraccount_id {
+  useraccount.id < contentrequest.useraccount_id [delete: cascade]
+}
+Ref fk_contentrequest__contact_id {
+  contact.id < contentrequest.contact_id [delete: cascade]
+}
+
+//------------------------------------------------------------------------
+Table contactevent {
+  id bigint [pk, not null, increment]
+  contact_id bigint [not null]
+  event_name varchar(16) [not null]
+  event_type varchar(16) [not null]         // request, connection, referral, change
+  event_value varchar(32)
+  event_action varchar(32) [not null]  
+  Note: 'Represents an event related to a contact.'
+}
+Ref fk_contactevent__contact_id {
+  contact.id < contactevent.contact_id [delete: cascade]
+}
+
+
+//======================================================================== 
+//Content
+//======================================================================== 
+//------------------------------------------------------------------------ BizCards
+Table bizcardtemplate {
+  id bigint [pk, not null, increment]
+  code varchar(26) [not null]
+  bizcardtemplate_name varchar(64) [not null]
+  bizcardtemplate_description varchar(256) [default: NULL]
+  bizcardtemplate_data jsonb [not null]
+  updated_on timestamp [default: `NOW()`]
+
+  Indexes {
+    code [unique, name: "uq_bizcardtemplate_code"]
+  }
+  Note: 'Template data from which to quickly create bizCards.'
+}
+
+//----------------------------------------------------------
+Table bizcard {
+  id bigint [pk, not null, increment]
+  useraccount_id bigint [not null]
+  code varchar(26) [not null, unique]
+  bizcard_name varchar(64) [not null]
+  bizcard_description varchar(128) [default: NULL]
+  bizcard_data jsonb [default: NULL]
+  bizcard_links jsonb [default: NULL]
+  is_default boolean [default: false]
+  updated_on timestamp [default: `NOW()`]
+
+  Indexes {
+    code [unique, name: "uq_bizcard_code"]
+    useraccount_id [name: "idx_bizcard_useraccount_id"]
+  }
+  Note: 'A personal bizCard and the data that creates it.'
+}
+Ref fk_bizcard__useraccount_id {
+  useraccount.id < bizcard.useraccount_id [delete: cascade]
+}
+
+//----------------------------------------------------------
+Table useraccount_bizcard {
+  bizcard_id bigint [not null]
+  useraccount_id bigint [not null]
+  created_on timestamp [default: `NOW()`]
+
+  Indexes {
+    (bizcard_id, useraccount_id) [pk]
+    useraccount_id [name: "idx_useraccount_bizcard__useraccount_id"]
+    bizcard_id [name: "idx_useraccount_bizcard__bizcard_id"]
+  }
+  Note: 'Records that link an account with a non-owned bizCard - (a collection of bizCards)'
+}
+Ref fk_useraccount_bizcard__bizcard_id {
+  bizcard.id < useraccount_bizcard.bizcard_id [delete: cascade]
+}
+Ref fk_useraccount_bizcard__useraccount_id {
+  useraccount.id < useraccount_bizcard.useraccount_id [delete: cascade]
+}
+
+//------------------------------------------------------------------------ QR Codes
+Table qrcodetemplate {
+  id bigint [pk, not null, increment]
+  qrcode_name varchar(64) [not null]
+  qrcode_description varchar(256) [default: NULL]
+  qrcode_data jsonb [not null]
+  updated_on timestamp [default: `NOW()`]
+  Note: 'Style templates used to create QR code instances.'
+}
+
+//----------------------------------------------------------
+Table qrcode {
+  id bigint [pk, not null, increment]
+  useraccount_id bigint [not null]
+  code varchar(26) [not null, unique]
+  qrcode_name varchar(64) [not null]
+  qrcode_description varchar(128) [default: NULL]
+  qrcode_data jsonb [not null]
+  updated_on timestamp [not null, default: `NOW()`]
+
+  Indexes {
+    code [unique, name: "uq_qrcode_code"]
+    useraccount_id [name: "idx_qrcode_useraccount_id"]
+  }
+  Note: 'Records of created QR codes to be used in creating bizCards and landing pages.'
+}
+Ref fk_qrcode__useraccount_id { 
+  useraccount.id < qrcode.useraccount_id [delete: cascade]
+}
+//========================================================================
