@@ -1,0 +1,36 @@
+
+.alert {
+  padding: var(--tr-alert-padding);
+  margin: var(--tr-alert-margin);
+  border-radius: var(--tr-alert-border-radius);
+}
+
+.alert-primary {
+  color: #fff;
+  background-color: var(--tr-color-primary);
+}
+
+.alert-secondary {
+  color: #fff;
+  background-color: var(--tr-color-secondary);
+}
+
+.alert-info {
+  color: #fff;
+  background-color: var(--tr-color-info);
+}
+
+.alert-success {
+  color: #fff;
+  background-color: var(--tr-color-success);
+}
+
+.alert-warning {
+  color: #fff;
+  background-color: var(--tr-color-warning);
+}
+
+.alert-danger {
+  color: #fff;
+  background-color: var(--tr-color-danger);
+}

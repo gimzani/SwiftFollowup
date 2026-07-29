@@ -151,7 +151,6 @@ Table contact {
   id bigint [pk, not null, increment]
   code varchar(26) [not null, unique]
   useraccount_id bigint [not null] 
-  contact_useraccount_id bigint [null]            // nullable... contact_useraccount_id means they are a SwiftUser
   relationship varchar(32)                        // lead, prospect, pending, closed lost | closed won, friend, other
   tags varchar(512)
   ~personalData
