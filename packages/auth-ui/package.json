@@ -1,0 +1,16 @@
+{
+  "name": "@sf/auth-ui",
+  "version": "0.0.1",
+  "type": "module",
+  "author": "Benjamin Hall",
+  "license": "ISC",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "@sf/styles": "*",
+    "@regle/core": "^1.28.4",
+    "@regle/rules": "^1.28.4",
+    "vue": "^3.5.0"
+  }
+}

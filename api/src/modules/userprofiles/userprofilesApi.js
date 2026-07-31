@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import UserProfile from '@models/models/UserProfile'
+import { UserProfile } from '@sf/models'
 import userprofilesService from './userprofilesService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------

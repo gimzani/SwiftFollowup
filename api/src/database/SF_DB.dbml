@@ -117,7 +117,8 @@ Table session {
   session_token text
   ip_address inet
   user_agent text
-  ~dateAudit
+  created_on timestamp [not null, default: `NOW()`]
+  expires_on timestamp [not null, default: `NOW()`]
 }
 Ref fk_session_useraccount__useraccount_id {
   useraccount.id < session.useraccount_id [delete: cascade]
@@ -214,7 +215,7 @@ Table bizcardtemplate {
   bizcard_name varchar(64) [not null]
   bizcard_description varchar(256) [default: NULL]
   bizcard_data jsonb [not null]
-  updated_on timestamp [default: `NOW()`]
+  ~dateAudit
 
   Indexes {
     code [unique, name: "uq_bizcardtemplate_code"]
@@ -232,7 +233,7 @@ Table bizcard {
   bizcard_data jsonb [default: NULL]
   bizcard_links jsonb [default: NULL]
   is_default boolean [default: false]
-  updated_on timestamp [default: `NOW()`]
+  ~dateAudit
 
   Indexes {
     code [unique, name: "uq_bizcard_code"]
@@ -270,7 +271,7 @@ Table qrcodetemplate {
   qrcode_name varchar(64) [not null]
   qrcode_description varchar(256) [default: NULL]
   qrcode_data jsonb [not null]
-  updated_on timestamp [default: `NOW()`]
+  ~dateAudit
   Note: 'Style templates used to create QR code instances.'
 }
 
@@ -282,7 +283,7 @@ Table qrcode {
   qrcode_name varchar(64) [not null]
   qrcode_description varchar(128) [default: NULL]
   qrcode_data jsonb [not null]
-  updated_on timestamp [not null, default: `NOW()`]
+  ~dateAudit
 
   Indexes {
     code [unique, name: "uq_qrcode_code"]

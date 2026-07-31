@@ -1,0 +1,27 @@
+
+.db-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.db-list-items {
+  margin-top: 1rem;  
+}
+
+.db-list-item {
+  padding: 0.25rem;
+  border: solid 1px #333;
+  border-radius: 3px;
+  margin-bottom: .125rem;
+
+  .db-list-item-title {
+    font-weight: bold;
+  }
+  .db-list-item-description {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding: 0.2rem;
+  }
+
+}

@@ -1,8 +1,11 @@
 {
-  "name": "@SwiftFollowup/styles",
+  "name": "@sf/styles",
   "version": "1.0.0",
   "license": "ISC",
   "exports": {
-    ".": "./src/main.css"
+    ".": "./src/main.scss"
+  },
+  "dependencies": {
+    "sass": "^1.102.0"
   }
 }

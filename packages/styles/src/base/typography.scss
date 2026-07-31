@@ -1,0 +1,79 @@
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--site-text);
+}
+
+//headings
+
+.h1, h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.h2, h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.h3, h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.h4, h4 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.h5, h5 {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.h6, h6 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+// text shortcuts
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+
+.text-primary {
+  color: var(--primary-color);
+}
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-info {
+  color: var(--info-color);
+}
+.text-success {
+  color: var(--success-color);
+}
+.text-warning {
+  color: var(--warning-color);
+}
+.text-danger {
+  color: var(--danger-color);
+}

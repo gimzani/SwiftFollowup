@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import Plan from '@models/models/Plan'
+import { Plan } from '@sf/models'
 import plansService from "./plansService.js"; 
 import { ok, serverError, notFound } from "../../utils/apiResponses.js"; 
 //---------------------------------------------------------------

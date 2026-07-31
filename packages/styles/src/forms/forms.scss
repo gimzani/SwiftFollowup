@@ -1,0 +1,84 @@
+
+@use 'sass:color';
+@use '../base/_vars.scss' as vars;
+
+input[type=text],
+input[type=number],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=search],
+input[type=tel],
+input[type=date],
+textarea,
+select {
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  padding: 3px 6px;
+  width: 100%;
+
+  &:focus {
+    color: var(--primary-color);
+    outline: 1px solid color.adjust(vars.$primaryColor, $alpha: -0.75);
+  }
+}
+
+input[type=search] {
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+//-----------------------------------------------
+.debug {
+  border: dotted 1px red;
+}
+
+.required::after {
+  content:"*";
+  color: var(--danger-color);
+  padding-left: 3px;
+}
+
+.invalid {
+  border-color: var(--danger-color) !important;
+  box-shadow: inset 0 0 5px color.adjust(vars.$dangerColor, $alpha: -0.75);
+  color: var(--danger-color);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; 
+}
+
+input[type=number] {
+  -moz-appearance:textfield; /* Firefox */
+}
+
+// form types
+
+.input-form {
+  header {
+    padding: 5px;
+    font-size: 1.4rem;;
+  }
+  .form-body {
+    padding: 10px 0; ;
+  }
+  footer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+    .action-buttons {
+      padding: 5px;
+      .btn {
+        margin-left: 5px;
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+
+@use 'sass:color';
+@use '../base/_vars.scss' as vars;
+
+$cr-background-color: #9499b8;
+$cr-hover-background: #E2E8F0;
+$cr-hover-border: #64748B;
+
+$cr-base-color: vars.$primaryColor;
+
+$cr-checked-backgound: $cr-base-color;
+$cr-checked-border: color.adjust($cr-base-color, $blackness: 50%);
+
+$cr-focused-background: color.adjust($cr-base-color, $lightness: 20%);
+$cr-focused-border: color.adjust($cr-base-color, $blackness: 20%);
+
+//----------------------------------------  reset
+.checkbox-field *,
+.radio-field *,
+.checkbox-field *,
+.radio-field *::before,
+.checkbox-field *,
+.radio-field *::after {
+	box-sizing: content-box !important;
+}
+//----------------------------------------  base
+.checkbox-field,
+.radio-field {
+	display: table !important;
+	position: relative;
+	padding-left: 30px;
+	cursor: pointer;
+	margin-bottom: 5px;
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  span {
+    font-size: 16px;
+  }
+  
+  //----------------------------------------  unselected
+  input[type="checkbox"] ~ .cr-input,
+  input[type="radio"] ~ .cr-input {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: $cr-background-color;
+    transition: background 250ms;
+    border: 1px solid #F1F5F9;
+    border-radius: 3px;
+    transform: translate(0, -50%);
+  }
+  
+  input[type="radio"] ~ .cr-input {
+    border-radius: 20px;
+  }
+
+  //----------------------------------------  marker
+  input[type="checkbox"] ~ .cr-input::after,
+  input[type="radio"] ~ .cr-input::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 4px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    transition: background 250ms;
+    background-color: #FFFFFF;    
+  }
+
+  input[type="checkbox"] ~ .cr-input::after {
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+
+  input[type="radio"] ~ .cr-input::after {    
+    border-radius: 20px;
+  }
+
+  input:checked ~ .cr-input::after {
+    display: block;
+  }
+
+  //----------------------------------------  hover states
+  &:hover input[type="checkbox"]:not([disabled]) ~ .cr-input,
+  input[type="checkbox"]:focus ~ .cr-input,
+  &:hover input[type="radio"]:not([disabled]) ~ .cr-input,
+   input[type="radio"]:focus ~ .cr-input {
+    background: $cr-hover-background;
+    border-color: $cr-hover-border;
+  }
+
+  //----------------------------------------  selected
+  input[type="checkbox"]:checked ~ .cr-input,
+  input[type="radio"]:checked ~ .cr-input {
+    background-color: $cr-checked-backgound;
+    border-color: $cr-checked-border;
+  }
+
+  //----------------------------------------  focused
+  &:hover input[type="checkbox"]:not([disabled]):checked ~ .cr-input,
+  input[type="checkbox"]:checked:focus ~ .cr-input ,
+  &:hover input[type="radio"]:not([disabled]):checked ~ .cr-input,
+   input[type="radio"]:checked:focus ~ .cr-input {
+    background-color: $cr-focused-background;
+    border-color: $cr-focused-border;
+  }
+
+  //----------------------------------------  disabled
+  input[type="checkbox"]:disabled ~ .cr-input,
+  input[type="radio"]:disabled ~ .cr-input,
+  input[type="checkbox"]:disabled ~ span,
+  input[type="radio"]:disabled ~ span {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  //----------------------------------------
+  input[type="checkbox"]:disabled ~ .cr-input::after,
+  input[type="radio"]:disabled ~ .cr-input::after {
+    background-color: #FFFFFF;
+  }
+}

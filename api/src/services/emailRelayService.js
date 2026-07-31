@@ -2,7 +2,7 @@
 // Email Sender
 //   Uses SMTP2GO relay
 //--------------------------------------------------------
-import AppResult from '@models/models/AppResult'
+import { Result } from '@sf/models'
 //---------------------------------------------------
 const httpHeaders = { "Content-Type": "application/json" };
 const supportEmail = process.env.EMAIL_SUPPORT;
@@ -40,7 +40,7 @@ export async function sendEmail(envelope) {
 //#region Email Templates
 //---------------------------------------------------  
 export async function sendWelcomeEmail(email_address, first_name, last_name) {
-  let result = new AppResult();
+  let result = new Result();
   try {
     let envelope = newEnvelope(email_address);
     envelope.subject = "Welcome to SwiftFollowup";
@@ -58,7 +58,7 @@ export async function sendWelcomeEmail(email_address, first_name, last_name) {
 }
 //---------------------------------------------------
 export async function sendAccountConfirmEmail(email_address, rawToken) {
-  let result = new AppResult();
+  let result = new Result();
   try {
     let envelope = newEnvelope(email_address);
     envelope.subject = "Activate your SwiftFollowup account";
@@ -76,7 +76,7 @@ export async function sendAccountConfirmEmail(email_address, rawToken) {
 }
 //---------------------------------------------------
 export async function sendForgotPasswordEmail(email_address, rawToken) {
-  let result = new AppResult();
+  let result = new Result();
   try {
     let envelope = newEnvelope(email_address);
     envelope.subject = "Reset your SwiftFollowup password";

@@ -2,6 +2,7 @@
 import Fastify from 'fastify'
 import fastifyEnv  from '@fastify/env'
 import fastifyCookie from '@fastify/cookie'
+import cors from '@fastify/cors';
 //---------------------------------------------------------------
 import { envOptions } from './server.config.js'
 import { initializeRoutes } from './router.js'
@@ -16,6 +17,11 @@ await fastify.register(fastifyEnv, envOptions)
 await fastify.register(fastifyCookie)
 await fastify.register(postgresDb)
 await fastify.register(authPlugin)
+await fastify.register(cors, {
+  origin: 'http://localhost:2565',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  credentials: true,
+});
 //---------------------------------------------------------------
 initializeRoutes(fastify);
 //---------------------------------------------------------------

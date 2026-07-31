@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import Bizcardtemplate from '@models/models/Bizcardtemplate'
+import { BizCardTemplate } from '@sf/models'
 import bizcardtemplatesService from './bizcardtemplatesService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------
@@ -33,7 +33,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- CREATE
   fastify.post('/api/bizcardtemplates', async (request, reply) => {
     try {
-      const bizcardtemplate = new Bizcardtemplate(request.body)
+      const bizcardtemplate = new BizCardTemplate(request.body)
       let result = await bizcardtemplatesService.createBizcardtemplate(fastify.pg, bizcardtemplate)
       ok(reply, result.rows[0], result.rowCount)
     } catch(err) {
@@ -46,7 +46,7 @@ export default async function routes (fastify) {
     try {
       let exists = await bizcardtemplatesService.getBizcardtemplateById(fastify.pg, request.params.id)
       if(exists.rows.length===1) {
-        const bizcardtemplate = new Bizcardtemplate({
+        const bizcardtemplate = new BizCardTemplate({
           ...request.body,
           id: request.params.id
         })
@@ -65,7 +65,7 @@ export default async function routes (fastify) {
     try {
       let exists = await bizcardtemplatesService.getBizcardtemplateById(fastify.pg, request.params.id)
       if(exists.rows.length===1) {
-        const bizcardtemplate = new Bizcardtemplate(exists.rows[0])
+        const bizcardtemplate = new BizCardTemplate(exists.rows[0])
         let result = await bizcardtemplatesService.deleteBizcardtemplate(fastify.pg, bizcardtemplate)
         ok(reply, result.rows, result.rowCount)
       } else {

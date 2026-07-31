@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import ContactEvent from '@models/models/ContactEvent'
+import { ContactEvent } from '@sf/models'
 import contacteventsService from './contacteventsService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------

@@ -1,0 +1,29 @@
+
+:root {
+  --table-cell-border-style: solid;
+  --table-cell-border-color: #E1E1E1;
+  --table-cell-border-width: 0 0 1px 0;  
+}
+
+table {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 24px;
+  thead {
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+  th, td {
+    padding: 16px;
+    border-style: var(--table-cell-border-style);
+    border-width: var(--table-cell-border-width);
+    border-color: var(--table-cell-border-color);
+  }
+  td {
+    font-size: 1em;
+  }
+  @media screen and (max-width: 980px) {
+    display: block;
+    overflow: auto;
+  }
+}

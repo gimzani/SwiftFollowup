@@ -2,9 +2,12 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 //-----------------------------------------------------------------------
 const HomePage = () => import('./pages/HomePage.vue');
+const LoginPage = () => import('./pages/LoginPage.vue');
 //-----------------------------------------------------------------------
 const appRoutes = [
-    { path: '/', name: 'HomePage', component: HomePage },
+  { redirect: '/login', path: '/' },
+  { path: '/home', name: 'HomePage', component: HomePage },
+  { path: '/login', name: 'LoginPage', component: LoginPage },
 ];
 //-----------------------------------------------------------------------
 const router = createRouter({

@@ -4,13 +4,14 @@ import QrCodeData from './QrCodeData.js'
 //------------------------------------------------------------------------
 export default class QrCode {
 
-  id = 0;                                 // bigint
-  useraccount_id = 0;                     // bigint - ref:useraccount
-  code = ulid();                          // ULID
-  qrcode_name = 'My New Qr Code';         // text
-  qrcode_description = null;              // text
-  qrcode_data = new QrCodeData();         // json
-  updated_on = new Date().toISOString();  // date-string
+  id = 0;                                     // bigint
+  useraccount_id = 0;                         // bigint - ref:useraccount
+  code = ulid();                              // ULID
+  qrcode_name = 'My New Qr Code';             // text
+  qrcode_description = null;                  // text
+  qrcode_data = new QrCodeData();             // json
+  created_on = new Date().toISOString();      // timestamp
+  updated_on = new Date().toISOString();      // timestamp
   
   constructor(options) {
     if(options) { this.init(options); }
@@ -23,7 +24,8 @@ export default class QrCode {
     this.qrcode_name = options.qrcode_name || this.qrcode_name;
     this.qrcode_description = options.qrcode_description || this.qrcode_description;
     this.qrcode_data = new QrCodeData(options.qrcode_data) || this.qrcode_data;
-    this.updated_on = new Date(options.updated_on).toISOString() || this.updated_on;
+    this.created_on = options.created_on ? new Date(options.created_on).toISOString() : this.created_on;
+    this.updated_on = options.updated_on ? new Date(options.updated_on).toISOString() : this.updated_on;
   }
 
 }

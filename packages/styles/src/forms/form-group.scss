@@ -1,0 +1,53 @@
+
+@use 'sass:color';
+@use '../base/_vars.scss' as vars;
+
+.form-group {  
+  position: relative;
+  margin: 0.2rem 0;
+  padding-bottom: 0.75rem;  // padding for error messages.
+
+  label {
+    display: block;
+    margin: 0;
+  }
+
+  select,
+  textarea,
+  input[type=text] {
+    display: block;
+    width: 100%;
+  }
+
+  &.inline {
+    label {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0;
+      margin: 0 5px 0 0;
+    }
+    select,
+    textarea,
+    input {
+      display: inline-block;
+      width: unset;
+    }
+  }
+
+  .form-group-error {
+    position: absolute;
+    display: block;
+    color: color.adjust(vars.$dangerColor, $alpha: -0.25);
+    font-style: italic;
+    margin:-2px 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 0.75rem;
+
+    &.active {
+      opacity: 1;
+    }
+
+  }
+
+}

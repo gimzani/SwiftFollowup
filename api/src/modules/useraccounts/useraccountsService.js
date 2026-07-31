@@ -96,25 +96,26 @@ export async function userAuthentication(pg, {emailAddress, password_hash}) {
   )
 }
 //---------------------------------------------------
-export async function activateUserAccount(pg, userAccountid) { 
+export async function activateUserAccount(pg, useraccount_id) { 
   return await pg.query(
     `UPDATE useraccount
      SET email_verified_on = $2,
       is_active = true 
      WHERE id = $1`,
     [
-      userAccountid,
+      useraccount_id,
       new Date()
     ]
   )
-}//---------------------------------------------------
-export async function changePassword(pg, {userAccountid, password}) { 
+}
+//---------------------------------------------------
+export async function changePassword(pg, {useraccount_id, password}) { 
   return await pg.query(
     `UPDATE useraccount
      SET password_hash = $2
      WHERE id = $1`,
     [
-      userAccountid,
+      useraccount_id,
       password
     ]
   )

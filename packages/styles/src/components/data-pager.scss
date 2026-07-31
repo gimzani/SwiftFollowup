@@ -1,0 +1,20 @@
+.data-pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .page-number {
+    display: inline-block;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+
+  .pager-icon {
+    background-color: transparent;
+    border: none;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

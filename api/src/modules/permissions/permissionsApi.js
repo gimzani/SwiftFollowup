@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import Permission from '@models/models/Permission'
+import { Permission } from '@sf/models'
 import permissionsService from './permissionsService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------

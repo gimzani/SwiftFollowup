@@ -1,0 +1,67 @@
+
+# @name Login
+POST {{apiRoot}}/auth/login
+content-type: application/json
+
+{
+  "email_address": "gimzani@gmail.com",
+  "password": "Innov8i0n!"
+}
+
+###
+
+# @name Me
+GET {{apiRoot}}/auth/me
+content-type: application/json
+
+###
+
+# @name Register
+POST {{apiRoot}}/auth/register
+content-type: application/json
+
+{
+  "email_address": "newuser@example.com",
+  "password": "Password1!",
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "mobile_number": "3175550100"
+}
+
+###
+
+# @name Verify Email
+POST {{apiRoot}}/auth/verify-email
+content-type: application/json
+
+{
+  "email_address": "newuser@example.com",
+  "token": "<paste-raw-token-from-email>"
+}
+
+###
+
+# @name Forgot Password
+POST {{apiRoot}}/auth/forgot-password
+content-type: application/json
+
+{
+  "email_address": "gimzani@gmail.com"
+}
+
+###
+
+# @name Reset Password
+POST {{apiRoot}}/auth/reset-password
+content-type: application/json
+
+{
+  "token": "<paste-raw-token-from-email>",
+  "new_password": "NewPassword1!"
+}
+
+###
+
+# @name Logout
+POST {{apiRoot}}/auth/logout
+content-type: application/json

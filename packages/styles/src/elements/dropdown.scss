@@ -1,0 +1,51 @@
+
+@use "../mixins/caret.scss" as c;
+
+.dropdown {
+  position: relative;
+
+  .dropdown-toggle {
+    white-space: nowrap;
+    @include c.caret();
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    display: none;
+    border: solid 1px #333;
+    background-color: #fff;
+    margin: 0;
+    list-style: none;
+    padding: 0px;
+    margin-top: -1px;
+    margin-left: 5px;
+    z-index: 100;
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    &.show {
+      display: block;
+    }
+
+
+    .dropdown-menu-item {
+      padding: 0.25rem 0.5rem;
+      cursor: pointer;
+
+      &.rollover {
+        &:hover {
+          background-color: aquamarine;
+        }
+      }
+
+      label {
+      cursor: pointer;
+
+      }
+    }
+  }
+
+}

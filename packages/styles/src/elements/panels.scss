@@ -1,0 +1,17 @@
+
+
+.panel {
+  display: block;
+  padding: 1rem;
+  border: solid 2px #333;
+  border-radius: 15px;
+  background-color: #fff;
+
+  ul {
+    padding-left: 20px;
+    li {
+      margin: 0;
+    }
+  }
+}
+

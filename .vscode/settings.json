@@ -1,0 +1,13 @@
+{
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "apiRoot":"http://localhost:2564/api",
+    },
+    "dev":{
+      "apiRoot":"http://localhost:2564/api"
+    },
+    "prod":{
+      "apiRoot":"http://localhost:2564/api"
+    }
+  }
+}

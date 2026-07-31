@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import PasswordResetToken from '@models/models/PasswordResetToken'
+import { PasswordResetToken } from '@sf/models'
 import passwordresettokensService from './passwordresettokensService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------

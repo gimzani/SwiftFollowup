@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import Bizcard from '@models/models/Bizcard'
+import { BizCard } from '@sf/models'
 import bizcardsService from './bizcardsService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------
@@ -33,7 +33,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- CREATE
   fastify.post('/api/bizcards', async (request, reply) => {
     try {
-      const bizcard = new Bizcard(request.body)
+      const bizcard = new BizCard(request.body)
       let result = await bizcardsService.createBizcard(fastify.pg, bizcard)
       ok(reply, result.rows[0], result.rowCount)
     } catch(err) {
@@ -46,7 +46,7 @@ export default async function routes (fastify) {
     try {
       let exists = await bizcardsService.getBizcardById(fastify.pg, request.params.id)
       if(exists.rows.length===1) {
-        const bizcard = new Bizcard({
+        const bizcard = new BizCard({
           ...request.body,
           id: request.params.id
         })
@@ -65,7 +65,7 @@ export default async function routes (fastify) {
     try {
       let exists = await bizcardsService.getBizcardById(fastify.pg, request.params.id)
       if(exists.rows.length===1) {
-        const bizcard = new Bizcard(exists.rows[0])
+        const bizcard = new BizCard(exists.rows[0])
         let result = await bizcardsService.deleteBizcard(fastify.pg, bizcard)
         ok(reply, result.rows, result.rowCount)
       } else {

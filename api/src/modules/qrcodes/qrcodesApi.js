@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import Qrcode from '@models/models/Qrcode'
+import { QrCode } from '@sf/models'
 import qrcodesService from './qrcodesService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------
@@ -33,7 +33,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- CREATE
   fastify.post('/api/qrcodes', async (request, reply) => {
     try {
-      const qrcode = new Qrcode(request.body)
+      const qrcode = new QrCode(request.body)
       let result = await qrcodesService.createQrcode(fastify.pg, qrcode)
       ok(reply, result.rows[0], result.rowCount)
     } catch(err) {
@@ -46,7 +46,7 @@ export default async function routes (fastify) {
     try {
       let exists = await qrcodesService.getQrcodeById(fastify.pg, request.params.id)
       if(exists.rows.length===1) {
-        const qrcode = new Qrcode({
+        const qrcode = new QrCode({
           ...request.body,
           id: request.params.id
         })
@@ -65,7 +65,7 @@ export default async function routes (fastify) {
     try {
       let exists = await qrcodesService.getQrcodeById(fastify.pg, request.params.id)
       if(exists.rows.length===1) {
-        const qrcode = new Qrcode(exists.rows[0])
+        const qrcode = new QrCode(exists.rows[0])
         let result = await qrcodesService.deleteQrcode(fastify.pg, qrcode)
         ok(reply, result.rows, result.rowCount)
       } else {

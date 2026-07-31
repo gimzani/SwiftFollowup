@@ -51,7 +51,7 @@ export async function updateSession(pg, session) {
          ip_address = $4,
          user_agent = $5,
          expires_on = $6,
-         updated_on = NOW()
+         created_on = NOW()
      WHERE id = $1
      RETURNING *`,
     [

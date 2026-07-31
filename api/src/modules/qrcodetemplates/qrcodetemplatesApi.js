@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import Qrcodetemplate from '@models/models/Qrcodetemplate'
+import { QrCodeTemplate } from '@sf/models'
 import qrcodetemplatesService from './qrcodetemplatesService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------
@@ -33,7 +33,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- CREATE
   fastify.post('/api/qrcodetemplates', async (request, reply) => {
     try {
-      const qrcodetemplate = new Qrcodetemplate(request.body)
+      const qrcodetemplate = new QrCodeTemplate(request.body)
       let result = await qrcodetemplatesService.createQrcodetemplate(fastify.pg, qrcodetemplate)
       ok(reply, result.rows[0], result.rowCount)
     } catch(err) {
@@ -46,7 +46,7 @@ export default async function routes (fastify) {
     try {
       let exists = await qrcodetemplatesService.getQrcodetemplateById(fastify.pg, request.params.id)
       if(exists.rows.length===1) {
-        const qrcodetemplate = new Qrcodetemplate({
+        const qrcodetemplate = new QrCodeTemplate({
           ...request.body,
           id: request.params.id
         })
@@ -65,7 +65,7 @@ export default async function routes (fastify) {
     try {
       let exists = await qrcodetemplatesService.getQrcodetemplateById(fastify.pg, request.params.id)
       if(exists.rows.length===1) {
-        const qrcodetemplate = new Qrcodetemplate(exists.rows[0])
+        const qrcodetemplate = new QrCodeTemplate(exists.rows[0])
         let result = await qrcodetemplatesService.deleteQrcodetemplate(fastify.pg, qrcodetemplate)
         ok(reply, result.rows, result.rowCount)
       } else {

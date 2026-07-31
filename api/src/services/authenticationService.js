@@ -13,10 +13,25 @@ import emailverificationtokensService from '../modules/emailverificationtokens/e
 import passwordresettokensService from '../modules/passwordresettokens/passwordresettokensService.js'
 import userprofilesService from '../modules/userprofiles/userprofilesService.js'
 //-------------------------------------------------------------------------
+import { UserAccount } from '@sf/models'
+//-------------------------------------------------------------------------
 export default fp(async function authPlugin(fastify, opts) {
   //--------------------------------------------------
   const SESSION_COOKIE_NAME = 'session'
   const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 7 // 7 days
+  //--------------------------------------------------
+  fastify.decorateRequest('useraccount', null)
+  fastify.decorate('authenticate', async function (req, reply) {
+    const session = await getSessionFromRequest(req)
+    if (!session) {
+      return reply.code(401).send({ error: 'Unauthorized' })
+    }
+    const useraccount = await findUserById(session.useraccount_id)
+    if (!useraccount) {
+      return reply.code(401).send({ error: 'Unauthorized' })
+    }
+    req.useraccount = useraccount
+  })
   //------------------------------------------------------
   //#region AUTHENTICATION FLOW
   //------------------------------------------------------
@@ -63,7 +78,18 @@ export default fp(async function authPlugin(fastify, opts) {
   fastify.get('/api/auth/me', {
     preHandler: fastify.authenticate
   }, async (req, reply) => { 
-    return ok(reply, req.useraccount, 1, "User account retrieved successfully")    
+
+    const userAccountResponse = {
+      id: req.useraccount.id,
+      code: req.useraccount.code,
+      email_address: req.useraccount.email_address,
+      plan_code: req.useraccount.plan_code,
+      login_on: req.useraccount.login_on,
+      login_count: req.useraccount.login_count,
+      is_active: req.useraccount.is_active
+    }
+
+    return ok(reply, userAccountResponse, 1, "User account retrieved successfully")
   })
   //------------------------------------------------------
   //#endregion
@@ -114,7 +140,7 @@ export default fp(async function authPlugin(fastify, opts) {
       });
       //-------------------------------------- send email verification
       await emailRelay.sendWelcomeEmail(registerRequest.email_address, registerRequest.first_name, registerRequest.last_name)
-      await emailRelay.sendAccountConfirmEmail(registerRequest.email_address, tokenHash)
+      await emailRelay.sendAccountConfirmEmail(registerRequest.email_address, rawToken)
       //-------------------------------------- 
       return ok(reply, null, 0, "User registered successfully. Please check your email to verify your account.");
       //-------------------------------------- 
@@ -165,7 +191,7 @@ export default fp(async function authPlugin(fastify, opts) {
           token: tokenHash,
           expires_on: expiresOn
         });
-        await emailRelay.sendPasswordResetEmail(email_address, rawToken);
+        await emailRelay.sendForgotPasswordEmail(email_address, rawToken);
         return ok(reply, null, 0, 'Password reset email sent successfully.');
       } catch (err) {
         return serverError(reply, err);
@@ -211,7 +237,7 @@ export default fp(async function authPlugin(fastify, opts) {
 
     reply.setCookie(SESSION_COOKIE_NAME, rawToken, {
       httpOnly: true,
-      secure: true,
+      secure: false, // set to true in production (HTTPS only)
       sameSite: 'lax',
       path: '/',
       expires: expiresOn
@@ -280,7 +306,16 @@ export default fp(async function authPlugin(fastify, opts) {
   }
   //--------------------------------------------------
   async function createUseraccount(useraccount) {
-    let result = await useraccountsService.createUserAccount(fastify.pg, useraccount);
+
+    const userAccount = new UserAccount({
+      plan_code: 'SF_P_FREE',
+      email_address: useraccount.email_address,
+      password_hash: useraccount.password_hash,
+      is_active: false
+    });
+
+
+    let result = await useraccountsService.createUserAccount(fastify.pg, userAccount);
     return result.rows[0] || null;
   }
   //--------------------------------------------------
@@ -316,31 +351,19 @@ export default fp(async function authPlugin(fastify, opts) {
     let result = await emailverificationtokensService.getEmailVerificationToken(fastify.pg, token);
     return result.rows[0] || null;
   }
-  // --------------------------------------------------
-  // DECORATORS
-  // --------------------------------------------------
-  fastify.decorateRequest('useraccount', null)
-  // --------------------------------------------
-  fastify.decorate('authenticate', async function (req, reply) {
-    const session = await getSessionFromRequest(req)
-
-    if (!session) {
-      return reply.code(401).send({ error: 'Unauthorized' })
-    }
-
-    const useraccount = await findUserById(session.useraccount_id)
-
-    if (!useraccount) {
-      return reply.code(401).send({ error: 'Unauthorized' })
-    }
-
-    req.useraccount = useraccount
-  })
   //--------------------------------------------------
-  // -------------------------------------------------
+  async function updateUserPassword(useraccount_id, newPasswordHash) {
+    let result = await useraccountsService.changePassword(fastify.pg, {useraccount_id, password: newPasswordHash});
+    return result.rows[0] || null;
+  }
+  // --------------------------------------------------
+  async function deletePasswordResetToken(token) {
+    let result = await passwordresettokensService.deletePasswordResetToken(fastify.pg, token);
+    return result;
+  }
+  // --------------------------------------------------
   // OPTIONAL: CLEANUP HOOK (expired sessions)
-  // -------------------------------------------------
-  //--------------------------------------------------
+  // --------------------------------------------------
   async function deleteExpiredSessions() {
     let result = await sessionsService.deleteExpiredSessions(fastify.pg);
     return result;

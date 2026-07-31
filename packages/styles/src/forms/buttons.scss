@@ -1,0 +1,97 @@
+@use 'sass:color';
+@use '../base/_vars.scss' as vars;
+
+.btn {
+  background-color: #ccc;
+  border: solid 1px #333;
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  line-height: 1rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: color.adjust(#ccc, $blackness: 20%);    
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.btn-sm {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+    line-height: 0.9rem;
+  }
+
+  &.btn-xs {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+  }
+
+  &.btn-block,
+  &.btn-full {
+    display: block;
+    width: 100%;
+  }
+  
+  &.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--primary-background-text);
+    text-shadow: 0 0 3px rgba(0,0,0,0.9);
+    &:hover {
+      background-color: color.adjust(vars.$primaryColor, $blackness: 20%);
+    }
+  }
+  
+  &.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--secondary-background-text);
+    text-shadow: 0 0 3px rgba(0,0,0,0.9);
+    &:hover {
+      background-color: color.adjust(vars.$secondaryColor, $blackness: 20%);
+    }
+  }
+
+  &.btn-danger {
+    background-color: var(--danger-color);
+    color: var(--danger-background-text);
+    text-shadow: 0 0 3px rgba(0,0,0,0.9);
+    &:hover {
+      background-color: color.adjust(vars.$dangerColor, $blackness: 20%);
+    }
+  }
+  &.btn-success {
+    background-color: var(--success-color);
+    color: var(--success-background-text);
+    text-shadow: 0 0 3px rgba(0,0,0,0.9);
+    &:hover {
+      background-color: color.adjust(vars.$successColor, $blackness: 20%);
+    }
+  }
+  &.btn-warning {
+    background-color: var(--warning-color);
+    color: var(--warning-background-text);
+    text-shadow: 0 0 3px rgba(0,0,0,0.9);
+    &:hover {
+      background-color: color.adjust(vars.$warningColor, $blackness: 20%);
+    }
+  }
+  &.btn-info {
+    background-color: var(--info-color);
+    color: var(--info-background-text);
+    text-shadow: 0 0 3px rgba(0,0,0,0.9);
+    &:hover {
+      background-color: color.adjust(vars.$infoColor, $blackness: 20%);
+    }
+  }
+
+
+}
+
+.btn-lnk {
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+}

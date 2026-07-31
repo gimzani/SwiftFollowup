@@ -42,8 +42,8 @@ export default class Contact {
     this.job_title = options.job_title || this.job_title;
     this.web_address = options.web_address || this.web_address;
     this.mobile_number = options.mobile_number || this.mobile_number;
-    this.created_on = new Date(options.created_on).toISOString() || this.created_on;
-    this.updated_on = new Date(options.updated_on).toISOString() || this.updated_on;
+    this.created_on = options.created_on ? new Date(options.created_on).toISOString() : this.created_on;
+    this.updated_on = options.updated_on ? new Date(options.updated_on).toISOString() : this.updated_on;
   }
 
 }

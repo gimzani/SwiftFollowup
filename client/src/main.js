@@ -3,7 +3,7 @@ import App from './App.vue'
 
 import router from './router.js'
 
-import '@SwiftFollowup/styles'
+import '@sf/styles'
 
 const app = createApp(App)
 

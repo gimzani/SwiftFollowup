@@ -4,11 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite --mode dev --open",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@regle/core": "^1.28.5",
+    "@regle/rules": "^1.28.5",
+    "sass": "^1.102.0",
     "vue": "^3.5.40",
     "vue-router": "^5.2.0"
   },

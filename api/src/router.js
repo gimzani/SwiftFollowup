@@ -2,7 +2,6 @@
 //---------------------------------------------------------------
 import bizcardsApi from './modules/bizcards/bizcardsApi.js'
 import bizcardtemplatesApi from './modules/bizcardtemplates/bizcardtemplatesApi.js'
-import confirmationcodesApi from './modules/confirmationcodes/confirmationcodesApi.js'
 import contactsApi from './modules/contacts/contactsApi.js'
 import contacteventsApi from './modules/contactevents/contacteventsApi.js'
 import contactrequestsApi from './modules/contactrequests/contactrequestsApi.js'
@@ -26,7 +25,6 @@ import utilsApi from './modules/utilsApi.js'
 export function initializeRoutes (fastify) {
   bizcardsApi(fastify);
   bizcardtemplatesApi(fastify);
-  confirmationcodesApi(fastify);
   contactsApi(fastify);
   contacteventsApi(fastify);
   contactrequestsApi(fastify);

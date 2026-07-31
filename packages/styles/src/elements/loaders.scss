@@ -1,0 +1,200 @@
+
+$light-color: #f6f7f8;
+$dark-color: #edeef1;
+
+//------------------------------------------------ layout
+.global-loader-mask {
+  
+  //-------------------------------  
+  --ringColor1: #8D5FFF;
+  --ringColor2: #8D5FFF;
+  --ringColor3: #8D5FFF;
+  --ringColor4: #8D5FFF;
+  --ringSpeed: 1.5s;
+  --messageFade: 2s;
+  //-------------------------------
+
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.75);
+  z-index: 1000;
+
+  .global-loader {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .ring {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: ring var(--ringSpeed) linear infinite;
+
+      &:before {
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        content: '';
+        border-radius: 50%;
+        box-shadow: 0 0 5px rgba(255,255,255, 0.3);
+      }
+    }
+
+    .message {
+      position: absolute;
+      font-size: 1.1rem;
+      animation: text var(--messageFade) ease-in-out infinite;
+      color: white
+    }
+  }
+
+  //------------------------------------------------ ring rotation
+
+
+  @keyframes ring {
+    0% {
+      transform: rotate(0deg);
+      box-shadow: 1px 5px 2px var(--ringColor1);
+    }
+    25% {
+      transform: rotate(90deg);
+      box-shadow: 1px 5px 2px var(--ringColor2);
+    }
+    50% {
+      transform: rotate(180deg);
+      box-shadow: 1px 5px 2px var(--ringColor3);
+    }
+    75% {
+      transform: rotate(270deg);
+      box-shadow: 1px 5px 2px var(--ringColor4);
+    }
+    100% {
+      transform: rotate(360deg);
+      box-shadow: 1px 5px 2px var(--ringColor1);
+    }
+  }
+
+  //------------------------------------------------ text fade
+  @keyframes text {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+}
+
+
+
+.loader-container {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+    
+  .loader-text-line {
+    margin: 4px 0px;
+    height: 14px;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+  }
+           
+  .loader-text-line-mini {
+    width: 20%;
+  }
+
+  .loader-text-line-small {
+    width: 40%;
+  }
+
+  .loader-text-line-medium {
+    width: 60%;
+  }
+
+  .loader-text-line-large {
+    width: 100%;
+  }
+
+  .video-loader{
+    margin: 4px 0px;
+    height: 160px;
+    width: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    border: 2px solid $light-color;
+    padding: 8px 8px;
+  }
+
+  .card-loader {
+    height: 150px;
+    width: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    border: 2px solid $light-color;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    .card-loader-header{
+      display: flex;
+      flex-flow: row;
+      width: 100%;
+    }
+
+    .card-loader-body{
+      display: flex;
+      flex-flow: column;
+    }
+
+    .loader-text-line {
+      margin: 4px 0px;
+      height: 1rem;
+      border-radius: 15px;
+      display: flex;
+      flex-flow: row;
+      justify-content: start;
+    }
+
+  }
+  
+  .shine {
+    background: $light-color;
+    background-image: linear-gradient(to right, $light-color 0%, $dark-color 20%, $light-color 40%, $light-color 100%);
+    background-repeat: no-repeat;
+    background-size: 800px 160px;
+    display: inline-block;
+    position: relative;
+
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: placeholderShimmer;
+    -webkit-animation-timing-function: linear;
+  }
+
+  @-webkit-keyframes placeholderShimmer {
+    0% {
+      background-position: -468px 0;
+    }
+
+    100% {
+      background-position: 468px 0;
+    }
+  }
+}

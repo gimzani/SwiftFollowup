@@ -1,0 +1,33 @@
+
+
+
+# @name Hello World 
+GET {{apiRoot}}
+content-type: application/json
+
+###
+
+# @name View Table Columns 
+GET {{apiRoot}}/tablecols/qrcode
+content-type: application/json
+
+###
+
+# @name Hash Password
+POST {{apiRoot}}/hash
+content-type: application/json
+
+{
+  "password": "Innov8i0n!"
+}
+
+###
+
+# @name Verify Password
+POST {{apiRoot}}/verify
+content-type: application/json
+
+{
+  "password": "Innov8i0n!",
+  "hash": "$argon2id$v=19$m=65536,t=3,p=1$w/VmAMAUwOzZY8pP+ttR5g$5oqRQohcNRIZGpIpZ+cHlbW2EUS+umi+lIwicjDkfs8"
+}

@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import UserAccount from '@models/models/UserAccount'
+import { UserAccount } from '@sf/models'
 import useraccountsService from './useraccountsService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------

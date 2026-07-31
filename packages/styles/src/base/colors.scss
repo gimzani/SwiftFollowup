@@ -1,0 +1,33 @@
+//---------------------------------------
+// css vars : colors
+//---------------------------------------
+
+@use "sass:meta";
+@use './_vars.scss' as vars;
+
+:root {
+
+  --primary-color: #{vars.$primaryColor};
+	--secondary-color: #{vars.$secondaryColor};
+
+	--info-color: #{vars.$infoColor};
+	--success-color: #{vars.$successColor};
+	--warning-color: #{vars.$warningColor};
+	--danger-color: #{vars.$dangerColor};
+	--error-color: #{vars.$dangerColor};
+
+	--site-text: #{vars.$siteText};
+	--dark-text: #{vars.$darkText};
+	--light-text: #{vars.$lightText};
+	--muted-text: #{vars.$mutedText};
+
+	--primary-background-text: #{vars.$lightText};
+	--secondary-background-text: #{vars.$lightText};	
+	--success-background-text: #{vars.$lightText};
+	--warning-background-text: #{vars.$lightText};
+	--danger-background-text: #{vars.$lightText};
+	--info-background-text: #{vars.$lightText};	
+
+	--tab-foreground: #eee;
+	--tab-background: #aaa; 
+}

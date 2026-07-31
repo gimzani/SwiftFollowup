@@ -88,7 +88,7 @@ WITH upserted_user AS (
   ) VALUES (
     '01KYMCCQK7ZSPY3MFJCWES307V',
     'gimzani@gmail.com',
-    'Innov8i0n!',
+    '$argon2id$v=19$m=65536,t=3,p=1$w/VmAMAUwOzZY8pP+ttR5g$5oqRQohcNRIZGpIpZ+cHlbW2EUS+umi+lIwicjDkfs8',
     TIMESTAMP '2025-08-01 00:00:00',
     0,
     TRUE,

@@ -1,0 +1,23 @@
+
+.input-group {
+  display: inline-flex;
+
+  &.full {
+    display: flex;
+  }
+
+  input[type=text]:first-child,
+  select:first-child,
+  button:last-child:first-child {
+    border-radius: var(--field-border-radius) 0 0 var(--field-border-radius);
+  }
+  
+  input[type=text]:last-child,
+  select:last-child,
+  button:last-child:last-child {
+    border-radius: 0 var(--field-border-radius) var(--field-border-radius) 0;
+    border-left: none;
+    padding: 0 10px;
+  }  
+
+}

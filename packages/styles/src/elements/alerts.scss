@@ -1,0 +1,49 @@
+@use 'sass:color';
+@use '../base/_vars.scss' as vars;
+
+.alert {
+  padding: 1rem;
+  border: solid 2px #333;
+  border-radius: 0.75rem;
+  background-color: #ccc;
+  line-height: 1rem;
+  margin: 0.25rem 0;
+
+  &.alert-small {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+  }
+
+  &.alert-primary {
+    background-color: color.adjust(vars.$primaryColor, $lightness: 50%);
+    border-color: color.adjust(vars.$primaryColor, $blackness: 10%);
+  }
+
+  &.alert-secondary {
+    background-color: color.adjust(vars.$secondaryColor, $lightness: 40%);
+    border-color: color.adjust(vars.$secondaryColor, $blackness: 10%);
+  }
+
+  &.alert-info {
+    background-color: color.adjust(vars.$infoColor, $lightness: 40%);
+    border-color: color.adjust(vars.$infoColor, $blackness: 10%);
+  }
+
+  &.alert-success {
+    background-color: color.adjust(vars.$successColor, $lightness: 60%);
+    border-color: color.adjust(vars.$successColor, $blackness: 10%);
+  }
+
+  &.alert-warning {
+    background-color: color.adjust(vars.$warningColor, $lightness: 40%);
+    border-color: color.adjust(vars.$warningColor, $blackness: 10%);
+  }
+
+  &.alert-danger,
+  &.alert-error {
+    background-color: color.adjust(vars.$dangerColor, $lightness: 50%);
+    border-color: color.adjust(vars.$dangerColor, $blackness: 10%);
+  }
+
+
+}

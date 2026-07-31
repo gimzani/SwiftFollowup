@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import ContactRequest from '@models/models/ContactRequest'
+import { ContactRequest } from '@sf/models'
 import contactrequestsService from './contactrequestsService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------

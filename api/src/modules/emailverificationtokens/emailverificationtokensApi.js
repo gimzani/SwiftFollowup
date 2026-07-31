@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import EmailVerificationToken from '@models/models/EmailVerificationToken'
+import { EmailVerificationToken } from '@sf/models'
 import emailverificationtokensService from './emailverificationtokensService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------

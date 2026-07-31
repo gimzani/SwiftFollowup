@@ -1,8 +1,8 @@
 //--------------------------------------------------------
-import AppResult from '@models/models/AppResult'
+import { Result } from '@sf/models'
 //--------------------------------------------------------
 export function handleDbError(err, reply) {
-  const result = new AppResult()
+  const result = new Result()
   if (err.code === '23505') {
     result.setFailure('Duplicate entry');
     return reply.code(409).send(result)

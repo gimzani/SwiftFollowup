@@ -1,0 +1,95 @@
+
+@use 'sass:color';
+@use '../base/_vars.scss' as vars;
+
+.card {
+  position: relative;
+  margin-bottom: 10px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px color.adjust(vars.$primaryColor, $alpha: -0.8);
+
+  &.card-body,
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .card-header {
+    border: solid 1px #ccc;
+    border-radius: 5px 5px 0 0;
+    background-color: #eee;
+    padding: 3px 10px;
+    font-weight: bold;
+  }
+
+  &.card-corner {
+    .card-header {
+      position: absolute;
+      top: 0; left: 0;
+      border-radius: 5px 0 5px 0;
+      font-size: 0.8rem;
+    }
+    .card-body {
+      border: solid 1px #ccc;
+      border-radius: 5px;
+      padding-top: 40px;
+    }
+  }
+  
+  &.card-primary {
+    .card-header, .card-body {
+      border-color: color.adjust(vars.$primaryColor, $blackness: 10%);
+    }
+    .card-header {
+      background-color: color.adjust(vars.$primaryColor, $lightness: 50%);
+    }
+  }
+
+  &.card-secondary {
+    .card-header, .card-body {
+      border-color: color.adjust(vars.$secondaryColor, $blackness: 10%);
+    }
+    .card-header {
+      background-color: color.adjust(vars.$secondaryColor, $lightness: 25%);
+    }
+  }
+
+  &.card-info {
+    .card-header, .card-body {
+      border-color: color.adjust(vars.$infoColor, $blackness: 10%);
+    }
+    .card-header {
+      background-color: color.adjust(vars.$infoColor, $lightness: 30%);
+    }
+  }
+
+  &.card-success {
+    .card-header, .card-body {
+      border-color: color.adjust(vars.$successColor, $blackness: 10%);
+    }
+    .card-header {
+      background-color: color.adjust(vars.$successColor, $lightness: 50%);
+    }
+  }
+
+  &.card-warning {
+    .card-header, .card-body {
+      border-color: color.adjust(vars.$warningColor, $blackness: 10%);
+    }
+    .card-header {
+      background-color: color.adjust(vars.$warningColor, $lightness: 25%);
+    }
+  }
+
+  &.card-danger,
+  &.card-error {
+    .card-header, .card-body {
+      border-color: color.adjust(vars.$dangerColor, $blackness: 10%);
+    }
+    .card-header {
+      background-color: color.adjust(vars.$dangerColor, $lightness: 40%);
+    }
+  }
+
+}

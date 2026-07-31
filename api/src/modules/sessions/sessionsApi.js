@@ -1,5 +1,5 @@
 //---------------------------------------------------------------
-import Session from '@models/models/Session'
+import { Session } from '@sf/models'
 import sessionsService from './sessionsService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------

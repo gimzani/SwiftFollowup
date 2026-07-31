@@ -1,0 +1,72 @@
+
+//----------------------------------  base
+.field {
+  position: relative;
+  background-color: #fff;
+  border: solid 1px #333;
+  border-radius: var(--field-border-radius);
+  padding: 5px;
+    
+  input,
+  textarea,
+  select {
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: vertical;
+  }
+  
+  .field-icon {
+    padding: 2px 5px;
+  }  
+
+}
+.field-counter {
+  position: absolute;
+  right: 0;
+  font-size: 0.7rem;
+  text-align: right;
+  padding: 0 5px;
+}
+
+//----------------------------------  field types
+.field-text,
+.field-money,
+.field-percent,
+.field-textarea {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.field-textarea {
+  align-items: start;
+}
+
+.field-full {
+  width: 100%;
+}
+
+//----------------------------------  errors  
+.field-error {
+  position: absolute;
+  font-size: 0.8rem;
+  padding-left: 10px;
+  padding-right: 30px;
+  color: var(--danger-color);
+}
+
+//----------------------------------  error animations  
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+.fade-leave-from,
+.fade-enter-to {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fade-leave-active,
+.fade-enter-active {
+  transition: all 300ms ease-in-out;
+}
