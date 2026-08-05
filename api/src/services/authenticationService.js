@@ -65,7 +65,7 @@ export default fp(async function authPlugin(fastify, opts) {
     }
   })
   //--------------------------------------------------
-  fastify.post('/api/auth/logout', async (req, reply) => {    
+  fastify.get('/api/auth/logout', async (req, reply) => {    
     try {
       const rawToken = req.cookies[SESSION_COOKIE_NAME]
       if (rawToken) {

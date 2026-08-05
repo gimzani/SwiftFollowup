@@ -66,6 +66,9 @@
         cursor: pointer; 
       }   
 
+      &.active {
+        color: var(--secondary-color);
+      }
 
       svg {
         margin-right: 0.5rem;

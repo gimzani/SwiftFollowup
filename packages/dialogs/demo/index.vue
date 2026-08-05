@@ -33,7 +33,6 @@ async function launchConfirmation() {
 
   <h4>Demo: Dialogs</h4>
 
-
   <div class="demo-group">
     <label>Dialog Title</label>
     <input type="text" class="demo-input" v-model="cfg.title" />
@@ -55,8 +54,6 @@ async function launchConfirmation() {
   <button @click="toasts.info('Info - The more you know...')">Info Toast</button>
   <button @click="toasts.warning('Warning - Careful!')">Warning Toast</button>
   <button @click="toasts.error('Error - You messed up!')">Error Toast</button>
-  
-
 
 </div>
 </template>

@@ -18,7 +18,7 @@ export function useApi() {
       verifyEmail: async (payload) => apiRequest(`${apiRoot}/auth/verify-email`, 'POST', payload),
       forgotPassword: async (payload) => apiRequest(`${apiRoot}/auth/forgot-password`, 'POST', payload),
       resetPassword: async (payload) => apiRequest(`${apiRoot}/auth/reset-password`, 'POST', payload),
-      logout: async () => apiRequest(`${apiRoot}/auth/logout`, 'POST'),
+      logout: async () => apiRequest(`${apiRoot}/auth/logout`),
     },
 
     bizCards: {

@@ -14,6 +14,7 @@ function message(options) {
   let obj = {
     title: "Message", 
     text: "Please enter a text for this alert box.",
+    buttonConfirmCss: "btn btn-primary mx-1",
     buttonConfirmText: "OK"
   }
   Object.assign(obj, options);
@@ -21,6 +22,9 @@ function message(options) {
     title: obj.title, 
     text: obj.text, 
     confirmButtonText: obj.buttonConfirmText,  
+    customClass: {
+      confirmButton: obj.buttonConfirmCss
+    },
     buttonsStyling: false,
     icon: null
   });
@@ -32,9 +36,9 @@ async function confirm(options) {
     title: "Are you sure?", 
     text: "This change is permanent.",
     buttonCancelText: "Cancel",
-    buttonCancelCss: "btn-secondary",
+    buttonCancelCss: "btn btn-secondary mx-1",
     buttonConfirmText: "OK",
-    buttonConfirmCss: "btn-primary"
+    buttonConfirmCss: "btn btn-primary mx-1"
   }
   Object.assign(obj, options);
   return swal.fire({ 
@@ -59,9 +63,9 @@ async function confirm(options) {
 async function prompt(options) {
   let obj = {
     buttonCancelText: "Cancel",
-    buttonCancelCss: "btn-secondary",
+    buttonCancelCss: "btn btn-secondary mx-1",
     buttonConfirmText: "OK",
-    buttonConfirmCss: "btn-primary"
+    buttonConfirmCss: "btn btn-primary mx-1"
   }
   Object.assign(obj, options);
   return swal.fire(obj);

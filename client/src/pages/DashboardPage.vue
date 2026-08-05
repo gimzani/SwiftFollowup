@@ -9,7 +9,14 @@ const emit = defineEmits([]);
 </script>
 <template>
 <AppLayout class="dashboard">
-DASHBOARD
+  <section>
+    <h1 class="h3">Dashboard</h1>
+  </section>
+  <ul>
+    <li>Biz Card gallery - (with default selected)</li>
+    <li>Latest Contact requests</li>
+    <li>Latest Responses</li>
+  </ul>
 </AppLayout>
 </template>
 
