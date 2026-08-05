@@ -75,14 +75,14 @@
       {
         "name": "bizcardtemplate",
         "schemaName": "public",
-        "x": 213.65525213451374,
-        "y": 1289.7233423979771
+        "x": 235.38010565013872,
+        "y": 1284.5302884048892
       },
       {
         "name": "bizcard",
         "schemaName": "public",
-        "x": 273.1137482282637,
-        "y": 945.490116882934
+        "x": 238.49338827434508,
+        "y": 884.9044869635763
       },
       {
         "name": "useraccount_bizcard",
@@ -93,14 +93,20 @@
       {
         "name": "qrcodetemplate",
         "schemaName": "public",
-        "x": 617.6309908874846,
-        "y": 1575.3050169324947
+        "x": 763.0365026939427,
+        "y": 1585.6911249186705
       },
       {
         "name": "qrcode",
         "schemaName": "public",
-        "x": 617.6309908874846,
-        "y": 1296.7763599049322
+        "x": 693.7957827861055,
+        "y": 1241.3837839786624
+      },
+      {
+        "name": "plan_permission",
+        "schemaName": "public",
+        "x": 562.201472584178,
+        "y": 465.10709506932295
       }
     ],
     "tableGroupCollapseStates": [],
@@ -282,6 +288,36 @@
           "useraccount_id"
         ],
         "secondTableName": "qrcode",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "code"
+        ],
+        "firstTableName": "plan",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "plan_code"
+        ],
+        "secondTableName": "plan_permission",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "permission_name"
+        ],
+        "firstTableName": "permission",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "permission_name"
+        ],
+        "secondTableName": "plan_permission",
         "secondSchemaName": "public",
         "secondRelation": "*",
         "checkPoints": []

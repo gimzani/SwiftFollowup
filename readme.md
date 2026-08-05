@@ -67,3 +67,7 @@ The `api` project will be a simple yet powerful restApi that uses a services arc
 │     └─ package.json
 └─ package.json
 ```
+
+# API Project
+
+# Client Project

@@ -7,37 +7,12 @@ Get-Process postgres
 ```
 
 
-
-
-
-Find who owns the file
-
-
-
-Windows has a built-in utility called handle.exe from Microsoft's Sysinternals suite:
-
-
+Try running:
 
 ```
-
-handle.exe postgres
-
+Get-Process postgres | Select-Object Id, ProcessName, StartTime
+Get-Service *postgres*
 ```
-
-
-
-or
-
-
-
-```
-
-handle.exe postmaster.pid
-
-```
-
-
-
 
 
 Resource Monitor
@@ -110,9 +85,9 @@ Instead of rebooting:
 
 ```
 
-net stop postgresql-x64-17
+net stop postgresql-x64-18 
 
-net start postgresql-x64-17
+net start postgresql-x64-18 
 
 ```
 
@@ -122,7 +97,7 @@ or
 
 ```
 
-Restart-Service postgresql-x64-17
+Restart-Service postgresql-x64-18 
 
 ```
 

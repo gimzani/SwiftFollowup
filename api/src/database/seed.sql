@@ -6,7 +6,6 @@ INSERT INTO "plan" (
   "plan_description",
   "sort_order",
   "plan_details",
-  "permissions",
   "is_public",
   "plan_cost"
 ) VALUES
@@ -15,7 +14,6 @@ INSERT INTO "plan" (
     'SF_P_APPADMIN',
     'Founder Account',
     1,
-    NULL,
     NULL,
     FALSE,
     0
@@ -26,7 +24,6 @@ INSERT INTO "plan" (
     'Just the Free BizCard',
     1,
     NULL,
-    NULL,
     TRUE,
     0
   ),
@@ -35,7 +32,6 @@ INSERT INTO "plan" (
     'SF_P_CONNECTIONS',
     'BizCards and Contacts',
     2,
-    NULL,
     NULL,
     TRUE,
     29.99
@@ -46,7 +42,6 @@ INSERT INTO "plan" (
     'BizCards, Contacts and Landing Pages',
     3,
     NULL,
-    NULL,
     FALSE,
     59.99
   )
@@ -55,7 +50,6 @@ ON CONFLICT ("code") DO UPDATE SET
   "plan_description" = EXCLUDED."plan_description",
   "sort_order" = EXCLUDED."sort_order",
   "plan_details" = EXCLUDED."plan_details",
-  "permissions" = EXCLUDED."permissions",
   "is_public" = EXCLUDED."is_public",
   "plan_cost" = EXCLUDED."plan_cost";
 
@@ -119,7 +113,7 @@ INSERT INTO "userprofile" (
   "web_address",
   "mobile_number",
   "avatar_url",
-  "preferences",
+  "metadata",
   "is_default"
 )
 SELECT
@@ -148,7 +142,7 @@ ON CONFLICT ("useraccount_id") DO UPDATE SET
   "web_address" = EXCLUDED."web_address",
   "mobile_number" = EXCLUDED."mobile_number",
   "avatar_url" = EXCLUDED."avatar_url",
-  "preferences" = EXCLUDED."preferences",
+  "metadata" = EXCLUDED."metadata",
   "is_default" = EXCLUDED."is_default";
 
 COMMIT;

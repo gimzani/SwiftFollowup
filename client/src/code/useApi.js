@@ -21,10 +21,42 @@ export function useApi() {
       logout: async () => apiRequest(`${apiRoot}/auth/logout`, 'POST'),
     },
 
+    bizCards: {
+      list: async (useraccount_id) => apiRequest(`${apiRoot}/bizcards/${useraccount_id}`),
+      get: async (id) => apiRequest(`${apiRoot}/bizcard/${id}`),
+      create: async (payload) => apiRequest(`${apiRoot}/bizcards`, 'POST', payload),
+      update: async (id, payload) => apiRequest(`${apiRoot}/bizcard/${id}`, 'PUT', payload),
+      delete: async (id) => apiRequest(`${apiRoot}/bizcard/${id}`, 'DELETE'),
+    },
+
+    plans: {
+      list: async () => apiRequest(`${apiRoot}/plans`),
+      get: async (id) => apiRequest(`${apiRoot}/plan/${id}`),
+      create: async (payload) => apiRequest(`${apiRoot}/plans`, 'POST', payload),
+      update: async (id, payload) => apiRequest(`${apiRoot}/plan/${id}`, 'PUT', payload),
+      delete: async (id) => apiRequest(`${apiRoot}/plan/${id}`, 'DELETE'),
+    },
+
+    qrCodes: {
+      list: async (useraccount_id) => apiRequest(`${apiRoot}/qrcodes/${useraccount_id}`),
+      get: async (id) => apiRequest(`${apiRoot}/qrcode/${id}`),
+      create: async (payload) => apiRequest(`${apiRoot}/qrcodes`, 'POST', payload),
+      update: async (id, payload) => apiRequest(`${apiRoot}/qrcode/${id}`, 'PUT', payload),
+      delete: async (id) => apiRequest(`${apiRoot}/qrcode/${id}`, 'DELETE'),
+    },
+
+    userAccounts: {
+      list: async () => apiRequest(`${apiRoot}/useraccounts`),
+      get: async (id) => apiRequest(`${apiRoot}/useraccount/${id}`),
+      create: async (payload) => apiRequest(`${apiRoot}/useraccounts`, 'POST', payload),
+      update: async (id, payload) => apiRequest(`${apiRoot}/useraccount/${id}`, 'PUT', payload),
+      delete: async (id) => apiRequest(`${apiRoot}/useraccount/${id}`, 'DELETE'),
+    },
+
     utils: {
       tableCols: async (tableName) => apiRequest(`${apiRoot}/tablecols/${tableName}`),
     }
-    
+
   }
 
 }

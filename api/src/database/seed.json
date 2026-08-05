@@ -7,7 +7,6 @@
       "plan_description": "Just the Free BizCard",
       "sort_order": 1,
       "plan_details": null,
-      "permissions": null,
       "is_public": false,
       "plan_cost": 0
     },
@@ -17,7 +16,6 @@
       "plan_description": "Just the Free BizCard",
       "sort_order": 1,
       "plan_details": null,
-      "permissions": null,
       "is_public": true,
       "plan_cost": 0
     },
@@ -27,7 +25,6 @@
       "plan_description": "BizCards and Contacts",
       "sort_order": 2,
       "plan_details": null,
-      "permissions": null,
       "is_public": true,
       "plan_cost": 29.99
     },
@@ -37,7 +34,6 @@
       "plan_description": "BizCards, Contacts and Landing Pages",
       "sort_order": 3,
       "plan_details": null,
-      "permissions": null,
       "is_public": false,
       "plan_cost": 59.99
     }

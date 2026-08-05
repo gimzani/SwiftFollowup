@@ -49,7 +49,7 @@ async function login() {
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" name="password" v-model="r$.$value.password" :class="{'invalid': r$.password.$error}" />
+      <input type="password" name="password" v-model="r$.$value.password" :class="{'invalid': r$.password.$error}"  @keyup.enter="login" />
       <small class="form-group-error" :class="{'active': r$.$errors.password[0]}">{{ r$.$errors.password[0] }}</small>
     </div>
     <div class="d-flex justify-content-between mt-3">

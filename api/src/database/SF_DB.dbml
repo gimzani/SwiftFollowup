@@ -48,7 +48,6 @@ Table plan {
   sort_order int [default: 0]
   plan_description varchar(512) [default: NULL]
   plan_details jsonb [default: NULL]
-  permissions varchar(512) [default: NULL]
   is_public boolean [default: true]
 
   Indexes {
@@ -66,6 +65,24 @@ Table permission {
     permission_name [unique, name: "uq_permission_permission_name"]
   }
   Note: 'Permissions assigned to plans.'
+}
+
+//----------------------------------------------------------
+Table plan_permission {
+  plan_code varchar(16) [not null]
+  permission_name varchar(64) [not null]
+
+  Indexes {
+    plan_code [name: "idx_plan_permission_plan_code"]
+    permission_name [name: "idx_plan_permission_permission_name"]
+  }
+  Note: 'Mapping between plans and permissions.'
+}
+Ref fk_plan_permission__plan_code {
+  plan.code < plan_permission.plan_code [delete: cascade]
+}
+Ref fk_plan_permission__permission_name {
+  permission.permission_name < plan_permission.permission_name [delete: cascade]
 }
 
 //------------------------------------------------------------------------ User Accounts
@@ -95,7 +112,7 @@ Table userprofile {
   useraccount_id bigint [pk, not null]
   ~personalData
   avatar_url varchar(128) [default: NULL]
-  preferences jsonb [default: NULL]
+  metadata jsonb [default: NULL]
   is_default boolean [not null, default: false]
 
   Indexes {

@@ -52,6 +52,10 @@ export default fp(async function authPlugin(fastify, opts) {
       if (!valid) {
         return unauthorized(reply, 'Invalid credentials')
       }
+
+      //todo: look for an active session and delete it before creating a new one (optional)
+
+
       await createSessionForUser(req, reply, useraccount)
       //--------------------------------
       return ok(reply, useraccount, 1, "Login successful")
