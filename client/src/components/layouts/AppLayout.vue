@@ -2,28 +2,47 @@
 //----------------------------------------------------------
 import { ref } from 'vue'
 //----------------------------------------------------------
-const props = defineProps({});
-const emit = defineEmits([]);
+const menuOpen = ref(false);
 //----------------------------------------------------------
 </script>
 <template>
 <div id="app-layout">
   <div class="app-bar">
     <div>
-      <button class="menu-toggle">☰</button>
-      <span>App Name</span>
+      <button class="menu-toggle" @click="menuOpen=!menuOpen">
+        <font-awesome-icon icon="bars" />        
+      </button>
+      <img class="app-bar-logo" src="/svg/Logo-text.svg" />
     </div>
     <div>
-      ICON MENU
+      <font-awesome-icon icon="circle-user" />   
     </div>
   </div>
-  <div id="app-main">
+  <div id="app-main" :class="{'menu-open': menuOpen}">
     <div id="app-menu">
       <div>
-        top items
+        <RouterLink to="/dashboard" class="app-menu-item">
+          <font-awesome-icon icon="tachometer-alt" />
+          <span>Dashboard</span>
+        </RouterLink>
+        <RouterLink to="/bizcards" class="app-menu-item mt-1">
+          <font-awesome-icon icon="address-card" />
+          <span>BizCards</span>
+        </RouterLink>
+        <RouterLink to="/qrcodes" class="app-menu-item mt-1">
+          <font-awesome-icon icon="qrcode" />
+          <span>QR Codes</span>
+        </RouterLink>
+        <RouterLink to="/contacts" class="app-menu-item mt-1">
+          <font-awesome-icon icon="users" />
+          <span>Contacts</span>
+        </RouterLink>
       </div>
       <div>
-        bottom items
+        <button class="app-menu-item">
+          <font-awesome-icon icon="power-off" />
+          <span>Logout</span>
+        </button>
       </div>
     </div>
     <div class="app-content">
