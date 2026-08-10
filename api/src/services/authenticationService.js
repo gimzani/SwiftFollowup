@@ -52,10 +52,15 @@ export default fp(async function authPlugin(fastify, opts) {
       if (!valid) {
         return unauthorized(reply, 'Invalid credentials')
       }
+      //--------------------------------
+      useraccount.login_count++
+      useraccount.login_on = new Date();
+      useraccountsService.updateUserAccount(fastify.pg, useraccount);
+      //--------------------------------
 
-      //todo: look for an active session and delete it before creating a new one (optional)
+      //todo: look for an active session OR delete it before creating a new one (optional)
 
-
+      //--------------------------------
       await createSessionForUser(req, reply, useraccount)
       //--------------------------------
       return ok(reply, useraccount, 1, "Login successful")
@@ -84,12 +89,25 @@ export default fp(async function authPlugin(fastify, opts) {
   }, async (req, reply) => { 
 
     const userAccountResponse = {
-      id: req.useraccount.id,
+      id: parseInt(req.useraccount.id),
       code: req.useraccount.code,
       email_address: req.useraccount.email_address,
       plan_code: req.useraccount.plan_code,
       login_on: req.useraccount.login_on,
       login_count: req.useraccount.login_count,
+
+      first_name: req.useraccount.first_name,
+      last_name: req.useraccount.last_name,
+      middle_name: req.useraccount.middle_name,
+      title: req.useraccount.title,
+      suffix: req.useraccount.suffix,
+      company: req.useraccount.company,
+      job_title: req.useraccount.job_title,
+      web_address: req.useraccount.web_address,
+      mobile_number: req.useraccount.mobile_number,
+      avatar_url: req.useraccount.avatar_url,
+      preferences: req.useraccount.preferences,
+
       is_active: req.useraccount.is_active
     }
 

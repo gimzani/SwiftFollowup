@@ -16,7 +16,7 @@ export default class UserAccount {
   email_verified_on = new Date().toISOString();         // timestamp
   created_on = new Date().toISOString();                // timestamp
   updated_on = new Date().toISOString();                // timestamp
-  is_active = true;                                     // boolean
+  is_active = false;                                    // boolean
 
   user_profile = new UserProfile();                     // object - ref:userprofile
 

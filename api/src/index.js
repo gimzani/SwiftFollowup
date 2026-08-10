@@ -1,8 +1,10 @@
 //---------------------------------------------------------------
 import Fastify from 'fastify'
+import path from 'path'
 import fastifyEnv  from '@fastify/env'
 import fastifyCookie from '@fastify/cookie'
 import cors from '@fastify/cors';
+import serveStatic from '@fastify/static';
 //---------------------------------------------------------------
 import { envOptions } from './server.config.js'
 import { initializeRoutes } from './router.js'
@@ -22,6 +24,11 @@ await fastify.register(cors, {
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   credentials: true,
 });
+await fastify.register(serveStatic, {
+  root: path.join(process.cwd(), 'user-data'),
+  prefix: '/user-data/',
+});
+
 //---------------------------------------------------------------
 initializeRoutes(fastify);
 //---------------------------------------------------------------

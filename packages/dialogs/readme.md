@@ -16,7 +16,7 @@ Used to make code-based dialogs easy.
 Dialogs are easily created when the useDialog composable is imported:
   
 ```js
-import { useDialog } from '@dlm/dialogs';
+import { useDialog } from '@sf/dialogs';
 const dialog = useDialog();
 
 dialog.message({ title: "Title text", text: "Body text" });
@@ -37,7 +37,7 @@ There are three methods, each one takes a configuration object.
 Toasts are easily created when the useToasts composable is imported:
   
 ```js
-import { useToasts } from '@dlm/dialogs';
+import { useToasts } from '@sf/dialogs';
 const toasts = useToasts();
 
 toasts.success("You did it! Great Job!");

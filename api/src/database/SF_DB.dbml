@@ -112,7 +112,7 @@ Table userprofile {
   useraccount_id bigint [pk, not null]
   ~personalData
   avatar_url varchar(128) [default: NULL]
-  metadata jsonb [default: NULL]
+  preferences jsonb [default: NULL]
   is_default boolean [not null, default: false]
 
   Indexes {
@@ -228,15 +228,11 @@ Ref fk_contactevent__contact_id {
 //------------------------------------------------------------------------ BizCards
 Table bizcardtemplate {
   id bigint [pk, not null, increment]
-  code varchar(26) [not null]
   bizcard_name varchar(64) [not null]
   bizcard_description varchar(256) [default: NULL]
   bizcard_data jsonb [not null]
   ~dateAudit
 
-  Indexes {
-    code [unique, name: "uq_bizcardtemplate_code"]
-  }
   Note: 'Template data from which to quickly create bizCards.'
 }
 

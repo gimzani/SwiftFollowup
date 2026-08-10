@@ -1,6 +1,6 @@
 <script setup>
 //----------------------------------------------------------
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useApi } from '@/code/useApi';
 import { useDialog } from '@sf/dialogs'
@@ -10,12 +10,18 @@ const router = useRouter();
 const api = useApi();
 const dialog = useDialog();
 //----------------------------------------------------------
+const userData = ref(null);
+//----------------------------------------------------------
 const menuItems = [
   { label: 'Dashboard', icon: 'tachometer-alt', to: '/dashboard' },
   { label: 'BizCards', icon: 'address-card', to: '/bizcards' },
   { label: 'QR Codes', icon: 'qrcode', to: '/qrcodes' },
-  { label: 'Contacts', icon: 'users', to: '/contacts' }
+  { label: 'Contacts', icon: 'address-book', to: '/contacts' }
 ];
+const adminMenuItems = [
+  { label: 'UserAccounts', icon: 'users', to: '/useraccounts' },
+  { label: 'App Settings', icon: 'cogs', to: '/app-settings' }
+]
 //----------------------------------------------------------
 const menuOpen = ref(false);
 //----------------------------------------------------------
@@ -32,6 +38,11 @@ async function logout() {
     }
   } 
 }
+//----------------------------------------------------------
+onMounted(async () => {
+  let res =  await api.auth.me();
+  userData.value = res.data;
+});
 //----------------------------------------------------------
 </script>
 <template>
@@ -61,6 +72,16 @@ async function logout() {
         </RouterLink>
       </div>
       <div class="lower-menuitems">
+        <RouterLink 
+          v-for="m in adminMenuItems"
+          class="app-menu-item" 
+          :class="{'active': route.path===m.to}"
+          :to="m.to" 
+        >
+          <font-awesome-icon :icon="m.icon" />
+          <span>{{ m.label }}</span>
+        </RouterLink>
+
         <button class="app-menu-item" @click="logout">
           <font-awesome-icon icon="power-off" />
           <span>Logout</span>

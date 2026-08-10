@@ -1,0 +1,39 @@
+
+.color-input {
+  position: relative;
+  
+  .color-input-field {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.25rem;
+    border: solid 1px #ccc;
+    border-radius: 0.5rem;
+  
+    input {
+      border: none;
+      width: 100%;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  
+  .field-color-chip {
+    display: inline-block;
+    width: 28px;
+    height: 24px;
+    border-radius: 500px;
+    background-color: blue;
+    border: dotted 1px #ccc;
+    margin-right: 5px;
+  }
+  
+  .field-color-select {
+    position: absolute;
+    display: inline-flex;
+    z-index: 100;
+    margin-left: 10px;
+    background-color: #fff;
+  }
+}

@@ -15,6 +15,12 @@
     ├─ QrCodes
     ├─ Contacts
     └─ Metrics
+    │
+    │  ..ADMIN
+    ├─ UserAccounts
+    ├─ BizCardTemplates
+    ├─ QrCodeTemplates
+    └─ DbTools
 
   * SingleColumnLayout
     ├─ Login
@@ -27,7 +33,11 @@
 
 
 
-2: Routes
+2: Templates Lists
+
+  1. BizCard Template
+  1. QrCode Template
+
 
 
 

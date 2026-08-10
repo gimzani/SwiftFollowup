@@ -1,0 +1,198 @@
+
+/*-------------------------------------- QR CODE EDITOR */
+
+:root {
+  --qr-form-bg: #eee;
+  --qr-form-section-bg: #ddd;
+}
+
+.qr-code-editor {
+  background-color: var(--qr-form-bg);
+  border: solid 1px #333;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+
+  .qr-code-container {
+    display: block;
+    overflow: auto;
+    padding-top: 0.25rem;
+    order: 2;
+    background-color: #ffffff;
+    opacity: 0.8;
+    background-image: linear-gradient(45deg, #eeeeee 25%, transparent 25%, transparent 75%, #eeeeee 75%), linear-gradient(45deg, #eeeeee 25%, transparent 25%, transparent 75%, #eeeeee 75%);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    box-shadow: 0 0 5px #999 inset;
+  }
+  .qr-form-container {
+    background-color: var(--qr-form-bg);
+    order: 1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .qr-code-editor {
+    display: grid;
+    grid-template-columns: 320px 1fr;  
+    gap: 0.5rem;
+
+    > div {
+      flex: 1;
+    }
+
+    .qr-code-container {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+/*-------------------------------------- QR CODE EDITOR FORM */
+
+.qr-code-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;  
+  label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+ .qcef-textinput {
+    border: solid 1px #ccc;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    min-height: 34px;
+    width: 100%;
+    &:focus {      
+      outline: solid 2px rgb(110, 121, 131);
+    }
+  }
+  select {
+    border: solid 1px #ccc;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    min-height: 34px;
+    width: 100%;
+  }
+  .range-element {
+    margin-bottom: 0.5rem;
+  }
+  .qcef-routing,
+  .qcef-options,
+  .qcef-output {
+    background: var(--qr-form-section-bg);
+    border: solid 1px #999;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .qcef-output {
+    button {
+      background-color: #eee;
+      border: solid 1px #ccc;
+      border-radius: 0.5rem;
+      padding: 0 1rem;
+      height: 34px;
+      &:hover {
+      background-color: #ccc;
+        background-color: #ddd;
+        cursor: pointer;
+      }
+    }    
+  }
+
+  .qcef-download {
+    display: flex;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    button {
+      border-radius: 0.5rem 0 0 0.5rem;
+      border-right: none;
+    }
+    input {
+      background-color: #fff;
+      border: solid 1px #ccc;
+      border-right: none;
+      width: 125px;
+    }
+    select {
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+  }
+
+  .qcef-buttons {
+    display: flex;
+    gap: 0.25rem;
+    .qcef-save-btn {
+      flex: 1;
+    }
+    .qcef-reset-btn {
+      flex: 1;
+    }
+  }  
+
+}
+
+@media screen and (min-width: 768px) {
+  .qr-code-edit-form {
+    .split-cols {
+      display: flex;
+      gap: 0.25rem;
+      justify-content: space-between;
+      align-items: center;
+
+      > * {
+        flex: 1;
+      }
+    }
+  }
+}
+
+/*-------------------------------------- QR CODE SCANNER */
+.qr-code-scanner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #333;
+  border-radius: 15px;
+  background-color: #fff;
+  width: 400px;
+  padding: .5rem;
+
+  .scanner-window {
+    width: 380px;
+    height: 300px;
+  }
+
+  .url-result {
+    padding: 5px;
+    margin: 10px 0;
+    width: 300px;
+    border: solid 1px #333;
+    border-radius: 5px;
+    background-color: #eef;
+
+    .url-result-link {
+      display: block;
+      border: .05rem;
+      padding: 3px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    .url-result-text {
+      font-size: 0.8rem;
+      text-align: center;
+      font-style: italic;
+    }
+  }
+
+
+  .scanner-buttons {
+    padding-top: .5rem;
+  }
+  
+}

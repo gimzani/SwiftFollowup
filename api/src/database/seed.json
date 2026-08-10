@@ -5,7 +5,7 @@
       "plan_name": "App Admin",
       "code": "SF_P_APPADMIN",
       "plan_description": "Just the Free BizCard",
-      "sort_order": 1,
+      "sort_order": 0,
       "plan_details": null,
       "is_public": false,
       "plan_cost": 0
@@ -48,25 +48,23 @@
       "permission_label": "User"
     }
   ],
-  "users": [
+  "useraccounts": [
     {
       "code": "01KYMCCQK7ZSPY3MFJCWES307V",
       "email_address": "gimzani@gmail.com",
       "password_hash": "$argon2id$v=19$m=65536,t=3,p=1$w/VmAMAUwOzZY8pP+ttR5g$5oqRQohcNRIZGpIpZ+cHlbW2EUS+umi+lIwicjDkfs8",
-      "login_on": "2025-8-1",
+      "login_on": "2025-08-01",
       "login_count": 0,
       "is_active": true,
       "plan_code": "SF_P_APPADMIN",
-      "created_on": "2025-8-1",
-      "updated_on": "2025-8-1",
+      "created_on": "2025-08-01",
+      "updated_on": "2025-08-01",
       "userprofile": {
         "first_name": "Benjamin",
         "last_name": "Hall",
         "middle_name": "Scott",
         "title": null,
         "suffix": null,
-        "date_of_birth": null,
-        "sex": null,
         "company": "Swift Followup, LLC",
         "job_title": "Founder and CEO",
         "web_address": "https://swiftfollowup.com",
@@ -75,6 +73,336 @@
         "preferences": null,
         "is_default": true
       }
+    },
+    {
+      "code": "01KZK6MDKM1DQB7MSSSX7GRMR5",
+      "email_address": "jrhall22@gmail.com",
+      "password_hash": "$argon2id$v=19$m=65536,t=3,p=1$yseb5UfLTJ00AXQVK/LdAA$lK6bmo2Kw1HzzvxCbIZugvZqj7vDsTW62D+ukD5wWzI",
+      "login_on": "2025-08-01",
+      "login_count": 0,
+      "is_active": true,
+      "plan_code": "SF_P_CONNECTIONS",
+      "created_on": "2025-08-01",
+      "updated_on": "2025-08-01",
+      "userprofile": {
+        "first_name": "Julie",
+        "last_name": "Hall",
+        "middle_name": "Renee",
+        "title": null,
+        "suffix": null,
+        "company": "Fantasy Trove, LLC",
+        "job_title": "Founder and CEO",
+        "web_address": "https://fantasytrove.com",
+        "mobile_number": "3176507009",
+        "avatar_url": null,
+        "preferences": null,
+        "is_default": true
+      }
+    }
+  ],
+  "qrcode_templates": [
+    {
+      "qrcode_name": "Etsy Template",
+      "qrcode_description": "Template for users that want to link to their Etsy Store.",
+      "qrcode_data": {
+        "data": "https://etsy.com",
+        "type": "svg",
+        "image": "http://localhost:2564/user-data/system/img/Etsy-Logo-Online-Marketplace-Icon-transparent.webp",
+        "width": 350,
+        "height": 350,
+        "margin": 10,
+        "qrOptions": {
+          "mode": "Byte",
+          "typeNumber": 0,
+          "errorCorrectionLevel": "L"
+        },
+        "dotsOptions": {
+          "type": "rounded",
+          "color": "#FF6600",
+          "gradient": null,
+          "roundSize": true
+        },
+        "imageOptions": {
+          "margin": 2,
+          "imageSize": 1,
+          "saveAsBlob": true,
+          "crossOrigin": "anonymous",
+          "hideBackgroundDots": true
+        },
+        "backgroundOptions": {
+          "color": "#fff",
+          "gradient": null
+        },
+        "cornersDotOptions": {
+          "type": "extra-rounded",
+          "color": "#FF6600",
+          "gradient": null
+        },
+        "cornersSquareOptions": {
+          "type": "extra-rounded",
+          "color": "#000",
+          "gradient": null
+        }
+      }
+    },
+    {
+      "qrcode_name": "Facebook QR Code Template",
+      "qrcode_description": "Template for Facebook QR Codes",
+      "qrcode_data": {
+        "data": "https://facebook.com",
+        "type": "svg",
+        "image": "http://localhost:2564/user-data/system/img/Facebook_f_logo_2021.png",
+        "width": 350,
+        "height": 350,
+        "margin": 10,
+        "qrOptions": {
+          "mode": "Byte",
+          "typeNumber": 0,
+          "errorCorrectionLevel": "L"
+        },
+        "dotsOptions": {
+          "type": "rounded",
+          "color": "#18ACFE",
+          "gradient": null,
+          "roundSize": true
+        },
+        "imageOptions": {
+          "margin": 2,
+          "imageSize": 0.9,
+          "saveAsBlob": true,
+          "crossOrigin": "anonymous",
+          "hideBackgroundDots": true
+        },
+        "backgroundOptions": {
+          "color": "#fff",
+          "gradient": null
+        },
+        "cornersDotOptions": {
+          "type": "extra-rounded",
+          "color": "#000",
+          "gradient": null
+        },
+        "cornersSquareOptions": {
+          "type": "extra-rounded",
+          "color": "#0063E0",
+          "gradient": null
+        }
+      }
+    },
+    {
+      "qrcode_name": "Instagram Feed Template",
+      "qrcode_description": "Template for Instagram feed.",
+      "qrcode_data": {
+        "data": "https://instagram.com",
+        "type": "svg",
+        "image": "http://localhost:2564/user-data/system/img/Instagram_logo_2022.svg.png",
+        "width": 350,
+        "height": 350,
+        "margin": 10,
+        "qrOptions": {
+          "mode": "Byte",
+          "typeNumber": 0,
+          "errorCorrectionLevel": "L"
+        },
+        "dotsOptions": {
+          "type": "square",
+          "color": "#FD00C0",
+          "gradient": null,
+          "roundSize": true
+        },
+        "imageOptions": {
+          "margin": 2,
+          "imageSize": 0.7,
+          "saveAsBlob": true,
+          "crossOrigin": "anonymous",
+          "hideBackgroundDots": true
+        },
+        "backgroundOptions": {
+          "color": "#fff",
+          "gradient": null
+        },
+        "cornersDotOptions": {
+          "type": "square",
+          "color": "#FE0174",
+          "gradient": null
+        },
+        "cornersSquareOptions": {
+          "type": "square",
+          "color": "#9203F8",
+          "gradient": null
+        }
+      }
+    },
+    {
+      "qrcode_name": "LinkedIn Template",
+      "qrcode_description": "Template for users that want to link to their LinkedIn Profile.",
+      "qrcode_data": {
+        "data": "https://linkedin.com",
+        "type": "svg",
+        "image": "http://localhost:2564/user-data/system/img/LinkedIn_logo_initials.png",
+        "width": 350,
+        "height": 350,
+        "margin": 10,
+        "qrOptions": {
+          "mode": "Byte",
+          "typeNumber": 0,
+          "errorCorrectionLevel": "L"
+        },
+        "dotsOptions": {
+          "type": "dots",
+          "color": "#0274B3",
+          "gradient": null,
+          "roundSize": true
+        },
+        "imageOptions": {
+          "margin": 2,
+          "imageSize": 0.75,
+          "saveAsBlob": true,
+          "crossOrigin": "anonymous",
+          "hideBackgroundDots": true
+        },
+        "backgroundOptions": {
+          "color": "#fff",
+          "gradient": null
+        },
+        "cornersDotOptions": {
+          "type": "dot",
+          "color": "#000",
+          "gradient": null
+        },
+        "cornersSquareOptions": {
+          "type": "dot",
+          "color": "#0274B3",
+          "gradient": null
+        }
+      }
+    },
+    {
+      "qrcode_name": "X Feed Template",
+      "qrcode_description": "Template for X Feed",
+      "qrcode_data": {
+        "data": "https://x.com",
+        "type": "svg",
+        "image": "http://localhost:2564/user-data/system/img/X_logo.jpg",
+        "width": 350,
+        "height": 350,
+        "margin": 10,
+        "qrOptions": {
+          "mode": "Byte",
+          "typeNumber": 0,
+          "errorCorrectionLevel": "L"
+        },
+        "dotsOptions": {
+          "type": "classy",
+          "color": "#000",
+          "gradient": null,
+          "roundSize": true
+        },
+        "imageOptions": {
+          "margin": 2,
+          "imageSize": 1,
+          "saveAsBlob": true,
+          "crossOrigin": "anonymous",
+          "hideBackgroundDots": true
+        },
+        "backgroundOptions": {
+          "color": "#fff",
+          "gradient": null
+        },
+        "cornersDotOptions": {
+          "type": "extra-rounded",
+          "color": "#000",
+          "gradient": null
+        },
+        "cornersSquareOptions": {
+          "type": "extra-rounded",
+          "color": "#000",
+          "gradient": null
+        }
+      }
+    },
+    {
+      "qrcode_name": "YouTube Channel QR Code Template",
+      "qrcode_description": "Template for linking to a YouTube Channel",
+      "qrcode_data": {
+        "data": "https://youtube.com",
+        "type": "svg",
+        "image": "http://localhost:2564/user-data/system/img/YouTube_Logo.png",
+        "width": 350,
+        "height": 350,
+        "margin": 10,
+        "qrOptions": {
+          "mode": "Byte",
+          "typeNumber": 0,
+          "errorCorrectionLevel": "L"
+        },
+        "dotsOptions": {
+          "type": "square",
+          "color": "#FF0000",
+          "gradient": null,
+          "roundSize": true
+        },
+        "imageOptions": {
+          "margin": 2,
+          "imageSize": 1,
+          "saveAsBlob": true,
+          "crossOrigin": "anonymous",
+          "hideBackgroundDots": true
+        },
+        "backgroundOptions": {
+          "color": "#fff",
+          "gradient": null
+        },
+        "cornersDotOptions": {
+          "type": "square",
+          "color": "#FF0000",
+          "gradient": null
+        },
+        "cornersSquareOptions": {
+          "type": "extra-rounded",
+          "color": "#000000",
+          "gradient": null
+        }
+      }
+    }
+  ],
+  "bizcard_templates": [
+    {
+      "bizcard_name": "Dark Minimist",
+      "bizcard_description": "Simple, yet elegant card in dark high contrast",
+      "bizcard_data": { 
+        "card_surface": { "fill": "#111", "stroke": "#111", "stroke_width": 1  },
+        "elements": [
+          { "x":80,  "y":150, "id":"3qSFUn", "tag":"first_name",      "fill":"white",   "text":"BENJAMIN",                           "type":"text",  "fontSize":40, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":80,  "y":195, "id":"9dU3ya", "tag":"last_name",       "fill":"#C1AC80", "text":"HALL",                               "type":"text",  "fontSize":40, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":80,  "y":250, "id":"EMv6gz", "tag":"title_company",   "fill":"#777",    "text":"CEO Swift Followup",                 "type":"text",  "fontSize":18, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":350, "y":150, "id":"iqJmG2", "tag":"divider",         "fill":"#eee",    "type":"line", "strokeWidth":3, "rotation":0, "x2":350, "y2":275 },
+          { "x":370, "y":155, "id":"7rjjvF", "tag":"address",         "fill":"#777",    "text":"260 Creekside Cir. Danville IN,\nUSA 46122", "type":"text", "fontSize":14, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":370, "y":205, "id":"UWvCyZ", "tag":"mobile",          "fill":"#777",    "text":"317.696.8375",                       "type":"text",  "fontSize":14, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":370, "y":230, "id":"Gq0LfK", "tag":"email_address",   "fill":"#777",    "text":"ben.hall@swiftfollowup.com",         "type":"text",  "fontSize":14, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":370, "y":255, "id":"4pfT53", "tag":"web_address",     "fill":"#777",    "text":"www.swiftfollowup.com",              "type":"text",  "fontSize":14, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":640, "y":20,  "id":"5qgS21", "tag":"linkedin_logo",   "url":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1280px-LinkedIn_icon.svg.png", "type":"image", "width":32, "height":32, "rotation":0 }
+        ]
+      }
+    },
+    {
+      "bizcard_name": "Light Minimist",
+      "bizcard_description": "Simple, yet elegant card in light high contrast",
+      "bizcard_data": { 
+        "card_surface": { "fill": "#fff", "stroke": "#000", "stroke_width": 1  },
+        "elements": [
+          { "x":80,  "y":150, "id":"3qSFUn", "tag":"first_name",      "fill":"#000000",   "text":"BENJAMIN",                           "type":"text",  "fontSize":40, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":80,  "y":195, "id":"9dU3ya", "tag":"last_name",       "fill":"#000000",   "text":"HALL",                               "type":"text",  "fontSize":40, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":80,  "y":250, "id":"EMv6gz", "tag":"title_company",   "fill":"#333",      "text":"CEO Swift Followup",                 "type":"text",  "fontSize":18, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":350, "y":150, "id":"iqJmG2", "tag":"divider",         "fill":"#333",      "type":"line", "strokeWidth":3, "rotation":0, "x2":350, "y2":275 },
+          { "x":370, "y":155, "id":"7rjjvF", "tag":"address",         "fill":"#333",      "text":"260 Creekside Cir. Danville IN,\nUSA 46122", "type":"text", "fontSize":14, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":370, "y":205, "id":"UWvCyZ", "tag":"mobile",          "fill":"#333",      "text":"317.696.8375",                       "type":"text",  "fontSize":14, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":370, "y":230, "id":"Gq0LfK", "tag":"email_address",   "fill":"#333",      "text":"ben.hall@swiftfollowup.com",         "type":"text",  "fontSize":14, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":370, "y":255, "id":"4pfT53", "tag":"web_address",     "fill":"#333",      "text":"www.swiftfollowup.com",              "type":"text",  "fontSize":14, "fontFamily":"Calibri", "fontStyle":"italic", "rotation":0 },
+          { "x":640, "y":20,  "id":"5qgS21", "tag":"linkedin_logo",   "url":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1280px-LinkedIn_icon.svg.png", "type":"image", "width":32, "height":32, "rotation":0 }
+        ]
+      }
     }
   ]
+
 }

@@ -1,0 +1,13 @@
+{
+  "name": "@sf/data-grid",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Benjamin Hall",
+  "license": "ISC",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "vue": "^3.5.0"
+  }
+}

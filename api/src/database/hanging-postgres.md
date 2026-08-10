@@ -1,9 +1,25 @@
+
+# Restart Postgres
+
+Postgres might hang if the API was just 'closed' and not properly "shut-down"...
+
+DO THIS TO RESTART POSTGRES:
+
+*Open PowerShell as administrator, then:*
+
+```
+net stop postgresql-x64-18 
+net start postgresql-x64-18 
+```
+
+
+## Other Options
+
+
 Check if Postgres is still running
 
 ```
-
 Get-Process postgres
-
 ```
 
 
@@ -15,97 +31,28 @@ Get-Service *postgres*
 ```
 
 
-Resource Monitor
 
-
+### Resource Monitor
 
 Open:
 
-
-
 ```
-
 resmon.exe
-
 ```
 
-
-
-Go to:
-
-
-
-```
-
-CPU
-
-```
-
-
-
-Search Associated Handles.
-
+Go to: CPU --> Search Associated Handles
 
 
 Type:
 
-
-
 ```
-
 postgres
-
 ```
-
-
 
 or
 
-
-
 ```
-
 postmaster.pid
-
 ```
-
-
 
 You'll immediately see which process owns it.
-
-
-
-Restart the PostgreSQL service
-
-
-
-Instead of rebooting:
-
-
-
-```
-
-net stop postgresql-x64-18 
-
-net start postgresql-x64-18 
-
-```
-
-
-
-or
-
-```
-
-Restart-Service postgresql-x64-18 
-
-```
-
-
-
-
-
-
-
-
-

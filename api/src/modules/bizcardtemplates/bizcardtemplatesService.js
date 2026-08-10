@@ -17,20 +17,20 @@ export async function getBizcardtemplateById(pg, id) {
 //--------------------------------------------------------
 export async function createBizcardtemplate(pg, bizcardtemplate) {
   return await pg.query(
-    `INSERT INTO bizcardtemplate (code, bizcardtemplate_name, bizcardtemplate_description, bizcardtemplate_data)
-     VALUES ($1, $2, $3, $4)
+    `INSERT INTO bizcardtemplate (bizcardtemplate_name, bizcardtemplate_description, bizcardtemplate_data)
+     VALUES ($1, $2, $3)
      RETURNING *`,
-    [bizcardtemplate.code, bizcardtemplate.bizcardtemplate_name, bizcardtemplate.bizcardtemplate_description, bizcardtemplate.bizcardtemplate_data]
+    [ bizcardtemplate.bizcardtemplate_name, bizcardtemplate.bizcardtemplate_description, bizcardtemplate.bizcardtemplate_data]
   )
 }
 //--------------------------------------------------------
 export async function updateBizcardtemplate(pg, bizcardtemplate) {
   return await pg.query(
     `UPDATE bizcardtemplate
-     SET code = $2, bizcardtemplate_name = $3, bizcardtemplate_description = $4, bizcardtemplate_data = $5, updated_on = NOW()
+     SET bizcardtemplate_name = $2, bizcardtemplate_description = $3, bizcardtemplate_data = $4, updated_on = NOW()
      WHERE id = $1
      RETURNING *`,
-    [bizcardtemplate.id, bizcardtemplate.code, bizcardtemplate.bizcardtemplate_name, bizcardtemplate.bizcardtemplate_description, bizcardtemplate.bizcardtemplate_data]
+    [bizcardtemplate.id, bizcardtemplate.bizcardtemplate_name, bizcardtemplate.bizcardtemplate_description, bizcardtemplate.bizcardtemplate_data]
   )
 }
 //--------------------------------------------------------

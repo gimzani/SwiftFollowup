@@ -10,8 +10,8 @@ import ConfirmationCodeFormDemo from './ConfirmationCodeFormDemo.vue';
 import RoleFormDemo from './RoleFormDemo.vue';
 import PermissionFormDemo from './PermissionFormDemo.vue';
 //----------------------------------------------------------
-import { JsonEditor } from '@dlm/json-tools'
-import '@dlm/stylebase'
+import { JsonEditor } from '@sf/json-tools'
+import '@sf/stylebase'
 //----------------------------------------------------------
 const loginData = ref({});
 const registrationData = ref({});

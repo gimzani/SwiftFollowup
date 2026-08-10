@@ -1,0 +1,14 @@
+{
+  "name": "@sf/range-slider",
+  "version": "0.0.1",
+  "type": "module",
+  "author": "Benjamin Hall",
+  "license": "ISC",
+  "exports": {
+    ".": "./src/index.js",
+    "./css": "./src/range-slider.css"
+  },
+  "dependencies": {
+    "vue": "^3.5.0"
+  }
+}

@@ -1,0 +1,56 @@
+
+/*--------------------------------------- RANGE SLIDER */
+
+.range-slider {
+	display: grid;
+  grid-template-columns: 1fr 80px;
+	align-items: center;
+	gap: 0.5rem;
+  width: 100%;
+  min-height: 26px;
+
+  button {
+    padding: 0;
+    margin: 0;
+  }
+
+  input[type=number] {
+    width: 60px;
+  }
+	
+	input[type=range] {
+		width: 100%;
+		cursor: pointer;
+	}
+
+}
+
+
+/*--------------------------------------- RANGE SLIDER PANEL */
+
+.range-slider-panel {
+  border: solid 1px #ccc;
+  background-color: #fff;
+  border-radius: 1rem;
+
+  .range-slider-panel-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+
+    label {
+      margin: 0;
+    }
+
+  }
+
+  .range-slider-panel-input {
+    padding: 5px 10px 10px 10px;
+    input[type=range] {
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+}
+

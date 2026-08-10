@@ -1,0 +1,15 @@
+{
+  "name": "@sf/color-picker-input",
+  "version": "0.0.1",
+  "type": "module",
+  "author": "Benjamin Hall",
+  "license": "ISC",
+  "exports": {
+    ".": "./src/index.js",
+    "./css": "./src/color-picker-input.css"
+  },
+  "dependencies": {
+    "vue": "^3.5.0",
+    "vue-color": "^3.3.3"
+  }
+}

@@ -1,7 +1,7 @@
 <script setup>
 //----------------------------------------------------------
 import { ref } from 'vue'
-import { useDialog, useToasts, Modal } from '@dlm/dialogs'
+import { useDialog, useToasts, Modal } from '@sf/dialogs'
 //----------------------------------------------------------
 import "toastify-js/src/toastify.css";
 //----------------------------------------------------------

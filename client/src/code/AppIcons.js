@@ -1,6 +1,7 @@
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+  faAddressBook,
   faAddressCard,
   faAlignCenter,
   faAlignJustify,
@@ -25,6 +26,7 @@ import {
   faCircleUser,
   faCheck,
   faCode,
+  faCogs,
   faDatabase,
   faDollarSign,
   faDownload,
@@ -70,6 +72,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default {
   install(Vue) {
     library.add(
+      faAddressBook,
       faAddressCard,
       faAlignCenter,
       faAlignJustify,
@@ -94,6 +97,7 @@ export default {
       faCircleUser,
       faCheck,
       faCode,
+      faCogs,
       faDatabase,
       faDollarSign,
       faDownload,

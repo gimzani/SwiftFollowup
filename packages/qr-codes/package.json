@@ -1,0 +1,19 @@
+{
+  "name": "@sf/qr-codes",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Benjamin Hall",
+  "license": "ISC",
+  "exports": {
+    ".": "./src/index.js",
+    "./css": "./src/qr-codes.css"
+  },
+  "dependencies": {
+    "@sf/color-picker-input": "*",
+    "@sf/json-tools": "*",
+    "@sf/range-slider": "*",
+    "html5-qrcode": "^2.3.8",
+    "qr-code-styling": "^1.9.2",
+    "vue": "^3.5.0"
+  }
+}

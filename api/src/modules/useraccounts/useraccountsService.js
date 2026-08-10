@@ -16,7 +16,30 @@ export async function getAllUserAccounts(pg) {
 }
 //--------------------------------------------------------
 export async function getUserAccountById(pg, id) {
-  return await pg.query('SELECT * FROM useraccount WHERE id = $1', [id])
+  return await pg.query(`
+    SELECT 
+      useraccount.id,
+      useraccount.code,
+      useraccount.email_address,
+      useraccount.plan_code,
+      useraccount.login_on,
+      useraccount.login_count,
+      userprofile.first_name,
+      userprofile.last_name,
+      userprofile.middle_name,
+      userprofile.title,
+      userprofile.suffix,
+      userprofile.company,
+      userprofile.job_title,
+      userprofile.web_address,
+      userprofile.mobile_number,
+      userprofile.avatar_url,
+      userprofile.preferences,      
+      useraccount.is_active
+    FROM useraccount 
+    INNER JOIN userprofile ON useraccount.id = userprofile.useraccount_id     
+    WHERE useraccount.id = $1
+    `, [id])
 }
 //--------------------------------------------------------
 export async function getUserAccountByEmail(pg, emailAddress) {
