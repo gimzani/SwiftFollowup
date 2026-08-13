@@ -1,0 +1,48 @@
+
+.google-font-display {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border: solid 1px #333;
+  background-color: #fff;
+  width: 100%;
+  .google-font-display-text {
+    margin: 0.5rem 0;
+  }
+}
+
+.google-font-loader {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+
+  label {
+    display: block;
+  }
+
+  select {
+    border: solid 1px #ccc;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #fff;
+    color:#333;    
+  }
+
+  .gfl-category-select {
+    border-radius: 0.25rem 0 0 0.25rem;
+    width: 125px;
+  }
+  .gfl-family-select {
+    border-radius: 0 0.25rem 0.25rem 0;
+    margin-left: -1px;
+  }
+
+  button {
+    border: solid 1px #999;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #eee;
+    color:#333;
+    margin-bottom: 1px;
+  }
+
+}

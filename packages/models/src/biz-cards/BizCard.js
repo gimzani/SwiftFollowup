@@ -8,7 +8,7 @@ export default class BizCard {
   code = ulid();                              // ULID
   bizcard_name = null;                        // text
   bizcard_description = null;                 // text
-  bizcard_data = [];                          // json
+  bizcard_data = {};                          // json
   bizcard_links = [];                         // json
   is_default = false;                         // boolean
   created_on = new Date().toISOString();      // timestamp

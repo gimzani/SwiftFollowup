@@ -1,0 +1,14 @@
+{
+  "name": "@sf/bizcards",
+  "version": "0.0.1",
+  "type": "module",
+  "author": "Benjamin Hall",
+  "license": "ISC",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "moveable": "^0.53.0",
+    "vue": "^3.5.0"
+  }
+}

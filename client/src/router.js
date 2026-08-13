@@ -14,6 +14,7 @@ const BizCardsPage = () => import('./pages/BizCardsPage.vue');
 const QrCodesPage = () => import('./pages/QrCodesPage.vue');
 const ContactsPage = () => import('./pages/ContactsPage.vue');
 const QrCodeEditorPage = () => import('./pages/QrCodeEditorPage.vue');
+const BizCardEditorPage = () => import('./pages/BizCardEditorPage.vue');
 const appRoutes = [
   { redirect: '/login', path: '/' },
   { path: '/home', name: 'HomePage', component: HomePage },
@@ -26,6 +27,7 @@ const appRoutes = [
   { path: '/qrcodes', name: 'QrCodesPage', component: QrCodesPage },
   { path: '/contacts', name: 'ContactsPage', component: ContactsPage },
   { path: '/qrcode-editor', name: 'QrCodeEditorPage', component: QrCodeEditorPage },
+  { path: '/bizcard-editor', name: 'BizCardEditorPage', component: BizCardEditorPage },
 ];
 //-----------------------------------------------------------------------
 //#endregion
