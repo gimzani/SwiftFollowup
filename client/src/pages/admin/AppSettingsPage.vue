@@ -5,6 +5,7 @@ import { ref } from 'vue'
 import AppLayout from '@/components/layouts/AppLayout.vue'
 import BizCardTemplateList from '@/components/lists/BizCardTemplateList.vue';
 import QrCodeTemplateList from '@/components/lists/QrCodeTemplateList.vue';
+import PlansList from '@/components/lists/PlansList.vue';
 //----------------------------------------------------------
 const activeTool = ref('bizcardtemplates')
 //----------------------------------------------------------
@@ -24,13 +25,17 @@ const activeTool = ref('bizcardtemplates')
   </div>
 
   <div v-if="activeTool === 'bizcardtemplates'">
+    <div>BIZCARD TEMPLATES</div>
     <BizCardTemplateList></BizCardTemplateList>
   </div>
   <div v-if="activeTool === 'qrcodetemplates'">
+    <div>QR CODE TEMPLATES</div>
     <QrCodeTemplateList></QrCodeTemplateList>
   </div>
   <div v-if="activeTool === 'plans'">
-    PLANS AND PERMISSIONS
+    
+    <div>APP PLANS</div>
+    <PlansList />
   </div>
 
 </AppLayout>

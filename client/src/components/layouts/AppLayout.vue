@@ -3,6 +3,7 @@
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useApi } from '@/code/useApi';
+import { useDelayClose } from '@/code/useDelayClose.js';
 import { useDialog } from '@sf/dialogs'
 //----------------------------------------------------------
 const route = useRoute();
@@ -24,6 +25,9 @@ const adminMenuItems = [
 ]
 //----------------------------------------------------------
 const menuOpen = ref(false);
+const appBarMenuOpen = ref(false);
+//----------------------------------------------------------
+const { startClose, cancelClose } = useDelayClose(() => appBarMenuOpen.value=false);
 //----------------------------------------------------------
 async function logout() {
   let result = await dialog.confirm({
@@ -39,6 +43,11 @@ async function logout() {
   } 
 }
 //----------------------------------------------------------
+function goToLoc(loc) {
+  appBarMenuOpen.value = false;
+  router.push({ name: loc});
+}
+//----------------------------------------------------------
 onMounted(async () => {
   let res =  await api.auth.me();
   userData.value = res.data;
@@ -50,12 +59,21 @@ onMounted(async () => {
   <div class="app-bar">
     <div>
       <button class="menu-toggle" @click="menuOpen=!menuOpen">
-        <font-awesome-icon icon="bars" />        
+        <font-awesome-icon icon="bars" title="user menu" />        
       </button>
       <img class="app-bar-logo" src="/svg/Logo-text.svg" />
     </div>
     <div>
-      <font-awesome-icon icon="circle-user" />   
+      <button class="btn btn-empty" @click="appBarMenuOpen=!appBarMenuOpen">        
+        <font-awesome-icon icon="circle-user" />
+      </button>
+      <div class="app-bar-menu" v-if="appBarMenuOpen" @mouseleave="startClose" @mouseenter="cancelClose">
+        <div class="app-bar-menu-username" v-if="userData">
+          {{ userData.first_name }} {{ userData.last_name }}
+        </div>
+        <a class="app-bar-menu-item" href="#" @click.prevent="goToLoc('MyAccountPage')">My Account</a>
+        <a class="app-bar-menu-item" href="#" @click.prevent="logout">Logout</a>
+      </div>
     </div>
   </div>
   <div id="app-main" :class="{'menu-open': menuOpen}">

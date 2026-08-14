@@ -4,17 +4,17 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 //-----------------------------------------------------------------------
 //#region APP ROUTES
 //-----------------------------------------------------------------------
-const HomePage = () => import('./pages/HomePage.vue');
-const LoginPage = () => import('./pages/LoginPage.vue');
-const RegistrationPage = () => import('./pages/RegistrationPage.vue');
-const ForgotPasswordPage = () => import('./pages/ForgotPasswordPage.vue');
-const DashboardPage = () => import('./pages/DashboardPage.vue');
-const MyAccountPage = () => import('./pages/MyAccountPage.vue');
-const BizCardsPage = () => import('./pages/BizCardsPage.vue');
-const QrCodesPage = () => import('./pages/QrCodesPage.vue');
-const ContactsPage = () => import('./pages/ContactsPage.vue');
-const QrCodeEditorPage = () => import('./pages/QrCodeEditorPage.vue');
-const BizCardEditorPage = () => import('./pages/BizCardEditorPage.vue');
+const HomePage = () => import('./pages/app/HomePage.vue');
+const LoginPage = () => import('./pages/app/LoginPage.vue');
+const RegistrationPage = () => import('./pages/app/RegistrationPage.vue');
+const ForgotPasswordPage = () => import('./pages/app/ForgotPasswordPage.vue');
+const DashboardPage = () => import('./pages/app/DashboardPage.vue');
+const MyAccountPage = () => import('./pages/app/MyAccountPage.vue');
+const BizCardsPage = () => import('./pages/app/BizCardsPage.vue');
+const QrCodesPage = () => import('./pages/app/QrCodesPage.vue');
+const ContactsPage = () => import('./pages/app/ContactsPage.vue');
+const QrCodeEditorPage = () => import('./pages/app/QrCodeEditorPage.vue');
+const BizCardEditorPage = () => import('./pages/app/BizCardEditorPage.vue');
 const appRoutes = [
   { redirect: '/login', path: '/' },
   { path: '/home', name: 'HomePage', component: HomePage },
@@ -34,8 +34,8 @@ const appRoutes = [
 //-----------------------------------------------------------------------
 //#region ADMIN ROUTES
 //----------------------------------------------------------------------- admin routes
-const UserAccountsPage = () => import('./pages/UserAccountsPage.vue');
-const AppSettingsPage = () => import('./pages/AppSettingsPage.vue');
+const UserAccountsPage = () => import('./pages/admin/UserAccountsPage.vue');
+const AppSettingsPage = () => import('./pages/admin/AppSettingsPage.vue');
 const adminRoutes = [
   { path: '/useraccounts', name: 'UserAccountsPage', component: UserAccountsPage },
   { path: '/app-settings', name: 'AppSettingsPage', component: AppSettingsPage },
@@ -45,10 +45,10 @@ const adminRoutes = [
 //-----------------------------------------------------------------------
 //#region EXTERNAL ROUTES
 //-----------------------------------------------------------------------
-const ViewBizCardPage = () => import('./pages/ViewBizCardPage.vue');
-const ViewQrCodePage = () => import('./pages/ViewQrCodePage.vue');
-const SetPasswordPage = () => import('./pages/SetPasswordPage.vue');
-const ActivateAccountPage = () => import('./pages/ActivateAccountPage.vue');
+const ViewBizCardPage = () => import('./pages/external/ViewBizCardPage.vue');
+const ViewQrCodePage = () => import('./pages/external/ViewQrCodePage.vue');
+const SetPasswordPage = () => import('./pages/external/SetPasswordPage.vue');
+const ActivateAccountPage = () => import('./pages/external/ActivateAccountPage.vue');
 const externalRoutes = [
   { path: '/bizcard/:id?', name: 'ViewBizCardPage', component: ViewBizCardPage },
   { path: '/qrcode/:id?', name: 'ViewQrCodePage', component: ViewQrCodePage },

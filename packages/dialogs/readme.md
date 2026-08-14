@@ -43,6 +43,12 @@ const toasts = useToasts();
 toasts.success("You did it! Great Job!");
 ```
 
+Don't forget the styles:
+
+```js
+import "toastify-js/src/toastify.css";
+```
+
 There are three methods, each one takes a string message.
 
 | Method | Purpose |

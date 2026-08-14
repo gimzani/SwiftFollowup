@@ -6,13 +6,13 @@ import { useApi } from '@/code/useApi';
 const api = useApi();
 //----------------------------------------------------------
 const userId = ref(null);
-const bizCards = ref([]);
+const qrCodes = ref([]);
 //----------------------------------------------------------
-async function getBizCards() {
-  let res = await api.bizCards.list(userId.value);
+async function getQrCodes() {
+  let res = await api.qrCodes.list(userId.value);
   console.log('res', res);
   if(res.success) {    
-    bizCards.value = res.data;
+    qrCodes.value = res.data;
   }
 }
 //----------------------------------------------------------
@@ -20,21 +20,21 @@ onMounted(async () => {
   let res =  await api.auth.me();
   console.log(res);
   userId.value = res.data.id;
-  await getBizCards();
+  await getQrCodes();
 })
 //----------------------------------------------------------
 </script>
 <template>
-<div class="bizcard-list">
-  <div>BIZCARDS</div>
+<div class="qrcodes-list">
+  <div>QR CODES</div>
   <div>
-    {{ bizCards }}
+    {{ qrCodes }}
   </div>
-  <div class="alert alert-info text-center" v-if="bizCards.length===0" >
-    You do not have any BizCards yet. Let's create one!
+  <div class="alert alert-info text-center" v-if="qrCodes.length===0" >
+    You do not have any QrCodes yet. Let's create one!
     <div class="mt-3">
       <button class="btn btn-sm btn-success">
-        Create New BizCard
+        Create New QrCode
       </button>
     </div>
   </div>
@@ -42,7 +42,7 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.bizcard-list {
+.qrcodes-list {
 
 }
 </style>

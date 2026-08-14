@@ -2,26 +2,30 @@
 //----------------------------------------------------------
 import { ref } from 'vue'
 import AppLayout from '@/components/layouts/AppLayout.vue'
+import BizCardList from '@/components/lists/BizCardList.vue';
 //----------------------------------------------------------
 </script>
 <template>
-<AppLayout class="qrcodes-page">
+<AppLayout class="bizcards-page">
 
   <section class="d-flex justify-content-between align-items-center">
-    <h1 class="h3">My QR Codes</h1>
-    <button class="btn btn-success">New Qr</button>
+    <h1 class="h3">My BizCards</h1>
+    <button class="btn btn-success">New BizCard</button>
   </section>
-  
+
   <ul>
-    <li>QrCode List</li>
-    <li>Scanner</li>
+    <li>Biz Card gallery - (with default selected)</li>
+    <li>Biz Card List</li>
+    <li>List of 'collected' BizCards</li>
   </ul>
+
+  <BizCardList />
 
 </AppLayout>
 </template>
 
 <style scoped>
-.qrcodes-page {
+.bizcards-page {
 
 }
 </style>

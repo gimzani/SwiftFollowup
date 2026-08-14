@@ -2,9 +2,9 @@
 //----------------------------------------------------------
 import { ref } from 'vue'
 import AppLayout from '@/components/layouts/AppLayout.vue'
-//----------------------------------------------------------
-const props = defineProps({});
-const emit = defineEmits([]);
+import BizCardGallery from '@/components/controls/BizCardGallery.vue'
+import ContactRequestList from '@/components/lists/ContactRequestList.vue'
+import ContactResponseList from '@/components/lists/ContactResponseList.vue'
 //----------------------------------------------------------
 </script>
 <template>
@@ -17,6 +17,14 @@ const emit = defineEmits([]);
     <li>Latest Contact requests</li>
     <li>Latest Responses</li>
   </ul>
+
+  <BizCardGallery></BizCardGallery>
+
+  <ContactRequestList></ContactRequestList>
+
+  <ContactResponseList></ContactResponseList>
+
+
 </AppLayout>
 </template>
 

@@ -1,42 +1,41 @@
 
 # Next to do...
 
+External items -> "View Card / View QR"
+
+
+
+
+
 
 1: Layouts - (single column / app-layout)
-  * AppLayout
-    ├─ app-bar
-    │  ├─ Home
-    │  ├─ MyAccount
-    │  └─ Menu
-    │     ├─ UserProfile
-    │     └─ Logout
-    ├─ Dashboard
-    ├─ BizCards
-    ├─ QrCodes
-    ├─ Contacts
-    └─ Metrics
+  * [x] AppLayout
+    ├─ [-] app-bar
+    │  ├─ [] Home
+    │  ├─ [-] MyAccount
+    │  └─ [x] Menu
+    │     ├─ [-] UserProfile
+    │     └─ [x] Logout
+    ├─ [-] Dashboard
+    ├─ [-] BizCards
+    ├─ [-] QrCodes
+    ├─ [ ] Contacts
+    └─ [ ] Metrics
     │
     │  ..ADMIN
-    ├─ UserAccounts
-    ├─ BizCardTemplates
-    ├─ QrCodeTemplates
-    └─ DbTools
+    ├─ [-] UserAccounts
+    ├─ [x] BizCardTemplates
+    ├─ [x] QrCodeTemplates
+    └─ [ ] DbTools
 
   * SingleColumnLayout
-    ├─ Login
-    ├─ Register
-    ├─ ForgotPassword
-    ├─ SetPassword
-    ├─ ActivateAccount
-    ├─ ViewBizCard
-    └─ ViewQrCode
-
-
-
-2: Templates Lists
-
-  1. BizCard Template
-  1. QrCode Template
+    ├─ [x] Login
+    ├─ [-] Register
+    ├─ [ ] ForgotPassword
+    ├─ [ ] SetPassword
+    ├─ [ ] ActivateAccount
+    ├─ [ ] ViewBizCard
+    └─ [ ] ViewQrCode
 
 
 

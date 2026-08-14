@@ -69,6 +69,11 @@ export function useApi() {
       delete: async (id) => apiRequest(`${apiRoot}/useraccount/${id}`, 'DELETE'),
     },
 
+    userProfiles: {
+      get: async (id) => apiRequest(`${apiRoot}/userprofile/${id}`),
+      update: async (id, payload) => apiRequest(`${apiRoot}/userprofile/${id}`, 'PUT', payload),
+    },
+
     utils: {
       tableCols: async (tableName) => apiRequest(`${apiRoot}/tablecols/${tableName}`),
     }
