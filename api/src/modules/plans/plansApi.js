@@ -20,7 +20,8 @@ export default async function routes (fastify) {
       } else {
         result = await plansService.getPublicPlans(fastify.pg);
       }
-      ok(reply, result.rows, result.rowCount)
+      const array = result.rows.map((row) => new Plan(row))
+      ok(reply, array, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -29,7 +30,8 @@ export default async function routes (fastify) {
   fastify.get('/api/plan/:code', async (request, reply) => {
     try {
       let result = await plansService.getPlanByCode(fastify.pg, request.params.code)
-      ok(reply, result.rows[0] || null, result.rowCount)
+      const item = result.rows.length === 1 ? new Plan(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -39,7 +41,8 @@ export default async function routes (fastify) {
     try {
       const plan = new Plan(request.body)
       let result = await plansService.createPlan(fastify.pg, plan)
-      ok(reply, result.rows[0], result.rowCount)
+      const item = result.rows.length === 1 ? new Plan(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -51,7 +54,8 @@ export default async function routes (fastify) {
       if(exists.rows.length===1) {
         const plan = new Plan(request.body)
         let result = await plansService.updatePlan(fastify.pg, plan)
-        ok(reply, result.rows[0], result.rowCount)
+      const item = result.rows.length === 1 ? new Plan(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {        
         await notFound(reply)
       }
@@ -66,7 +70,8 @@ export default async function routes (fastify) {
       if(exists.rows.length===1) {
         const plan = new Plan(exists.rows[0])
         let result = await plansService.deletePlan(fastify.pg, plan)
-        ok(reply, result.rows, result.rowCount)
+      const item = result.rows.length === 1 ? new Plan(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }

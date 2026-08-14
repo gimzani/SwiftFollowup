@@ -8,11 +8,6 @@ import BizCardList from '@/components/lists/BizCardList.vue';
 <template>
 <AppLayout class="bizcards-page">
 
-  <section class="d-flex justify-content-between align-items-center">
-    <h1 class="h3">My BizCards</h1>
-    <button class="btn btn-success">New BizCard</button>
-  </section>
-
   <ul>
     <li>Biz Card gallery - (with default selected)</li>
     <li>Biz Card List</li>

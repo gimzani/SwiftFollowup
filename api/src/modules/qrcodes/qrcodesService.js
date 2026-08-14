@@ -1,10 +1,11 @@
 //--------------------------------------------------------
 export default {
-  getQrcodes,
-  getQrcodeById,
   createQrcode,
   updateQrcode,
-  deleteQrcode
+  deleteQrcode,
+  getQrcodeByCode,
+  getQrcodeById,
+  getQrcodes 
 }
 //--------------------------------------------------------
 export async function getQrcodes(pg, useraccount_id) {
@@ -13,6 +14,10 @@ export async function getQrcodes(pg, useraccount_id) {
 //--------------------------------------------------------
 export async function getQrcodeById(pg, id) {
   return await pg.query('SELECT * FROM qrcode WHERE id = $1', [id])
+}
+//--------------------------------------------------------
+export async function getQrcodeByCode(pg, code) {
+  return await pg.query('SELECT * FROM qrcode WHERE code = $1', [code])
 }
 //--------------------------------------------------------
 export async function createQrcode(pg, qrcode) {

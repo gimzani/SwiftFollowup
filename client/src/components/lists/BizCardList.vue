@@ -26,10 +26,16 @@ onMounted(async () => {
 </script>
 <template>
 <div class="bizcard-list">
-  <div>BIZCARDS</div>
+
+  <section class="d-flex justify-content-between align-items-center mb-2">
+    <h1 class="h3">My BizCards</h1>
+    <button class="btn btn-success">New BizCard</button>
+  </section>
+
   <div>
     {{ bizCards }}
   </div>
+
   <div class="alert alert-info text-center" v-if="bizCards.length===0" >
     You do not have any BizCards yet. Let's create one!
     <div class="mt-3">
@@ -38,6 +44,7 @@ onMounted(async () => {
       </button>
     </div>
   </div>
+  
 </div>
 </template>
 

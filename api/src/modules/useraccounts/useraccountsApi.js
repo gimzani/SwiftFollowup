@@ -14,7 +14,8 @@ export default async function routes (fastify) {
   fastify.get('/api/useraccounts', async (request, reply) => {
     try {
       let result = await useraccountsService.getAllUserAccounts(fastify.pg)
-      ok(reply, result.rows, result.rowCount)
+      const array = result.rows.map((row) => new UserAccount(row))
+      ok(reply, array, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -24,7 +25,8 @@ export default async function routes (fastify) {
   fastify.get('/api/useraccount/:id', async (request, reply) => {
     try {
       let result = await useraccountsService.getUserAccountById(fastify.pg, request.params.id)
-      ok(reply, result.rows[0] || null, result.rowCount)
+      const item = result.rows.length === 1 ? new UserAccount(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -35,7 +37,8 @@ export default async function routes (fastify) {
     try {
       const userAccount = new UserAccount(request.body)
       let result = await useraccountsService.createUserAccount(fastify.pg, userAccount)
-      ok(reply, result.rows[0], result.rowCount)
+      const item = result.rows.length === 1 ? new UserAccount(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -51,7 +54,8 @@ export default async function routes (fastify) {
           id: request.params.id
         })
         let result = await useraccountsService.updateUserAccount(fastify.pg, userAccount)
-        ok(reply, result.rows[0], result.rowCount)
+        const item = result.rows.length === 1 ? new UserAccount(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }
@@ -67,7 +71,8 @@ export default async function routes (fastify) {
       if(exists.rows.length===1) {
         const userAccount = new UserAccount(exists.rows[0])
         let result = await useraccountsService.deleteUserAccount(fastify.pg, userAccount)
-        ok(reply, result.rows, result.rowCount)
+        const item = result.rows.length === 1 ? new UserAccount(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }

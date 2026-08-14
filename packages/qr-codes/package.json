@@ -9,6 +9,7 @@
     "./css": "./src/qr-codes.css"
   },
   "dependencies": {
+    "@sf/models": "*",
     "@sf/color-picker-input": "*",
     "@sf/json-tools": "*",
     "@sf/range-slider": "*",

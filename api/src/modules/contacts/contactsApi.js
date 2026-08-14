@@ -14,7 +14,8 @@ export default async function routes (fastify) {
   fastify.get('/api/contacts/:useraccount_id', async (request, reply) => {
     try {
       let result = await contactsService.getAllContacts(fastify.pg, request.params.useraccount_id)
-      ok(reply, result.rows, result.rowCount)
+      const array = result.rows.map((row) => new Contact(row))
+      ok(reply, array, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -24,7 +25,8 @@ export default async function routes (fastify) {
   fastify.get('/api/contact/:id', async (request, reply) => {
     try {
       let result = await contactsService.getContactById(fastify.pg, request.params.id)
-      ok(reply, result.rows[0] || null, result.rowCount)
+      const item = result.rows.length === 1 ? new Contact(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -35,7 +37,8 @@ export default async function routes (fastify) {
     try {
       const contact = new Contact(request.body)
       let result = await contactsService.createContact(fastify.pg, contact)
-      ok(reply, result.rows[0], result.rowCount)
+      const item = result.rows.length === 1 ? new Contact(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -51,7 +54,8 @@ export default async function routes (fastify) {
           id: request.params.id
         })
         let result = await contactsService.updateContact(fastify.pg, contact)
-        ok(reply, result.rows[0], result.rowCount)
+        const item = result.rows.length === 1 ? new Contact(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }

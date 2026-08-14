@@ -14,7 +14,8 @@ export default async function routes (fastify) {
   fastify.get('/api/sessions/:useraccount_id', async (request, reply) => {
     try {
       let result = await sessionsService.getAllSessions(fastify.pg, request.params.useraccount_id)
-      ok(reply, result.rows, result.rowCount)
+      const array = result.rows.map((row) => new Session(row))
+      ok(reply, array, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -24,7 +25,8 @@ export default async function routes (fastify) {
   fastify.get('/api/session/:id', async (request, reply) => {
     try {
       let result = await sessionsService.getSessionById(fastify.pg, request.params.id)
-      ok(reply, result.rows[0] || null, result.rowCount)
+      const item = result.rows.length === 1 ? new Session(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -35,7 +37,8 @@ export default async function routes (fastify) {
     try {
       const session = new Session(request.body)
       let result = await sessionsService.createSession(fastify.pg, session)
-      ok(reply, result.rows[0], result.rowCount)
+      const item = result.rows.length === 1 ? new Session(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -51,7 +54,8 @@ export default async function routes (fastify) {
           id: request.params.id
         })
         let result = await sessionsService.updateSession(fastify.pg, session)
-        ok(reply, result.rows[0], result.rowCount)
+        const item = result.rows.length === 1 ? new Session(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }
@@ -67,7 +71,8 @@ export default async function routes (fastify) {
       if(exists.rows.length===1) {
         const session = new Session(exists.rows[0])
         let result = await sessionsService.deleteSession(fastify.pg, session)
-        ok(reply, result.rows, result.rowCount)
+        const item = result.rows.length === 1 ? new Session(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }

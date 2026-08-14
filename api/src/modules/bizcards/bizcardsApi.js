@@ -14,7 +14,8 @@ export default async function routes (fastify) {
   fastify.get('/api/bizcards/:useraccount_id', async (request, reply) => {
     try {
       let result = await bizcardsService.getAllBizcards(fastify.pg, request.params.useraccount_id)
-      ok(reply, result.rows, result.rowCount)
+      const array = result.rows.map((row) => new BizCard(row))
+      ok(reply, array, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -24,7 +25,8 @@ export default async function routes (fastify) {
   fastify.get('/api/bizcard/:id', async (request, reply) => {
     try {
       let result = await bizcardsService.getBizcardById(fastify.pg, request.params.id)
-      ok(reply, result.rows[0] || null, result.rowCount)
+      const item = result.rows.length === 1 ? new BizCard(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -35,7 +37,8 @@ export default async function routes (fastify) {
     try {
       const bizcard = new BizCard(request.body)
       let result = await bizcardsService.createBizcard(fastify.pg, bizcard)
-      ok(reply, result.rows[0], result.rowCount)
+      const item = result.rows.length === 1 ? new BizCard(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -51,7 +54,8 @@ export default async function routes (fastify) {
           id: request.params.id
         })
         let result = await bizcardsService.updateBizcard(fastify.pg, bizcard)
-        ok(reply, result.rows[0], result.rowCount)
+        const item = result.rows.length === 1 ? new BizCard(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }

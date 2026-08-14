@@ -14,7 +14,8 @@ export default async function routes (fastify) {
   fastify.get('/api/permissions', async (request, reply) => {
     try {
       let result = await permissionsService.getAllPermissions(fastify.pg)
-      ok(reply, result.rows, result.rowCount)
+      const array = result.rows.map((row) => new Permission(row))
+      ok(reply, array, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }

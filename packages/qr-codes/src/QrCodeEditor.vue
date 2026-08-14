@@ -1,11 +1,11 @@
 <script setup>
 //----------------------------------------------------------
 import { ref, watch } from 'vue'
-import { QrCodeOptions } from './QrCodeModels.js'
+import { QrCodeData } from '@sf/models'
 import { useJsonTools } from '@sf/json-tools'
 //----------------------------------------------------------
 import QrCodeEditForm from './QrCodeEditForm.vue'
-import QrCode from './QrCode.vue';
+import QrCodeImage from './QrCodeImage.vue';
 //----------------------------------------------------------
 const { exportJsonFile } = useJsonTools();
 //----------------------------------------------------------
@@ -20,7 +20,7 @@ const props = defineProps({
 const emit = defineEmits(['save-data']);
 //----------------------------------------------------------
 const qrCodeRef = ref(null);
-const qrOptions = ref(new QrCodeOptions());
+const qrOptions = ref(new QrCodeData());
 //----------------------------------------------------------
 function saveData(data) {
   emit('save-data', data.options);
@@ -36,7 +36,7 @@ async function downloadData(obj) {
 //----------------------------------------------------------
 watch(() => props.options, (val) => {
   if(val) {
-    qrOptions.value = new QrCodeOptions(val);
+    qrOptions.value = new QrCodeData(val);
   }  
 }, { immediate: true });
 //----------------------------------------------------------
@@ -44,7 +44,7 @@ watch(() => props.options, (val) => {
 <template>
 <div class="qr-code-editor">
   <div class="qr-code-container">
-    <QrCode 
+    <QrCodeImage 
       ref="qrCodeRef"
       :options="qrOptions"
     />

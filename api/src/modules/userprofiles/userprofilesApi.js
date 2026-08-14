@@ -14,7 +14,8 @@ export default async function routes (fastify) {
   fastify.get('/api/userprofiles/:id', async (request, reply) => {
     try {
       let result = await userprofilesService.getUserProfiles(fastify.pg, request.params.id)
-      ok(reply, result.rows, result.rowCount)
+      const array = result.rows.map((row) => new UserProfile(row))
+      ok(reply, array, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -24,7 +25,8 @@ export default async function routes (fastify) {
   fastify.get('/api/userprofile/:id', async (request, reply) => {
     try {
       let result = await userprofilesService.getUserProfileById(fastify.pg, request.params.id)
-      ok(reply, result.rows[0] || null, result.rowCount)
+      const item = result.rows.length === 1 ? new UserProfile(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -35,7 +37,8 @@ export default async function routes (fastify) {
     try {
       const userProfile = new UserProfile(request.body)
       let result = await userprofilesService.createUserProfile(fastify.pg, userProfile)
-      ok(reply, result.rows[0], result.rowCount)
+      const item = result.rows.length === 1 ? new UserProfile(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -51,7 +54,8 @@ export default async function routes (fastify) {
           useraccount_id: request.params.id
         })
         let result = await userprofilesService.updateUserProfile(fastify.pg, userProfile)
-        ok(reply, result.rows[0], result.rowCount)
+        const item = result.rows.length === 1 ? new UserProfile(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }
@@ -67,7 +71,8 @@ export default async function routes (fastify) {
       if(exists.rows.length===1) {
         const userProfile = new UserProfile(exists.rows[0])
         let result = await userprofilesService.deleteUserProfile(fastify.pg, userProfile)
-        ok(reply, result.rows, result.rowCount)
+        const item = result.rows.length === 1 ? new UserProfile(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }

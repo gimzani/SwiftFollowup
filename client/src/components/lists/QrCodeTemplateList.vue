@@ -3,7 +3,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useApi } from '@/code/useApi';
-import { QrCode } from "@sf/qr-codes"
+import { QrCodeImage } from "@sf/qr-codes"
 //----------------------------------------------------------
 const api = useApi();
 const router = useRouter()
@@ -45,7 +45,7 @@ onMounted(() => {
           <h3 class="h4 text-center">{{ qr.qrcode_name }}</h3>
         </header>
         <div class="card-body p-2">
-          <QrCode :options="qr.qrcode_data" />
+          <QrCodeImage :options="qr.qrcode_data" />
           <div>
             {{ qr.qrcode_description }}
           </div>

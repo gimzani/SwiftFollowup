@@ -14,7 +14,8 @@ export default async function routes (fastify) {
   fastify.get('/api/qrcodetemplates', async (request, reply) => {
     try {
       let result = await qrcodetemplatesService.getAllQrcodetemplates(fastify.pg)
-      ok(reply, result.rows, result.rowCount)
+      const array = result.rows.map((row) => new QrCodeTemplate(row))
+      ok(reply, array, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -24,7 +25,8 @@ export default async function routes (fastify) {
   fastify.get('/api/qrcodetemplate/:id', async (request, reply) => {
     try {
       let result = await qrcodetemplatesService.getQrcodetemplateById(fastify.pg, request.params.id)
-      ok(reply, result.rows[0] || null, result.rowCount)
+      const item = result.rows.length === 1 ? new QrCodeTemplate(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -35,7 +37,8 @@ export default async function routes (fastify) {
     try {
       const qrcodetemplate = new QrCodeTemplate(request.body)
       let result = await qrcodetemplatesService.createQrcodetemplate(fastify.pg, qrcodetemplate)
-      ok(reply, result.rows[0], result.rowCount)
+      const item = result.rows.length === 1 ? new QrCodeTemplate(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -51,7 +54,8 @@ export default async function routes (fastify) {
           id: request.params.id
         })
         let result = await qrcodetemplatesService.updateQrcodetemplate(fastify.pg, qrcodetemplate)
-        ok(reply, result.rows[0], result.rowCount)
+        const item = result.rows.length === 1 ? new QrCodeTemplate(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }

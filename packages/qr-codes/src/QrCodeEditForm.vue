@@ -1,7 +1,7 @@
 <script setup>
 //----------------------------------------------------------
 import { ref, reactive, watch, toRaw } from 'vue'
-import { QrCodeOptions, DOT_STYLE, CORNER_STYLE, CORNER_DOT_STYLE } from './QrCodeModels.js'
+import { QrCodeData, DOT_STYLE, CORNER_STYLE, CORNER_DOT_STYLE } from '@sf/models'
 //----------------------------------------------------------
 import { ColorPickerInput } from '@sf/color-picker-input'
 import { RangeSliderPanel } from '@sf/range-slider'
@@ -18,7 +18,7 @@ const emit = defineEmits(['update:modelValue', 'save-data', 'download-data']);
 const downloadOptions = ['png', 'jpeg', 'webp', 'svg', 'json']
 //----------------------------------------------------------
 const size = ref(300);
-const options = reactive({...new QrCodeOptions()});
+const options = reactive({...new QrCodeData()});
 const saveType = ref('svg');
 const filename = ref('qr-code');
 //----------------------------------------------------------
@@ -33,7 +33,7 @@ function updateOptions() {
 }
 //----------------------------------------------------------
 function resetData() {
-  Object.assign(options, {...new QrCodeOptions()});
+  Object.assign(options, {...new QrCodeData()});
   options.data = props.url || options.data;
   emit('update:modelValue', toRaw(options));
 }

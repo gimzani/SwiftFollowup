@@ -14,7 +14,8 @@ export default async function routes (fastify) {
   fastify.get('/api/passwordresettokens/:useraccount_id', async (request, reply) => {
     try {
       let result = await passwordresettokensService.getAllPasswordResetTokens(fastify.pg, request.params.useraccount_id)
-      ok(reply, result.rows, result.rowCount)
+      const array = result.rows.map((row) => new PasswordResetToken(row))
+      ok(reply, array, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -24,7 +25,8 @@ export default async function routes (fastify) {
   fastify.get('/api/passwordresettoken/:id', async (request, reply) => {
     try {
       let result = await passwordresettokensService.getPasswordResetTokenById(fastify.pg, request.params.id)
-      ok(reply, result.rows[0] || null, result.rowCount)
+      const item = result.rows.length === 1 ? new PasswordResetToken(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -35,7 +37,8 @@ export default async function routes (fastify) {
     try {
       const passwordResetToken = new PasswordResetToken(request.body)
       let result = await passwordresettokensService.createPasswordResetToken(fastify.pg, passwordResetToken)
-      ok(reply, result.rows[0], result.rowCount)
+      const item = result.rows.length === 1 ? new PasswordResetToken(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -51,7 +54,8 @@ export default async function routes (fastify) {
           id: request.params.id
         })
         let result = await passwordresettokensService.updatePasswordResetToken(fastify.pg, passwordResetToken)
-        ok(reply, result.rows[0], result.rowCount)
+        const item = result.rows.length === 1 ? new PasswordResetToken(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }

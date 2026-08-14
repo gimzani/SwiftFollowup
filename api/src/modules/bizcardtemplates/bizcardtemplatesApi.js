@@ -14,7 +14,8 @@ export default async function routes (fastify) {
   fastify.get('/api/bizcardtemplates', async (request, reply) => {
     try {
       let result = await bizcardtemplatesService.getAllBizcardtemplates(fastify.pg)
-      ok(reply, result.rows, result.rowCount)
+      const array = result.rows.map((row) => new BizCardTemplate(row))
+      ok(reply, array, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -24,7 +25,8 @@ export default async function routes (fastify) {
   fastify.get('/api/bizcardtemplate/:id', async (request, reply) => {
     try {
       let result = await bizcardtemplatesService.getBizcardtemplateById(fastify.pg, request.params.id)
-      ok(reply, result.rows[0] || null, result.rowCount)
+      const item = result.rows.length === 1 ? new BizCardTemplate(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -35,7 +37,8 @@ export default async function routes (fastify) {
     try {
       const bizcardtemplate = new BizCardTemplate(request.body)
       let result = await bizcardtemplatesService.createBizcardtemplate(fastify.pg, bizcardtemplate)
-      ok(reply, result.rows[0], result.rowCount)
+      const item = result.rows.length === 1 ? new BizCardTemplate(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
     }
@@ -51,7 +54,8 @@ export default async function routes (fastify) {
           id: request.params.id
         })
         let result = await bizcardtemplatesService.updateBizcardtemplate(fastify.pg, bizcardtemplate)
-        ok(reply, result.rows[0], result.rowCount)
+        const item = result.rows.length === 1 ? new BizCardTemplate(result.rows[0]) : null
+        ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
       }

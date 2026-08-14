@@ -2,11 +2,12 @@
 //----------------------------------------------------------
 import { ref } from 'vue'
 //----------------------------------------------------------
-import { QrCodeEditor, QrCodeScanner, QrCodeOptions } from '@sf/qr-codes';
+import { QrCodeEditor, QrCodeScanner } from '@sf/qr-codes';
+import { QrCodeData } from '@sf/models';
 import '@sf/qr-codes/css';
 import { JsonEditor } from '@sf/json-tools';
 //----------------------------------------------------------
-const qrOptions = ref(new QrCodeOptions(
+const qrOptions = ref(new QrCodeData(
   {
     "width": 300,
     "height": 300,

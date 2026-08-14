@@ -1,4 +1,6 @@
 //------------------------------------------------------------------------
+import { QR_MODE, DOT_STYLE, CORNER_STYLE, CORNER_DOT_STYLE, GRADIENT_TYPE, ERROR_CORRECTION_LEVEL } from '../_constants/QrCodeConstants.js'
+//------------------------------------------------------------------------
 export default class QrCodeData {
 
   width = 300;

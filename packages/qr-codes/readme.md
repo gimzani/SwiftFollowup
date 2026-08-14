@@ -22,12 +22,12 @@ Prop | type | description |
 **Usage:**
 
 ```js
-import { QrCode } from '@sf/qr-codes';     // components
+import { QrCodeImage } from '@sf/qr-codes';     // components
 import '@sf/qr-codes/css';                 // stylesheet
 ```
 
 ```html
-<QrCode :options="qrDocdeData" />
+<QrCodeImage :options="qrDocdeData" />
 ```
 
 ### QrCodeEditor
