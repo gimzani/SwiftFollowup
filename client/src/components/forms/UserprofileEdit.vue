@@ -86,6 +86,12 @@ watch(() => props.userprofileData, (val) => {
   </div>
   
   <div class="form-group">
+    <label for="mailing_address">Mailing Address</label>
+    <textarea rows="3" name="mailing_address" v-model="r$.$value.mailing_address" :class="{'invalid': r$.mailing_address.$error}" ></textarea>
+    <small class="form-group-error" :class="{'active': r$.$errors.mailing_address[0]}">{{ r$.$errors.mailing_address[0] }}</small>
+  </div>
+
+  <div class="form-group">
     <label for="web_address">Web Address</label>
     <input type="text" name="web_address" v-model="r$.$value.web_address" :class="{'invalid': r$.web_address.$error}" />
     <small class="form-group-error" :class="{'active': r$.$errors.web_address[0]}">{{ r$.$errors.web_address[0] }}</small>

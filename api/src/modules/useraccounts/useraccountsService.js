@@ -31,6 +31,7 @@ export async function getUserAccountById(pg, id) {
       userprofile.suffix,
       userprofile.company,
       userprofile.job_title,
+      userprofile.mailing_address,
       userprofile.web_address,
       userprofile.mobile_number,
       userprofile.avatar_url,

@@ -1,7 +1,7 @@
 <script setup>
 //----------------------------------------------------------
 import { ref } from 'vue'
-import { BizCard, BizCardForms  } from '@sf/bizcards'
+import { BizCardImage, BizCardForms  } from '@sf/bizcards'
 import BizCardEditor from '../src/BizCardEditor.vue'
 //----------------------------------------------------------
 const readOnly = ref(true)
@@ -46,7 +46,7 @@ function onElementSelected({ id, data }) {
     </div>
 
     <div class="demo-canvas">
-      <BizCard :card-data="card_data" />
+      <BizCardImage :card-data="card_data" />
     </div>
 
     <div class="demo-selection" v-if="selected && !readOnly">

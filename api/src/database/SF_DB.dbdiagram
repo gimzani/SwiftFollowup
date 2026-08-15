@@ -9,8 +9,8 @@
       {
         "name": "systemdata",
         "schemaName": "public",
-        "x": 1643.523368155757,
-        "y": 273.72803587560134
+        "x": 1540.5504545964836,
+        "y": 398.37945755261615
       },
       {
         "name": "useraccount",
@@ -33,14 +33,14 @@
       {
         "name": "emailverificationtoken",
         "schemaName": "public",
-        "x": 461.75229712263024,
-        "y": 711.8497390402015
+        "x": 341.16559571769204,
+        "y": 694.2359511945364
       },
       {
         "name": "passwordresettoken",
         "schemaName": "public",
-        "x": 753.9659548682685,
-        "y": 584.0344420611858
+        "x": 656.4126683384308,
+        "y": 535.2577987962669
       },
       {
         "name": "contact",
@@ -58,12 +58,6 @@
         "name": "plan",
         "schemaName": "public",
         "x": 252.69016424388872,
-        "y": 331.9804322305952
-      },
-      {
-        "name": "permission",
-        "schemaName": "public",
-        "x": 568.0626029269308,
         "y": 331.9804322305952
       },
       {
@@ -101,12 +95,6 @@
         "schemaName": "public",
         "x": 693.7957827861055,
         "y": 1241.3837839786624
-      },
-      {
-        "name": "plan_permission",
-        "schemaName": "public",
-        "x": 562.201472584178,
-        "y": 465.10709506932295
       }
     ],
     "tableGroupCollapseStates": [],

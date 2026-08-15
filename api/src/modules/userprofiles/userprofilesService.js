@@ -26,13 +26,14 @@ export async function createUserProfile(pg, userProfile) {
        suffix,
        company,
        job_title,
+       mailing_address,
        web_address,
        mobile_number,
        avatar_url,
        preferences,
        is_default
      )
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
      RETURNING *`,
     [
       userProfile.useraccount_id,
@@ -43,6 +44,7 @@ export async function createUserProfile(pg, userProfile) {
       userProfile.suffix,
       userProfile.company,
       userProfile.job_title,
+      userProfile.mailing_address,
       userProfile.web_address,
       userProfile.mobile_number,
       userProfile.avatar_url,
@@ -62,11 +64,12 @@ export async function updateUserProfile(pg, userProfile) {
          suffix = $6,
          company = $7,
          job_title = $8,
-         web_address = $9,
-         mobile_number = $10,
-         avatar_url = $11,
-         preferences = $12,
-         is_default = $13
+         mailing_address = $9,
+         web_address = $10,
+         mobile_number = $11,
+         avatar_url = $12,
+         preferences = $13,
+         is_default = $14
      WHERE useraccount_id = $1
      RETURNING *`,
     [
@@ -78,6 +81,7 @@ export async function updateUserProfile(pg, userProfile) {
       userProfile.suffix,
       userProfile.company,
       userProfile.job_title,
+      userProfile.mailing_address,
       userProfile.web_address,
       userProfile.mobile_number,
       userProfile.avatar_url,

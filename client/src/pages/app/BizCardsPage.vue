@@ -8,14 +8,15 @@ import BizCardList from '@/components/lists/BizCardList.vue';
 <template>
 <AppLayout class="bizcards-page">
 
+  <BizCardList />
+
+  <hr />
+
   <ul>
     <li>Biz Card gallery - (with default selected)</li>
     <li>Biz Card List</li>
     <li>List of 'collected' BizCards</li>
   </ul>
-
-  <BizCardList />
-
 </AppLayout>
 </template>
 

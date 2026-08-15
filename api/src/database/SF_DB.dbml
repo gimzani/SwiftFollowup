@@ -23,6 +23,7 @@ TablePartial personalData {
   job_title varchar(64) [default: NULL]
   web_address varchar(128) [default: NULL]
   mobile_number varchar(16) [default: NULL]
+  mailing_address varchar(128) [default: NULL]
 }
 
 //========================================================================
@@ -54,35 +55,6 @@ Table plan {
     code [unique, name: "uq_plan_code"]
   }
   Note: 'These are the \\"Products\\" that can be purchased by the user.'
-}
-
-//----------------------------------------------------------
-Table permission {
-  permission_name varchar(64) [pk, not null, unique]
-  permission_label varchar(64) [not null]
-
-  Indexes {
-    permission_name [unique, name: "uq_permission_permission_name"]
-  }
-  Note: 'Permissions assigned to plans.'
-}
-
-//----------------------------------------------------------
-Table plan_permission {
-  plan_code varchar(16) [not null]
-  permission_name varchar(64) [not null]
-
-  Indexes {
-    plan_code [name: "idx_plan_permission_plan_code"]
-    permission_name [name: "idx_plan_permission_permission_name"]
-  }
-  Note: 'Mapping between plans and permissions.'
-}
-Ref fk_plan_permission__plan_code {
-  plan.code < plan_permission.plan_code [delete: cascade]
-}
-Ref fk_plan_permission__permission_name {
-  permission.permission_name < plan_permission.permission_name [delete: cascade]
 }
 
 //------------------------------------------------------------------------ User Accounts

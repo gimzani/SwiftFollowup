@@ -6,7 +6,7 @@
       "code": "SF_P_APPADMIN",
       "plan_description": "Just the Free BizCard",
       "sort_order": 0,
-      "plan_details": null,
+      "plan_details": [],
       "is_public": false,
       "plan_cost": 0
     },
@@ -15,7 +15,10 @@
       "code": "SF_P_FREE",
       "plan_description": "Just the Free BizCard",
       "sort_order": 1,
-      "plan_details": null,
+      "plan_details":  [
+        { "label": "BizCards" },
+        { "label": "QrCodes" }
+      ],
       "is_public": true,
       "plan_cost": 0
     },
@@ -24,7 +27,12 @@
       "code": "SF_P_CONNECTIONS",
       "plan_description": "BizCards and Contacts",
       "sort_order": 2,
-      "plan_details": null,
+      "plan_details": [
+        { "label": "BizCards" },
+        { "label": "QrCodes" },
+        { "label": "Contacts" },
+        { "label": "Contact Metrics" }
+      ],
       "is_public": true,
       "plan_cost": 29.99
     },
@@ -33,19 +41,9 @@
       "code": "SF_P_Advanced",
       "plan_description": "BizCards, Contacts and Landing Pages",
       "sort_order": 3,
-      "plan_details": null,
+      "plan_details": [],
       "is_public": false,
       "plan_cost": 59.99
-    }
-  ],
-  "permissions": [
-    {
-      "permission_name": "AppAdmin",
-      "permission_label": "App Administrator"
-    },
-    {
-      "permission_name": "User",
-      "permission_label": "User"
     }
   ],
   "useraccounts": [
@@ -69,6 +67,7 @@
         "job_title": "Founder and CEO",
         "web_address": "https://swiftfollowup.com",
         "mobile_number": "3176968375",
+        "mailing_address": "",
         "avatar_url": null,
         "preferences": null,
         "is_default": true
@@ -91,9 +90,10 @@
         "title": null,
         "suffix": null,
         "company": "Fantasy Trove, LLC",
-        "job_title": "Founder and CEO",
+        "job_title": "Business Ower",
         "web_address": "https://fantasytrove.com",
         "mobile_number": "3176507009",
+        "mailing_address": "",
         "avatar_url": null,
         "preferences": null,
         "is_default": true
@@ -373,14 +373,14 @@
       "bizcard_data": { 
         "card_surface": { "fill": "#111", "stroke": "#111", "stroke_width": 1  },
         "elements": [
-          { "x":80,  "y":140, "id":"3qSFUn", "tag":"first_name",      "fill":"white",   "text":"JOHN",                               "type":"text",  "fontSize":40, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":80,  "y":190, "id":"9dU3ya", "tag":"last_name",       "fill":"#C1AC80", "text":"DOE",                                "type":"text",  "fontSize":40, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":80,  "y":250, "id":"EMv6gz", "tag":"title_company",   "fill":"#777",    "text":"Sales Director",                     "type":"text",  "fontSize":18, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":350, "y":150, "id":"iqJmG2", "tag":"divider",         "fill":"#eee",    "type":"line",                               "strokeWidth":3, "rotation":0, "x2":350, "y2":275 },
-          { "x":370, "y":155, "id":"7rjjvF", "tag":"address",         "fill":"#777",    "text":"1234 Main St.\nAnywhere CA, USA 90211",    "type":"text", "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":370, "y":205, "id":"UWvCyZ", "tag":"mobile",          "fill":"#777",    "text":"777.444.8888",                       "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":370, "y":230, "id":"Gq0LfK", "tag":"email_address",   "fill":"#777",    "text":"sales@swiftfollowup.com",            "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":370, "y":255, "id":"4pfT53", "tag":"web_address",     "fill":"#777",    "text":"www.swiftfollowup.com",              "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":80,  "y":140, "id":"3qSFUn", "tag":"first_name",      "fill":"white",   "text":"JOHN",                                   "type":"text",  "fontSize":40, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":80,  "y":190, "id":"9dU3ya", "tag":"last_name",       "fill":"#C1AC80", "text":"DOE",                                    "type":"text",  "fontSize":40, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":80,  "y":250, "id":"EMv6gz", "tag":"job_title",       "fill":"#777",    "text":"Sales Director",                         "type":"text",  "fontSize":18, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":350, "y":150, "id":"iqJmG2", "tag":"divider",         "fill":"#eee",    "type":"line",                                   "strokeWidth":3, "rotation":0, "x2":350, "y2":275 },
+          { "x":370, "y":155, "id":"7rjjvF", "tag":"mailing_address", "fill":"#777",    "text":"1234 Main St.\nAnywhere CA, USA 90211",  "type":"text", "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":370, "y":205, "id":"UWvCyZ", "tag":"mobile_number",   "fill":"#777",    "text":"777.444.8888",                           "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":370, "y":230, "id":"Gq0LfK", "tag":"email_address",   "fill":"#777",    "text":"sales@swiftfollowup.com",                "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":370, "y":255, "id":"4pfT53", "tag":"web_address",     "fill":"#777",    "text":"www.swiftfollowup.com",                  "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
           { "x":640, "y":20,  "id":"5qgS21", "tag":"linkedin_logo",   "url":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1280px-LinkedIn_icon.svg.png", "type":"image", "width":32, "height":32, "rotation":0 }
         ]
       }
@@ -391,14 +391,14 @@
       "bizcard_data": { 
         "card_surface": { "fill": "#fff", "stroke": "#000", "stroke_width": 1  },
         "elements": [
-          { "x":80,  "y":140, "id":"3qSFUn", "tag":"first_name",      "fill":"#000000",   "text":"JOHN",                               "type":"text",  "fontSize":40, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":80,  "y":190, "id":"9dU3ya", "tag":"last_name",       "fill":"#000000",   "text":"DOE",                                "type":"text",  "fontSize":40, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":80,  "y":250, "id":"EMv6gz", "tag":"title_company",   "fill":"#333",      "text":"Sales Director",                     "type":"text",  "fontSize":18, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":350, "y":150, "id":"iqJmG2", "tag":"divider",         "fill":"#333",      "type":"line",                               "strokeWidth":3, "rotation":0, "x2":350, "y2":275 },
-          { "x":370, "y":155, "id":"7rjjvF", "tag":"address",         "fill":"#333",      "text":"1234 Main St.\nAnywhere CA, USA 90211",    "type":"text", "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":370, "y":205, "id":"UWvCyZ", "tag":"mobile",          "fill":"#333",      "text":"777.444.8888",                       "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":370, "y":230, "id":"Gq0LfK", "tag":"email_address",   "fill":"#333",      "text":"sales@swiftfollowup.com",            "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
-          { "x":370, "y":255, "id":"4pfT53", "tag":"web_address",     "fill":"#333",      "text":"www.swiftfollowup.com",              "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":80,  "y":140, "id":"3qSFUn", "tag":"first_name",      "fill":"#000000",   "text":"JOHN",                                   "type":"text",  "fontSize":40, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":80,  "y":190, "id":"9dU3ya", "tag":"last_name",       "fill":"#000000",   "text":"DOE",                                    "type":"text",  "fontSize":40, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":80,  "y":250, "id":"EMv6gz", "tag":"job_title",       "fill":"#333",      "text":"Sales Director",                         "type":"text",  "fontSize":18, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":350, "y":150, "id":"iqJmG2", "tag":"divider",         "fill":"#333",      "type":"line",                                   "strokeWidth":3, "rotation":0, "x2":350, "y2":275 },
+          { "x":370, "y":155, "id":"7rjjvF", "tag":"mailing_address", "fill":"#333",      "text":"1234 Main St.\nAnywhere CA, USA 90211",  "type":"text", "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":370, "y":205, "id":"UWvCyZ", "tag":"mobile_number",   "fill":"#333",      "text":"777.444.8888",                           "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":370, "y":230, "id":"Gq0LfK", "tag":"email_address",   "fill":"#333",      "text":"sales@swiftfollowup.com",                "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
+          { "x":370, "y":255, "id":"4pfT53", "tag":"web_address",     "fill":"#333",      "text":"www.swiftfollowup.com",                  "type":"text",  "fontSize":14, "fontFamily":"Poppins", "fontStyle":"italic", "fontWeight":"normal", "rotation":0 },
           { "x":640, "y":20,  "id":"5qgS21", "tag":"linkedin_logo",   "url":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1280px-LinkedIn_icon.svg.png", "type":"image", "width":32, "height":32, "rotation":0 }
         ]
       }

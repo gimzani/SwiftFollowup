@@ -1,25 +1,48 @@
 <script setup>
 //----------------------------------------------------------
-import { ref, onMounted } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { Modal } from "@sf/dialogs"
 import { useApi } from '@/code/useApi';
+import { useToasts, useDialog } from '@sf/dialogs';
+import { BizCardImage } from "@sf/bizcards"
+//----------------------------------------------------------
+import BizCardNew from '@/components/forms/BizCardNew.vue';
 //----------------------------------------------------------
 const api = useApi();
+const router = useRouter()
+const toasts = useToasts();
+const dialog = useDialog();
+const newBizCardModal = reactive({ show: false, data: null });
 //----------------------------------------------------------
-const userId = ref(null);
+const userInfo = ref(null);
 const bizCards = ref([]);
 //----------------------------------------------------------
 async function getBizCards() {
-  let res = await api.bizCards.list(userId.value);
-  console.log('res', res);
-  if(res.success) {    
+  let res = await api.bizCards.list(userInfo.value.id);
+  if(res.success) {
     bizCards.value = res.data;
   }
 }
 //----------------------------------------------------------
+function newBizCard(data) {
+  newBizCardModal.show = true;
+  newBizCardModal.data = data;
+}
+//----------------------------------------------------------
+function resetModal() {
+  newBizCardModal.show = false;
+  newBizCardModal.data = null;
+}
+//----------------------------------------------------------
+async function saveBizCard(data) {
+  console.log(data);
+}
+
+//----------------------------------------------------------
 onMounted(async () => {
   let res =  await api.auth.me();
-  console.log(res);
-  userId.value = res.data.id;
+  userInfo.value = res.data;
   await getBizCards();
 })
 //----------------------------------------------------------
@@ -29,7 +52,7 @@ onMounted(async () => {
 
   <section class="d-flex justify-content-between align-items-center mb-2">
     <h1 class="h3">My BizCards</h1>
-    <button class="btn btn-success">New BizCard</button>
+    <button class="btn btn-success" @click="newBizCard">New BizCard</button>
   </section>
 
   <div>
@@ -39,12 +62,17 @@ onMounted(async () => {
   <div class="alert alert-info text-center" v-if="bizCards.length===0" >
     You do not have any BizCards yet. Let's create one!
     <div class="mt-3">
-      <button class="btn btn-sm btn-success">
+      <button class="btn btn-sm btn-success" @click="newBizCard">
         Create New BizCard
       </button>
     </div>
   </div>
   
+  
+   <Modal :show="newBizCardModal.show" @close="newBizCardModal.show=false">      
+    <BizCardNew :user-info="userInfo" @cancel="newBizCardModal.show=false" @save="saveBizCard" />
+  </Modal>
+
 </div>
 </template>
 

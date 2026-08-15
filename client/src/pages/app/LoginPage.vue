@@ -44,12 +44,6 @@ onMounted(async () => {
 
     <LoginForm @submit="submit" />
 
-
-    <div>
-      {{ apiout }}
-    </div>
-
-
   </div>
 
 </ColumnLayout>

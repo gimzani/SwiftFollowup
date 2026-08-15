@@ -3,7 +3,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useApi } from '@/code/useApi';
-import { BizCard } from '@sf/bizcards'
+import { BizCardImage } from '@sf/bizcards'
 //----------------------------------------------------------
 const api = useApi();
 const router = useRouter()
@@ -44,7 +44,7 @@ onMounted(() => {
     </header>
 
     <div class="p-3 d-flex justify-content-center align-items-center">
-      <BizCard :card-data="bc.bizcard_data" />
+      <BizCardImage :card-data="bc.bizcard_data" />
     </div>
     
     <div class="p-2">{{ bc.bizcard_description }}</div>    

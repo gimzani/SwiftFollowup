@@ -103,6 +103,7 @@ export default fp(async function authPlugin(fastify, opts) {
       suffix: req.useraccount.suffix,
       company: req.useraccount.company,
       job_title: req.useraccount.job_title,
+      mailing_address: req.useraccount.mailing_address,
       web_address: req.useraccount.web_address,
       mobile_number: req.useraccount.mobile_number,
       avatar_url: req.useraccount.avatar_url,

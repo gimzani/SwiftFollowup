@@ -9,6 +9,7 @@ export default class UserProfile {
   suffix = null;                  // text
   company = null;                 // text
   job_title = null;               // text
+  mailing_address = null;         // text
   web_address = null;             // text
   mobile_number = null;           // text
   avatar_url = null;              // text
@@ -30,6 +31,7 @@ export default class UserProfile {
     this.suffix = options.suffix || this.suffix;
     this.company = options.company || this.company;
     this.job_title = options.job_title || this.job_title;
+    this.mailing_address = options.mailing_address || this.mailing_address;
     this.web_address = options.web_address || this.web_address;
     this.mobile_number = options.mobile_number || this.mobile_number;
     this.avatar_url = options.avatar_url || this.avatar_url;
