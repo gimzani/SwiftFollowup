@@ -8,8 +8,8 @@ DO THIS TO RESTART POSTGRES:
 *Open PowerShell as administrator, then:*
 
 ```
-net stop postgresql-x64-18 
-net start postgresql-x64-18 
+net stop postgresql-x64-18
+net start postgresql-x64-18
 ```
 
 

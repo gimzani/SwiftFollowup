@@ -1,12 +1,15 @@
+//----------------------------------------------------------------------
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 import pg from 'pg';
-
+import { seed } from './dbSeed.js';
+//----------------------------------------------------------------------
 const { Client } = pg;
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
 
 // ─── Connection Config ────────────────────────────────────────────────────────
 // PG_CONNECTION is injected by --env-file=.env.dev in the npm script.
@@ -24,7 +27,7 @@ const DB_CONFIG = {
 // ─── SQL File Paths ───────────────────────────────────────────────────────────
 
 const SCHEMA_PATH = resolve(__dirname, '../database/schema.sql');
-const SEED_PATH   = resolve(__dirname, '../database/seed.sql');
+const SEED_PATH   = resolve(__dirname, '../database/seed.json');
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -35,6 +38,11 @@ function log(step, message) {
 async function runSqlFile(client, filePath) {
   const sql = readFileSync(filePath, 'utf8');
   await client.query(sql);
+}
+
+async function readJsonFile(client, filePath) {
+  const json = readFileSync(filePath, 'utf8');
+ return JSON.parse(json);
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
@@ -85,8 +93,9 @@ async function rebuildDatabase() {
 
   // ── Step 4: Run seed ─────────────────────────────────────────────────────
   try {
-    log(4, 'Running seed.sql...');
-    await runSqlFile(appClient, SEED_PATH);
+    log(4, 'Running seed.json...');
+    let seedData = await readJsonFile(appClient, SEED_PATH);
+    await seed(appClient, seedData);
     console.log('       ✓ Seed data inserted.\n');
   } catch (err) {
     console.error(`       ✗ Failed to run seed: ${err.message}`);

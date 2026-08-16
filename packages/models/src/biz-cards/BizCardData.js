@@ -1,4 +1,4 @@
-//-------------------------------------------------------------
+//-------------------------------------------------------------  todo: prefer this to the bizcard-models in the bizcards package
 export const BIZCARD_DATATYPE = {
   TEXT: 'text',
   PATH: 'path',

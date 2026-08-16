@@ -1,8 +1,20 @@
 
 # Next to do...
 
-External items -> "View Card / View QR"
+Make BizCard from Template
 
+BizCard Editor
+  - Add Element
+  - Remove Element
+  - Select by Array Position
+  - Undo/Redo
+
+CardDate Modifiers - (all caps...)
+
+Card "Send Content Request Form"
+
+
+External items -> "View Card"
 
 
 
@@ -59,7 +71,7 @@ External items -> "View Card / View QR"
 ----
 
 - Login route to 'dashboard'
-  - Show default QrCode
+  - Show default BizCard
   - Send tools - (send to SMS)
   - List of "contentrequest" items and "contacts"
 

@@ -70,4 +70,20 @@ The `api` project will be a simple yet powerful restApi that uses a services arc
 
 # API Project
 
+This project serves as the robust middle-tier REST API, built with **Fastify**. It is the sole gateway for data interaction, managing all business logic and data validation before communicating with the Postgres database. It utilizes a dedicated service architecture to maintain separation of concerns.
+
+### Project Structure Overview
+*   **`api/`**: Contains the core server logic.
+*   **`api/database/`**: Defines the entire data model (`schema.sql`) and seeding data (`seed.sql`). This folder is the source of truth for the database schema.
+*   **`api/modules/`**: Houses domain-specific API and Service pairs (e.g., `bizcardsApi.js` and `bizcardsService.js`), adhering to a plugin architecture.
+*   **`api/services/`**: Contains reusable service logic that handles database interactions and complex business rules.
+
 # Client Project
+
+This project represents the user-facing frontend UI, built with **VueJS**. Its primary purpose is to provide a rich, dynamic interface for users to input, view, and manage data. It communicates exclusively with the API Project via defined endpoints.
+
+### Project Structure Overview
+*   **`client/`**: The root for the frontend application.
+*   **`client/src/`**: Contains the primary Vue components, application logic, and state management.
+*   **`client/pages/`**: Directory grouping components by feature or page route.
+*   **`client/components/`**: Reusable, UI-specific components (e.g., forms, list views, controls) that maintain a consistent look and feel across the application.

@@ -1,6 +1,7 @@
 //---------------------------------------------------------------
 import { UserAccount } from '@sf/models'
 import useraccountsService from './useraccountsService.js'
+import userprofilesService from '../userprofiles/userprofilesService.js'
 import { ok, serverError, notFound } from '../../utils/apiResponses.js'
 //---------------------------------------------------------------
 /**
@@ -38,6 +39,14 @@ export default async function routes (fastify) {
       const userAccount = new UserAccount(request.body)
       let result = await useraccountsService.createUserAccount(fastify.pg, userAccount)
       const item = result.rows.length === 1 ? new UserAccount(result.rows[0]) : null
+
+      if(userAccount.user_profile) {
+        userprofilesService.createUserProfile(fastify.pg, {
+          ...userAccount.user_profile,
+          useraccount_id: item.id
+        })
+      }
+
       ok(reply, item, result.rowCount)
     } catch(err) {
       serverError(reply, err)
@@ -55,6 +64,13 @@ export default async function routes (fastify) {
         })
         let result = await useraccountsService.updateUserAccount(fastify.pg, userAccount)
         const item = result.rows.length === 1 ? new UserAccount(result.rows[0]) : null
+        
+        if(userAccount.user_profile) {
+          userprofilesService.updateUserProfile(fastify.pg, {
+            ...userAccount.user_profile
+          })
+        }
+
         ok(reply, item, result.rowCount)
       } else {
         await notFound(reply)
