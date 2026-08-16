@@ -13,7 +13,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- LIST
   fastify.get('/api/bizcards/:useraccount_id', async (request, reply) => {
     try {
-      let result = await bizcardsService.getAllBizcards(fastify.pg, request.params.useraccount_id)
+      let result = await bizcardsService.listMyBizcards(fastify.pg, request.params.useraccount_id)
       const array = result.rows.map((row) => new BizCard(row))
       ok(reply, array, result.rowCount)
     } catch(err) {

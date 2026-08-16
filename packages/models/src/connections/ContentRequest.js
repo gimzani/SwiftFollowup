@@ -1,9 +1,10 @@
 //------------------------------------------------------------------------
 import { ulid } from 'ulid';
 //------------------------------------------------------------------------
-export default class ContactRequest {
+export default class ContentRequest {
   
   id = 0;                                   // bigint
+  code = ulid();                            // ULID
   useraccount_id = 0;                       // bigint - ref:useraccount
   contact_id = 0;                           // bigint - ref:contact  
   content_type = null;                      // text

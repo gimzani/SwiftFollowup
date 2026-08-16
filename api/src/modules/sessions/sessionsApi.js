@@ -13,7 +13,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- LIST
   fastify.get('/api/sessions/:useraccount_id', async (request, reply) => {
     try {
-      let result = await sessionsService.getAllSessions(fastify.pg, request.params.useraccount_id)
+      let result = await sessionsService.listSessions(fastify.pg, request.params.useraccount_id)
       const array = result.rows.map((row) => new Session(row))
       ok(reply, array, result.rowCount)
     } catch(err) {

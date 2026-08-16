@@ -1,13 +1,13 @@
 //--------------------------------------------------------
 export default {
-  getAllEmailVerificationTokens,
+  listMyEmailVerificationTokens,
   getEmailVerificationToken,
   createEmailVerificationToken,
   updateEmailVerificationToken,
   deleteEmailVerificationToken
 }
 //--------------------------------------------------------
-export async function getAllEmailVerificationTokens(pg, useraccount_id) {
+export async function listMyEmailVerificationTokens(pg, useraccount_id) {
   return await pg.query('SELECT * FROM emailverificationtoken WHERE useraccount_id = $1', [useraccount_id])
 }
 //--------------------------------------------------------

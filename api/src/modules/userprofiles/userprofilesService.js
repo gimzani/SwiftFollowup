@@ -1,15 +1,10 @@
 //--------------------------------------------------------
 export default {
-  getUserProfiles,
   getUserProfileById,
   createUserProfile,
-  updateUserProfile,
-  deleteUserProfile
+  updateUserProfile
 }
-//--------------------------------------------------------
-export async function getUserProfiles(pg, useraccount_id) {
-  return await pg.query('SELECT * FROM userprofile WHERE useraccount_id = $1', [useraccount_id])
-}
+
 //--------------------------------------------------------
 export async function getUserProfileById(pg, useraccount_id) {
   return await pg.query('SELECT * FROM userprofile WHERE useraccount_id = $1', [useraccount_id])
@@ -89,8 +84,4 @@ export async function updateUserProfile(pg, userProfile) {
       userProfile.is_default
     ]
   )
-}
-//--------------------------------------------------------
-export async function deleteUserProfile(pg, userProfile) {
-  return await pg.query('DELETE FROM userprofile WHERE useraccount_id = $1', [userProfile.useraccount_id])
 }

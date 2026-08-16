@@ -1,14 +1,23 @@
 //--------------------------------------------------------
 export default {
-  getAllBizcards,
+  listMyBizcards,
+  listBizcardCollection,
   getBizcardById,
   createBizcard,
   updateBizcard,
   deleteBizcard
 }
 //--------------------------------------------------------
-export async function getAllBizcards(pg, useraccount_id) {
-  return await pg.query('SELECT * FROM bizcard WHERE useraccount_id = $1', [useraccount_id])
+export async function listMyBizcards(pg, useraccount_id) {
+  return await pg.query('SELECT * FROM bizcard WHERE useraccount_id = $1 ORDER BY bizcard_name ASC', [useraccount_id])
+}
+//--------------------------------------------------------
+export async function listBizcardCollection(pg, useraccount_id) {
+  return await pg.query(`
+    SELECT * FROM bizcard as bc
+    INNER JOIN useraccount_bizcard abc ON abc.useraccount_id = $1 AND abc.bizcard_id = bc.id
+    WHERE bc.useraccount_id = $1 
+    ORDER BY bc.bizcard_name ASC`, [useraccount_id])
 }
 //--------------------------------------------------------
 export async function getBizcardById(pg, id) {
@@ -24,9 +33,11 @@ export async function createBizcard(pg, bizcard) {
        bizcard_description,
        bizcard_data,
        bizcard_links,
-       is_default
+       is_default,
+       created_on,
+       updated_on
      )
-     VALUES ($1,$2,$3,$4,$5,$6,$7)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
      RETURNING *`,
     [
       bizcard.useraccount_id,
@@ -35,7 +46,9 @@ export async function createBizcard(pg, bizcard) {
       bizcard.bizcard_description,
       bizcard.bizcard_data,
       bizcard.bizcard_links,
-      bizcard.is_default
+      bizcard.is_default,
+      bizcard.created_on,
+      bizcard.updated_on
     ]
   )
 }

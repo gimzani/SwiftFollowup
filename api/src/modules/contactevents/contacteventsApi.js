@@ -10,10 +10,21 @@ import { ok, serverError, notFound } from '../../utils/apiResponses.js'
  */
 export default async function routes (fastify) {
 
-  //-------------------------------------------------------- LIST
-  fastify.get('/api/contactevents/:contact_id', async (request, reply) => {
+  //-------------------------------------------------------- LIST CONTENT-REQUEST ID
+  fastify.get('/api/contactevents/:contentrequest_id', async (request, reply) => {
     try {
-      let result = await contacteventsService.getAllContactevents(fastify.pg, request.params.contact_id)
+      let result = await contacteventsService.listContacteventsByContentRequestId(fastify.pg, request.params.contentrequest_id)
+      const array = result.rows.map((row) => new ContactEvent(row))
+      ok(reply, array, result.rowCount)
+    } catch(err) {
+      serverError(reply, err)
+    }
+  })
+
+  //-------------------------------------------------------- LIST BY CONTACT ID
+  fastify.get('/api/contactevents/contact/:contact_id', async (request, reply) => {
+    try {
+      let result = await contacteventsService.listContacteventsByContactId(fastify.pg, request.params.contact_id)
       const array = result.rows.map((row) => new ContactEvent(row))
       ok(reply, array, result.rowCount)
     } catch(err) {

@@ -4,10 +4,9 @@ import bizcardsApi from './modules/bizcards/bizcardsApi.js'
 import bizcardtemplatesApi from './modules/bizcardtemplates/bizcardtemplatesApi.js'
 import contactsApi from './modules/contacts/contactsApi.js'
 import contacteventsApi from './modules/contactevents/contacteventsApi.js'
-import contactrequestsApi from './modules/contactrequests/contactrequestsApi.js'
+import contentrequestsApi from './modules/contentrequests/contentrequestsApi.js'
 import emailverificationtokensApi from './modules/emailverificationtokens/emailverificationtokensApi.js'
 import passwordresettokensApi from './modules/passwordresettokens/passwordresettokensApi.js'
-import permissionsApi from './modules/permissions/permissionsApi.js'
 import plansApi from './modules/plans/plansApi.js'
 import qrcodesApi from './modules/qrcodes/qrcodesApi.js'
 import qrcodetemplatesApi from './modules/qrcodetemplates/qrcodetemplatesApi.js'
@@ -27,10 +26,9 @@ export function initializeRoutes (fastify) {
   bizcardtemplatesApi(fastify);
   contactsApi(fastify);
   contacteventsApi(fastify);
-  contactrequestsApi(fastify);
+  contentrequestsApi(fastify);
   emailverificationtokensApi(fastify);
   passwordresettokensApi(fastify);
-  permissionsApi(fastify);
   plansApi(fastify);
   qrcodesApi(fastify);
   qrcodetemplatesApi(fastify);

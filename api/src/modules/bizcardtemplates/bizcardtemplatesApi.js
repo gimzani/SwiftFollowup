@@ -13,7 +13,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- LIST
   fastify.get('/api/bizcardtemplates', async (request, reply) => {
     try {
-      let result = await bizcardtemplatesService.getAllBizcardtemplates(fastify.pg)
+      let result = await bizcardtemplatesService.listBizcardtemplates(fastify.pg)
       const array = result.rows.map((row) => new BizCardTemplate(row))
       ok(reply, array, result.rowCount)
     } catch(err) {

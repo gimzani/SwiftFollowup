@@ -44,7 +44,7 @@ Table systemdata {
 //========================================================================
 Table plan {
   plan_name varchar(64) [not null]
-  code varchar(16) [pk, not null, unique]
+  code varchar(24) [pk, not null, unique]
   plan_cost decimal(10,2) [not null]
   sort_order int [default: 0]
   plan_description varchar(512) [default: NULL]
@@ -160,6 +160,7 @@ Ref fk_contact__useraccount_id {
 //----------------------------------------------------------
 Table contentrequest {
   id bigint [pk, not null, increment]
+  code varchar(26) [not null, unique]
   useraccount_id bigint [not null]
   contact_id bigint [not null]
   content_type varchar(32)         // BizCard, Brochure, Landing Page
@@ -169,6 +170,7 @@ Table contentrequest {
 
   Indexes {
     useraccount_id [name: "idx_contentrequest_useraccount_id"]
+    code [unique, name: "uq_contentrequest_code"]
   }
   Note: 'Record of a message sent to a mobile number with a link to a bizCard - (is paired with contact on creation).'
 }
@@ -183,14 +185,25 @@ Ref fk_contentrequest__contact_id {
 Table contactevent {
   id bigint [pk, not null, increment]
   contact_id bigint [not null]
+  contentrequest_id bigint [not null]
   event_name varchar(16) [not null]
   event_type varchar(16) [not null]         // request, connection, referral, change
   event_value varchar(32)
   event_action varchar(32) [not null]  
+  created_on timestamp [not null, default: `NOW()`]
   Note: 'Represents an event related to a contact.'
+
+  Indexes {
+    contact_id [name: "idx_contactevent_contact_id"]
+    contentrequest_id [name: "idx_contactevent_contentrequest_id"]
+  }
+
 }
 Ref fk_contactevent__contact_id {
   contact.id < contactevent.contact_id [delete: cascade]
+}
+Ref fk_contactevent__contentrequest_id {
+  contentrequest.id < contactevent.contentrequest_id [delete: cascade]
 }
 
 

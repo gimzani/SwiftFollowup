@@ -14,10 +14,10 @@ const card_data = ref({
   elements: [
     { x:80,  y:150, id:"3qSFUn", tag:"first_name",      fill:"white",   text:"BENJAMIN",                           type:"text",  fontSize:35, fontFamily:"Poppins", fontStyle:"italic", fontWeight:"normal", rotation:0 },
     { x:80,  y:195, id:"9dU3ya", tag:"last_name",       fill:"#C1AC80", text:"HALL",                               type:"text",  fontSize:35, fontFamily:"Poppins", fontStyle:"italic", fontWeight:"normal", rotation:0 },
-    { x:80,  y:250, id:"EMv6gz", tag:"title_company",   fill:"#777",    text:"CEO Swift Followup",                 type:"text",  fontSize:16, fontFamily:"Poppins", fontStyle:"italic", fontWeight:"normal", rotation:0 },
+    { x:80,  y:250, id:"EMv6gz", tag:"job_title",       fill:"#777",    text:"CEO Swift Followup",                 type:"text",  fontSize:16, fontFamily:"Poppins", fontStyle:"italic", fontWeight:"normal", rotation:0 },
     { x:350, y:150, id:"iqJmG2", tag:"divider",         fill:"#eee",    type:"line", strokeWidth:3, rotation:0, x2:350, y2:275 },
-    { x:370, y:155, id:"7rjjvF", tag:"address",         fill:"#777",    text:"260 Creekside Cir. Danville IN,\nUSA 46122", type:"text", fontSize:12, fontFamily:"Poppins", fontStyle:"italic", fontWeight:"normal", rotation:0 },
-    { x:370, y:205, id:"UWvCyZ", tag:"mobile",          fill:"#777",    text:"317.696.8375",                       type:"text",  fontSize:12, fontFamily:"Poppins", fontStyle:"italic", fontWeight:"bold", rotation:0 },
+    { x:370, y:155, id:"7rjjvF", tag:"mailing_address", fill:"#777",    text:"260 Creekside Cir. Danville IN,\nUSA 46122", type:"text", fontSize:12, fontFamily:"Poppins", fontStyle:"italic", fontWeight:"normal", rotation:0 },
+    { x:370, y:205, id:"UWvCyZ", tag:"mobile_number",   fill:"#777",    text:"317.696.8375",                       type:"text",  fontSize:12, fontFamily:"Poppins", fontStyle:"italic", fontWeight:"bold", rotation:0 },
     { x:370, y:230, id:"Gq0LfK", tag:"email_address",   fill:"#777",    text:"ben.hall@swiftfollowup.com",         type:"text",  fontSize:12, fontFamily:"Poppins", fontStyle:"italic", fontWeight:"normal", rotation:0 },
     { x:370, y:255, id:"4pfT53", tag:"web_address",     fill:"#777",    text:"www.swiftfollowup.com",              type:"text",  fontSize:12, fontFamily:"Poppins", fontStyle:"italic", fontWeight:"normal", rotation:0 },
     { x:640, y:20,  id:"5qgS21", tag:"linkedin_logo",   url:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1280px-LinkedIn_icon.svg.png", type:"image", width:32, height:32, rotation:0 }

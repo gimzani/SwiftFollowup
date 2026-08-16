@@ -76,11 +76,23 @@ onMounted(() => {
   </template>
   <template #body-command="{ item }">
     <div class="text-right">
-      <button class="btn btn-xs btn-primary">Edit</button>
+      <button class="btn btn-xs btn-primary ms-1">Edit</button>
     </div>
   </template>
 
   </DataGrid>
+
+
+  <p>
+    Edit Useraccount panel ==>
+  </p>
+  <ul>
+    <li>Set Plan</li>
+    <li>Set Password</li>
+    <li>Reset Password - (send pwd token)</li>
+  </ul>
+
+
 
   <Modal :show="useraccountModal.show" @close="useraccountModal.show=false">      
     <UserAccountNewEdit @cancel="useraccountModal.show=false" />

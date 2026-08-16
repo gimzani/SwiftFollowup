@@ -1,6 +1,6 @@
 //--------------------------------------------------------
 export default {
-  getAllSessions,
+  listSessions,
   getSessionById,
   getSessionByToken,
   createSession,
@@ -10,7 +10,7 @@ export default {
   deleteSessionByToken
 }
 //--------------------------------------------------------
-export async function getAllSessions(pg, useraccount_id) {
+export async function listSessions(pg, useraccount_id) {
   return await pg.query('SELECT * FROM session WHERE useraccount_id = $1', [useraccount_id])
 }
 //--------------------------------------------------------

@@ -10,7 +10,7 @@ export default class Result {
   }
 
   init(options) {
-    this.success = !!options.success || this.success;
+    this.success = [1,true].includes(options.success) ? true : false;
     this.data = options.data || this.data;
     this.message = options.message || this.message;
   }

@@ -13,7 +13,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- LIST
   fastify.get('/api/passwordresettokens/:useraccount_id', async (request, reply) => {
     try {
-      let result = await passwordresettokensService.getAllPasswordResetTokens(fastify.pg, request.params.useraccount_id)
+      let result = await passwordresettokensService.listMyPasswordResetTokens(fastify.pg, request.params.useraccount_id)
       const array = result.rows.map((row) => new PasswordResetToken(row))
       ok(reply, array, result.rowCount)
     } catch(err) {

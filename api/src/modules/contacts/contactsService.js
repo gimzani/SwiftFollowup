@@ -1,13 +1,13 @@
 //--------------------------------------------------------
 export default {
-  getAllContacts,
+  listMyContacts,
   getContactById,
   createContact,
   updateContact,
   deleteContact
 }
 //--------------------------------------------------------
-export async function getAllContacts(pg, useraccount_id) {
+export async function listMyContacts(pg, useraccount_id) {
   return await pg.query('SELECT * FROM contact WHERE useraccount_id = $1', [useraccount_id])
 }
 //--------------------------------------------------------

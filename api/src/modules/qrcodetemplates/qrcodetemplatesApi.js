@@ -13,7 +13,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- LIST
   fastify.get('/api/qrcodetemplates', async (request, reply) => {
     try {
-      let result = await qrcodetemplatesService.getAllQrcodetemplates(fastify.pg)
+      let result = await qrcodetemplatesService.listQrcodetemplates(fastify.pg)
       const array = result.rows.map((row) => new QrCodeTemplate(row))
       ok(reply, array, result.rowCount)
     } catch(err) {

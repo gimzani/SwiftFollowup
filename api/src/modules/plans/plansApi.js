@@ -16,9 +16,9 @@ export default async function routes (fastify) {
       let result;
       const listAll = Boolean(request.query.all)
       if(listAll===true) {
-        result = await plansService.getAllPlans(fastify.pg);
+        result = await plansService.listPlans(fastify.pg);
       } else {
-        result = await plansService.getPublicPlans(fastify.pg);
+        result = await plansService.listPublicPlans(fastify.pg);
       }
       const array = result.rows.map((row) => new Plan(row))
       ok(reply, array, result.rowCount)

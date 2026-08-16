@@ -13,7 +13,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- LIST
   fastify.get('/api/contacts/:useraccount_id', async (request, reply) => {
     try {
-      let result = await contactsService.getAllContacts(fastify.pg, request.params.useraccount_id)
+      let result = await contactsService.listMyContacts(fastify.pg, request.params.useraccount_id)
       const array = result.rows.map((row) => new Contact(row))
       ok(reply, array, result.rowCount)
     } catch(err) {

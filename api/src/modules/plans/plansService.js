@@ -1,18 +1,18 @@
 //--------------------------------------------------------
 export default {
-  getPublicPlans,
-  getAllPlans,
+  listPublicPlans,
+  listPlans,
   getPlanByCode,
   createPlan,
   updatePlan,
   deletePlan
 }
 //--------------------------------------------------------
-export async function getPublicPlans(pg) {
+export async function listPublicPlans(pg) {
   return await pg.query('SELECT * FROM plan WHERE is_public = true')
 }
 //--------------------------------------------------------
-export async function getAllPlans(pg) {
+export async function listPlans(pg) {
   return await pg.query('SELECT * FROM plan')
 }
 //--------------------------------------------------------

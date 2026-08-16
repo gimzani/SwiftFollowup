@@ -19,9 +19,6 @@ async function getQrCode() {
     qrCode.value = res.data;
   }
 }
-
-//01M00EYA865MHP6BQ8GQZ69PZR
-
 //----------------------------------------------------------
 onMounted(async () => {
   await getQrCode();

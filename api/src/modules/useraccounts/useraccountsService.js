@@ -1,6 +1,6 @@
 //--------------------------------------------------------
 export default {
-  getAllUserAccounts,
+  listUserAccounts,
   getUserAccountById,
   getUserAccountByEmail,
   createUserAccount,
@@ -11,7 +11,7 @@ export default {
   changePassword
 }
 //--------------------------------------------------------
-export async function getAllUserAccounts(pg) {
+export async function listUserAccounts(pg) {
   return await pg.query('SELECT * FROM useraccount')
 }
 //--------------------------------------------------------

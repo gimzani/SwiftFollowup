@@ -67,7 +67,7 @@
         "job_title": "Founder and CEO",
         "web_address": "https://swiftfollowup.com",
         "mobile_number": "3176968375",
-        "mailing_address": "",
+        "mailing_address": null,
         "avatar_url": null,
         "preferences": null,
         "is_default": true
@@ -90,10 +90,10 @@
         "title": null,
         "suffix": null,
         "company": "Fantasy Trove, LLC",
-        "job_title": "Business Ower",
+        "job_title": "Business Owner",
         "web_address": "https://fantasytrove.com",
         "mobile_number": "3176507009",
-        "mailing_address": "",
+        "mailing_address": null,
         "avatar_url": null,
         "preferences": null,
         "is_default": true

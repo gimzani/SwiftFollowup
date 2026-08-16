@@ -1,14 +1,14 @@
 //--------------------------------------------------------
 export default {
-  getAllBizcardtemplates,
+  listBizcardtemplates,
   getBizcardtemplateById,
   createBizcardtemplate,
   updateBizcardtemplate,
   deleteBizcardtemplate
 }
 //--------------------------------------------------------
-export async function getAllBizcardtemplates(pg) {
-  return await pg.query('SELECT * FROM bizcardtemplate')
+export async function listBizcardtemplates(pg) {
+  return await pg.query('SELECT * FROM bizcardtemplate ORDER BY bizcard_name ASC')
 }
 //--------------------------------------------------------
 export async function getBizcardtemplateById(pg, id) {
@@ -17,20 +17,28 @@ export async function getBizcardtemplateById(pg, id) {
 //--------------------------------------------------------
 export async function createBizcardtemplate(pg, bizcardtemplate) {
   return await pg.query(
-    `INSERT INTO bizcardtemplate (bizcardtemplate_name, bizcardtemplate_description, bizcardtemplate_data)
+    `INSERT INTO bizcardtemplate (
+      bizcard_name, 
+      bizcard_description, 
+      bizcard_data
+    )
      VALUES ($1, $2, $3)
      RETURNING *`,
-    [ bizcardtemplate.bizcardtemplate_name, bizcardtemplate.bizcardtemplate_description, bizcardtemplate.bizcardtemplate_data]
+    [ bizcardtemplate.bizcard_name, bizcardtemplate.bizcard_description, bizcardtemplate.bizcard_data]
   )
 }
 //--------------------------------------------------------
 export async function updateBizcardtemplate(pg, bizcardtemplate) {
   return await pg.query(
     `UPDATE bizcardtemplate
-     SET bizcardtemplate_name = $2, bizcardtemplate_description = $3, bizcardtemplate_data = $4, updated_on = NOW()
+     SET 
+      bizcard_name = $2, 
+      bizcard_description = $3, 
+      bizcard_data = $4, 
+      updated_on = NOW()
      WHERE id = $1
      RETURNING *`,
-    [bizcardtemplate.id, bizcardtemplate.bizcardtemplate_name, bizcardtemplate.bizcardtemplate_description, bizcardtemplate.bizcardtemplate_data]
+    [bizcardtemplate.id, bizcardtemplate.bizcard_name, bizcardtemplate.bizcard_description, bizcardtemplate.bizcard_data]
   )
 }
 //--------------------------------------------------------

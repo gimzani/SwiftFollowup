@@ -1,6 +1,6 @@
 //--------------------------------------------------------
 export default {
-  getAllPasswordResetTokens,
+  listMyPasswordResetTokens,
   getPasswordResetTokenById,
   getPasswordResetToken,
   createPasswordResetToken,
@@ -8,7 +8,7 @@ export default {
   deletePasswordResetToken
 }
 //--------------------------------------------------------
-export async function getAllPasswordResetTokens(pg, useraccount_id) {
+export async function listMyPasswordResetTokens(pg, useraccount_id) {
   return await pg.query('SELECT * FROM passwordresettoken WHERE useraccount_id = $1', [useraccount_id])
 }
 //--------------------------------------------------------

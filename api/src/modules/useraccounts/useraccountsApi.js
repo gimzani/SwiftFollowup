@@ -13,7 +13,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- LIST
   fastify.get('/api/useraccounts', async (request, reply) => {
     try {
-      let result = await useraccountsService.getAllUserAccounts(fastify.pg)
+      let result = await useraccountsService.listUserAccounts(fastify.pg)
       const array = result.rows.map((row) => new UserAccount(row))
       ok(reply, array, result.rowCount)
     } catch(err) {

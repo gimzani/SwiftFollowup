@@ -1,14 +1,14 @@
 //--------------------------------------------------------
 export default {
-  getAllQrcodetemplates,
+  listQrcodetemplates,
   getQrcodetemplateById,
   createQrcodetemplate,
   updateQrcodetemplate,
   deleteQrcodetemplate
 }
 //--------------------------------------------------------
-export async function getAllQrcodetemplates(pg) {
-  return await pg.query('SELECT * FROM qrcodetemplate')
+export async function listQrcodetemplates(pg) {
+  return await pg.query('SELECT * FROM qrcodetemplate ORDER BY qrcode_name ASC')
 }
 //--------------------------------------------------------
 export async function getQrcodetemplateById(pg, id) {

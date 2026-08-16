@@ -51,8 +51,8 @@
       {
         "name": "contentrequest",
         "schemaName": "public",
-        "x": 1562.6861453657486,
-        "y": 1323.465458706451
+        "x": 1564.6801289648304,
+        "y": 1275.6098523284904
       },
       {
         "name": "plan",
@@ -63,8 +63,8 @@
       {
         "name": "contactevent",
         "schemaName": "public",
-        "x": 1608.1958300180875,
-        "y": 1602.4511798088513
+        "x": 1947.4578966618446,
+        "y": 1133.0104696250464
       },
       {
         "name": "bizcardtemplate",
@@ -306,6 +306,21 @@
           "permission_name"
         ],
         "secondTableName": "plan_permission",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "contentrequest",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "contentrequest_id"
+        ],
+        "secondTableName": "contactevent",
         "secondSchemaName": "public",
         "secondRelation": "*",
         "checkPoints": []

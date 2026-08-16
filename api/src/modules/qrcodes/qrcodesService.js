@@ -1,15 +1,15 @@
 //--------------------------------------------------------
 export default {
+  listMyQrcodes,
+  getQrcodeById,
+  getQrcodeByCode,
   createQrcode,
   updateQrcode,
-  deleteQrcode,
-  getQrcodeByCode,
-  getQrcodeById,
-  getQrcodes 
+  deleteQrcode
 }
 //--------------------------------------------------------
-export async function getQrcodes(pg, useraccount_id) {
-  return await pg.query('SELECT * FROM qrcode WHERE useraccount_id = $1', [useraccount_id])
+export async function listMyQrcodes(pg, useraccount_id) {
+  return await pg.query('SELECT * FROM qrcode WHERE useraccount_id = $1 ORDER BY qrcode_name ASC', [useraccount_id])
 }
 //--------------------------------------------------------
 export async function getQrcodeById(pg, id) {

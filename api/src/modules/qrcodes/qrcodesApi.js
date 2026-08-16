@@ -13,7 +13,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- LIST
   fastify.get('/api/qrcodes/:useraccount_id', async (request, reply) => {
     try {
-      let result = await qrcodesService.getQrcodes(fastify.pg, request.params.useraccount_id)
+      let result = await qrcodesService.listMyQrcodes(fastify.pg, request.params.useraccount_id)
       const array = result.rows.map((row) => new QrCode(row))
       ok(reply, array, result.rowCount)
     } catch(err) {

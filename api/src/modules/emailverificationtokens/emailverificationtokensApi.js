@@ -13,7 +13,7 @@ export default async function routes (fastify) {
   //-------------------------------------------------------- LIST
   fastify.get('/api/emailverificationtokens/:useraccount_id', async (request, reply) => {
     try {
-      let result = await emailverificationtokensService.getAllEmailVerificationTokens(fastify.pg, request.params.useraccount_id)
+      let result = await emailverificationtokensService.listMyEmailVerificationTokens(fastify.pg, request.params.useraccount_id)
       const array = result.rows.map((row) => new EmailVerificationToken(row))
       ok(reply, array, result.rowCount)
     } catch(err) {
