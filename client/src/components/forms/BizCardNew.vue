@@ -6,7 +6,7 @@ import { required, url, withMessage } from '@regle/rules';
 import { BizCard, BizCardTemplate } from '@sf/models'
 import { BizCardImage } from "@sf/bizcards"
 import { useApi } from '@/code/useApi';
-import { formatPhone } from '@/code/useFormatters';
+import { formatPhone, textTransforms } from '@/code/useFormatters';
 //----------------------------------------------------------
 const api = useApi();
 //----------------------------------------------------------
@@ -37,20 +37,18 @@ function selectBizCard() {
   const template = bizCardTemplates.value.find(bct => bct.id === bizCardTemplateId.value); 
   if(template) {
     bizCardTemplate.value = { ...template }; 
-
     for(const element of template.bizcard_data.elements) {
-      if(props.userInfo[element.tag]) {     
-        console.log(element.tag)   
+      if(props.userInfo[element.tag]) {
         if(element.tag==='mobile_number') {
           element.text = formatPhone(props.userInfo[element.tag]);
         } else {
           element.text = props.userInfo[element.tag];
+        }        
+        if(element.modifier) {
+          element.text = textTransforms(element.text, element.modifier);
         }
       }
     }
-
-    console.log('template.elements', template.bizcard_data.elements)
-
   } else {
     resetQrSelection();  
   }

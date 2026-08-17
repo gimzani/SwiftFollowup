@@ -46,9 +46,11 @@ function lineHeight(item) {
 //-------------------------------------------------------------------
 watch(
   () => props.cardData,
-  val => {
-    items.value = val.elements.map(el => ({ ...el }))
-    handleFonts()
+  (val) => {
+    if(val) {
+      items.value = val.elements.map(el => ({ ...el }))
+      handleFonts()
+    }
   },
   { deep: true }
 )
@@ -64,6 +66,7 @@ onMounted(handleFonts)
     :height="CARD_H"
     xmlns="http://www.w3.org/2000/svg"
     class="biz-card"
+    v-if="cardData && cardData.card_surface"
   >
     <!-- Card background -->
     <rect

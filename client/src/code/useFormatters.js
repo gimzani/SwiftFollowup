@@ -86,3 +86,17 @@ export function formatPhone(value) {
   }
   return value;
 }
+
+//-------------------------------------------------------
+export function textTransforms(value, transform) {
+  switch(transform) {
+    case 'uppercase':
+      return value.toUpperCase();
+    case 'lowercase':
+      return value.toLowerCase();
+    case 'capitalize':
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    default:
+      return value;
+  }  
+}
