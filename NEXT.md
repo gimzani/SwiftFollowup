@@ -1,7 +1,17 @@
 
 # Next to do...
 
+Security:
+  - Create an in-memory placeholder for account info
+  - Return 'session expires' time in 'api/me'
+  - Check in-memory userInfo for security
+
 Make BizCard from Template
+  - View BizCard
+  - Add Buttons
+  - Bizcard Gallery
+
+
 
 BizCard Editor
   - Add Element

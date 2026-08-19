@@ -6,6 +6,7 @@ import { Modal } from "@sf/dialogs"
 import { useApi } from '@/code/useApi';
 import { useToasts, useDialog } from '@sf/dialogs';
 import { QrCodeImage } from "@sf/qr-codes"
+import { useAuthentication } from '@/code/useAuthentication.js';
 //----------------------------------------------------------
 import QrCodeNew from '@/components/forms/QrCodeNew.vue';
 //----------------------------------------------------------
@@ -13,14 +14,15 @@ const api = useApi();
 const router = useRouter()
 const toasts = useToasts();
 const dialog = useDialog();
+const auth = useAuthentication();
 //----------------------------------------------------------
-const userId = ref(null);
+const userData = ref(null);
 const qrCodes = ref([]);
 const qrImageRefs = ref([]);
 const newQrCodeModal = reactive({ show: false, data: null });
 //----------------------------------------------------------
 async function getQrCodes() {
-  let res = await api.qrCodes.list(userId.value);
+  let res = await api.qrCodes.list(userData.value.id);
   console.log('res', res);
   if(res.success) {    
     qrCodes.value = res.data;
@@ -34,10 +36,10 @@ function newQrCode(data) {
 //----------------------------------------------------------
 async function saveQrCode(data) {
   console.log('SAVE', data);
-  data.useraccount_id = userId.value;
+  data.useraccount_id = userData.value.id;
   if(data.id===0) {
     const res = await api.qrCodes.create(data);
-    if(res.success) {      
+    if(res.success) {
       toasts.success(res.message);
       await getQrCodes();
     } else {
@@ -87,10 +89,8 @@ function resetModal() {
   newQrCodeModal.data = null;
 }
 //----------------------------------------------------------
-onMounted(async () => {
-  let res =  await api.auth.me();
-  console.log(res);
-  userId.value = res.data.id;
+onMounted(async () => {  
+  userData.value = await auth.getCurrentUser();
   await getQrCodes();
 })
 //----------------------------------------------------------

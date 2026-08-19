@@ -14,7 +14,7 @@ async function submit(formData) {
 <ColumnLayout class="registration-page">
 
   <SwiftFollowupLogo
-    class="my-2"  
+    class="my-3"  
   />
 
   <SetPasswordForm 

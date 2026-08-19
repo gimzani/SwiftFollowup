@@ -32,6 +32,17 @@ export default async function routes (fastify) {
     }
   })
 
+  //-------------------------------------------------------- GET BY CODE
+  fastify.get('/api/bizcard/code/:code', async (request, reply) => {
+    try {
+      let result = await bizcardsService.getBizcardByCode(fastify.pg, request.params.code)
+      const item = result.rows.length === 1 ? new BizCard(result.rows[0]) : null
+      ok(reply, item, result.rowCount)
+    } catch(err) {
+      serverError(reply, err)
+    }
+  })
+
   //-------------------------------------------------------- CREATE
   fastify.post('/api/bizcards', async (request, reply) => {
     try {

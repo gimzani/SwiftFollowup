@@ -3,6 +3,7 @@ export default {
   listMyBizcards,
   listBizcardCollection,
   getBizcardById,
+  getBizcardByCode,
   createBizcard,
   updateBizcard,
   deleteBizcard
@@ -22,6 +23,10 @@ export async function listBizcardCollection(pg, useraccount_id) {
 //--------------------------------------------------------
 export async function getBizcardById(pg, id) {
   return await pg.query('SELECT * FROM bizcard WHERE id = $1', [id])
+}
+//--------------------------------------------------------
+export async function getBizcardByCode(pg, code) {
+  return await pg.query('SELECT * FROM bizcard WHERE code = $1', [code])
 }
 //--------------------------------------------------------
 export async function createBizcard(pg, bizcard) {

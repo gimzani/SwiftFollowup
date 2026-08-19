@@ -12,7 +12,7 @@ const props = defineProps({
   cardData: { type: Object, default: () => ({ elements: [] }) }
 })
 //-------------------------------------------------------------------
-const items = ref(props.cardData.elements.map(el => ({ ...el })))
+const items = props.cardData?.elements ? ref(props.cardData?.elements.map(el => ({ ...el }))) : ref([]);
 //-------------------------------------------------------------------
 function getFontsList() {
   const fonts = new Set()
@@ -62,8 +62,8 @@ onMounted(handleFonts)
 
 <template>
   <svg
-    :width="CARD_W"
-    :height="CARD_H"
+    :viewBox="`0 0 ${CARD_W} ${CARD_H}`"
+    preserveAspectRatio="xMidYMid meet"
     xmlns="http://www.w3.org/2000/svg"
     class="biz-card"
     v-if="cardData && cardData.card_surface"
@@ -157,6 +157,9 @@ onMounted(handleFonts)
 <style scoped>
 .biz-card {
   display: block;
+  width: min(100%, 700px);
+  max-height: min(400px, 100vh);
+  height: auto;
   user-select: none;
 }
 

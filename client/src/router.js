@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
 //#region APP ROUTES
@@ -49,18 +49,24 @@ const ViewBizCardPage = () => import('./pages/external/ViewBizCardPage.vue');
 const ViewQrCodePage = () => import('./pages/external/ViewQrCodePage.vue');
 const SetPasswordPage = () => import('./pages/external/SetPasswordPage.vue');
 const ActivateAccountPage = () => import('./pages/external/ActivateAccountPage.vue');
+
+const TestPage = () => import('./pages/dev/TestPage.vue');
+
 const externalRoutes = [
   { path: '/bizcard/:code?', name: 'ViewBizCardPage', component: ViewBizCardPage },
   { path: '/qrcode/:code?', name: 'ViewQrCodePage', component: ViewQrCodePage },
   { path: '/SetPasswordPage/:token?', name: 'SetPasswordPage', component: SetPasswordPage },
   { path: '/ActivateAccountPage/:token?', name: 'ActivateAccountPage', component: ActivateAccountPage },
 
+  
+  { path: '/test', name: 'TestPage', component: TestPage },
+
 ]
 //-----------------------------------------------------------------------
 //#endregion
 //-----------------------------------------------------------------------
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [    
     ...appRoutes,
     ...adminRoutes,

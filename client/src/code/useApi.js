@@ -1,20 +1,28 @@
 export function useApi() {
-
+  //------------------------------------------------------
   const httpHeaders = new Headers({'Content-Type': 'application/json'});
   const apiRoot = import.meta.env.VITE_API_URL
-
+  //------------------------------------------------------
+  //------------------------------------------------------
   async function apiBodyRequest(url, method, body) {
     method = method || 'GET'; body = body || null;
     let json = body ? JSON.stringify(body) : null;
-    return fetch(url, { method: method, body: json, headers: httpHeaders, credentials: 'include' }).then(r => r.json());
+    return fetch(url, { method: method, body: json, headers: httpHeaders, credentials: 'include' })
+                .then(r => { if (!r.ok) { return { success: false, message: "API request failed"}} return r; })
+                .then(r => r.json())
+                .catch(err => { return { success: false, data: err, message: "API request failed"}; });
   }
-  
+  //------------------------------------------------------
   async function apiRequest(url, method, body) {
     method = method || 'GET'; body = body || null;
     let json = body ? JSON.stringify(body) : null;
-    return fetch(url, { method: method, body: json, credentials: 'include' }).then(r => r.json());
+    return fetch(url, { method: method, body: json, credentials: 'include' })
+              .then(r => { if (!r.ok) { return { success: false, message: "API request failed"}} return r; })
+              .then(r => r.json())
+              .catch(err => { return { success: false, data: err, message: "API request failed"}; });
   }
-
+  //------------------------------------------------------
+  //------------------------------------------------------
   return {
 
     auth: {
@@ -30,6 +38,7 @@ export function useApi() {
     bizCards: {
       list: async (useraccount_id) => apiRequest(`${apiRoot}/bizcards/${useraccount_id}`),
       get: async (id) => apiRequest(`${apiRoot}/bizcard/${id}`),
+      getByCode: async (code) => apiRequest(`${apiRoot}/bizcard/code/${code}`),
       create: async (payload) => apiBodyRequest(`${apiRoot}/bizcards`, 'POST', payload),
       update: async (id, payload) => apiBodyRequest(`${apiRoot}/bizcard/${id}`, 'PUT', payload),
       delete: async (id) => apiRequest(`${apiRoot}/bizcard/${id}`, 'DELETE'),

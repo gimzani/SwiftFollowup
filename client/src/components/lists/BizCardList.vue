@@ -1,25 +1,25 @@
 <script setup>
 //----------------------------------------------------------
 import { ref, reactive, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import { Modal } from "@sf/dialogs"
 import { useApi } from '@/code/useApi';
 import { useToasts, useDialog } from '@sf/dialogs';
 import { BizCardImage } from "@sf/bizcards"
+import { useAuthentication } from '@/code/useAuthentication.js';
 //----------------------------------------------------------
 import BizCardNew from '@/components/forms/BizCardNew.vue';
 //----------------------------------------------------------
 const api = useApi();
-const router = useRouter()
 const toasts = useToasts();
 const dialog = useDialog();
 const newBizCardModal = reactive({ show: false, data: null });
+const auth = useAuthentication();
 //----------------------------------------------------------
-const userInfo = ref(null);
+const userData = ref(null);
 const bizCards = ref([]);
 //----------------------------------------------------------
 async function getBizCards() {
-  let res = await api.bizCards.list(userInfo.value.id);
+  let res = await api.bizCards.list(userData.value.id);
   if(res.success) {
     bizCards.value = res.data;
   }
@@ -35,14 +35,31 @@ function resetModal() {
   newBizCardModal.data = null;
 }
 //----------------------------------------------------------
-async function saveBizCard(data) {
-  console.log(data);
+async function saveBizCard(data) {  
+  data.useraccount_id = userData.value.id
+  const res = await api.bizCards.create(data);
+  if(res.success) {      
+    toasts.success(res.message);
+    await getBizCards();
+  } else {
+    toasts.error(res.message);
+  }
+  resetModal();
+}
+
+//----------------------------------------------------------
+function viewBizCard(b) {
+  const url = window.location.href.replace('bizcards', `bizcard/${b.code}`);
+  window.open(url);
+}
+//----------------------------------------------------------
+function editBizCard(b) {
+  console.log(b)
 }
 
 //----------------------------------------------------------
 onMounted(async () => {
-  let res =  await api.auth.me();
-  userInfo.value = res.data;
+  userData.value = await auth.getCurrentUser();
   await getBizCards();
 })
 //----------------------------------------------------------
@@ -56,7 +73,16 @@ onMounted(async () => {
   </section>
 
   <div>
-    {{ bizCards }}
+    <div v-for="b in bizCards">
+      <h4>{{ b.bizcard_name }}</h4>
+      <BizCardImage 
+        :card-data="b.bizcard_data"
+      />
+      <div>
+          <button class="btn btn-secondary ms-1" @click="viewBizCard(b)">View</button>
+          <button class="btn btn-primary ms-1" @click="editBizCard(b)">Edit</button>
+      </div>
+    </div>
   </div>
 
   <div class="alert alert-info text-center" v-if="bizCards.length===0" >
@@ -69,8 +95,8 @@ onMounted(async () => {
   </div>
   
   
-   <Modal :show="newBizCardModal.show" @close="newBizCardModal.show=false">      
-    <BizCardNew :user-info="userInfo" @cancel="newBizCardModal.show=false" @save="saveBizCard" />
+  <Modal :show="newBizCardModal.show" @close="newBizCardModal.show=false">      
+    <BizCardNew :user-info="userData" @cancel="newBizCardModal.show=false" @save="saveBizCard" />
   </Modal>
 
 </div>

@@ -9,14 +9,10 @@ import ContactResponseList from '@/components/lists/ContactResponseList.vue'
 </script>
 <template>
 <AppLayout class="dashboard">
+
   <section>
     <h1 class="h3">Dashboard</h1>
   </section>
-  <ul>
-    <li>Biz Card gallery - (with default selected)</li>
-    <li>Latest Contact requests</li>
-    <li>Latest Responses</li>
-  </ul>
 
   <BizCardGallery></BizCardGallery>
 

@@ -8,6 +8,8 @@ import { BizCardImage } from "@sf/bizcards"
 import { useApi } from '@/code/useApi';
 import { formatPhone, textTransforms } from '@/code/useFormatters';
 //----------------------------------------------------------
+import BizCardDataForm from './BizCardDataForm.vue';
+//----------------------------------------------------------
 const api = useApi();
 //----------------------------------------------------------
 const props = defineProps({ userInfo: { type: Object }})
@@ -26,9 +28,7 @@ const bizCardTemplateId = ref(null);
 //----------------------------------------------------------
 async function getBizCardTemplates() {
   let res = await api.bizCardTemplates.list();
-  console.log('res', res);
   if(res.success) {
-    console.log('bizcard template', res.data)
     bizCardTemplates.value = res.data;
   }
 }
@@ -64,6 +64,7 @@ async function save() {
 
     const formData = { ...data };
     const bizCard = new BizCard();
+    bizCard.useraccount_id = 
     bizCard.bizcard_data = bizCardTemplate.value.bizcard_data;
     bizCard.bizcard_name = formData.name;
     bizCard.bizcard_description = formData.description;
@@ -96,7 +97,6 @@ function resetForm() {
 //----------------------------------------------------------
 onMounted(() => {
   getBizCardTemplates();
-
 })
 //----------------------------------------------------------
 </script>
@@ -113,20 +113,30 @@ onMounted(() => {
     </select>    
   </div>
 
-  <div class="text-center" v-if="bizCardTemplate">        
-    <BizCardImage :card-data="bizCardTemplate.bizcard_data" />
+  <div class="d-flex justify-content-center px-3" v-if="bizCardTemplate">        
+    <BizCardImage 
+      :card-data="bizCardTemplate.bizcard_data"
+    />
   </div>
 
-  <div class="px-3">
+  <div class="px-3" v-if="bizCardTemplate">
+
     <div class="form-group">
       <label for="name" class="required">BizCard Name</label>
       <input type="text" name="name" v-model="r$.$value.name" :class="{'invalid': r$.name.$error}" @input="updateUrl" />
       <small class="form-group-error" :class="{'active': r$.$errors.name[0]}">{{ r$.$errors.name[0] }}</small>
     </div>  
+
     <div class="form-group">
       <label for="description">BizCard Description</label>
       <textarea rows="2" name="description" v-model="r$.$value.description"></textarea>
     </div> 
+
+    <BizCardDataForm 
+      v-if="bizCardTemplateId"
+      :card-data="bizCardTemplate.bizcard_data"     
+    />    
+
   </div>
 
   <div class="d-flex justify-content-between mt-3">
@@ -143,5 +153,6 @@ onMounted(() => {
 <style scoped>
 .bizcard-new {
   min-width: 400px;
+  max-width: 800px;
 }
 </style>

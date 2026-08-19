@@ -3,31 +3,29 @@
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { LoginForm } from "@sf/auth-ui"
-import { useApi } from '@/code/useApi';
+import { useAuthentication } from '@/code/useAuthentication.js';
 //----------------------------------------------------------
 import ColumnLayout from '@/components/layouts/ColumnLayout.vue';
+import SwiftFollowupLogo from '@/components/app/SwiftFollowupLogo.vue';
 //----------------------------------------------------------
-const api = useApi();
+const allowRegistration = import.meta.env.VITE_ALLOW_REGISTRATION==='true' ? true: false;
+//----------------------------------------------------------
 const router = useRouter();
+const auth = useAuthentication();
 //----------------------------------------------------------
-const apiout = ref(null);
+const userData = ref(null);
+const registrationUrl = ref('/register');
 //----------------------------------------------------------
 async function submit(payload) {
-  console.log(payload);
-  const res = await api.auth.login({
-    email_address: payload.emailAddress,
-    password: payload.password
-  });
+  const res = await auth.login(payload);
   if(res.success) {
     router.push({name: "DashboardPage"})
   }
-  console.log(res);
 }
 //----------------------------------------------------------
-onMounted(async () => {
-  let res =  await api.auth.me();
-  apiout.value = res;  
-  if(res.success) {
+onMounted(async () => {  
+  userData.value = await auth.getCurrentUser();
+  if(userData.value) {
     router.push({name: "DashboardPage"})
   }
 });
@@ -38,11 +36,15 @@ onMounted(async () => {
 
   <div class="login-page-container">
 
-    <div class="swift-logo">
-      <img src="/svg/Logo-horizontal.svg" />
-    </div>
+    <SwiftFollowupLogo
+      class="my-3"  
+    />
 
-    <LoginForm @submit="submit" />
+    <LoginForm 
+      @submit="submit" 
+      :allowRegistration="allowRegistration"
+      :registration-url="registrationUrl" 
+    />
 
   </div>
 

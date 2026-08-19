@@ -5,6 +5,7 @@ import { useRegle } from '@regle/core';
 import { required, email, withMessage } from '@regle/rules';
 //----------------------------------------------------------
 const props = defineProps({
+  allowRegistration: { type: Boolean, default: true },
   registrationLabel: { type: String, default: "Register for FREE" },
   registrationUrl: { type: String }
 });
@@ -54,12 +55,18 @@ async function login() {
     </div>
     <div class="d-flex justify-content-between mt-3">
       <div class="ps-2">
-        <a :href="registrationUrl" v-if="registrationUrl">{{ registrationLabel }}</a>
+        <a :href="registrationUrl" v-if="allowRegistration && registrationUrl">{{ registrationLabel }}</a>
       </div>
       <div>
         <button class="btn btn-primary" @click="login">Login</button>
       </div>
     </div>
+  </div>
+
+  <div class="mt-3 text-center text-italic" v-if="allowRegistration">
+    <small>
+      <a href="/forgot-password">I forgot my password</a>
+    </small>
   </div>
 
 </div>

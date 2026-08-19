@@ -364,8 +364,8 @@ function doResize(pt) {
 <template>
   <svg
     ref="svgRef"
-    :width="CARD_W"
-    :height="CARD_H"
+    :viewBox="`0 0 ${CARD_W} ${CARD_H}`"
+    preserveAspectRatio="xMidYMid meet"
     xmlns="http://www.w3.org/2000/svg"
     class="biz-card"
     :style="{ cursor: svgCursor }"
@@ -543,6 +543,9 @@ function doResize(pt) {
 <style scoped>
 .biz-card {
   display: block;
+  width: min(100%, 700px);
+  max-height: min(400px, 100vh);
+  height: auto;
   user-select: none;
   touch-action: none;
 }

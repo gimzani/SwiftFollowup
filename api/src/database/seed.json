@@ -45,7 +45,7 @@
       "is_public": false,
       "plan_cost": 59.99
     }
-  ],
+  ],  
   "useraccounts": [
     {
       "code": "01KYMCCQK7ZSPY3MFJCWES307V",
@@ -67,7 +67,7 @@
         "job_title": "Founder and CEO",
         "web_address": "https://swiftfollowup.com",
         "mobile_number": "3176968375",
-        "mailing_address": null,
+        "mailing_address": "260 Creekside Cir.\nDanville IN, USA 56122",
         "avatar_url": null,
         "preferences": null,
         "is_default": true
@@ -93,7 +93,7 @@
         "job_title": "Business Owner",
         "web_address": "https://fantasytrove.com",
         "mobile_number": "3176507009",
-        "mailing_address": null,
+        "mailing_address": "260 Creekside Cir.\nDanville IN, USA 56122",
         "avatar_url": null,
         "preferences": null,
         "is_default": true

@@ -3,19 +3,19 @@
 import { ref, onMounted } from 'vue'
 import { useApi } from '@/code/useApi';
 import { useToasts } from '@sf/dialogs';
+import { useAuthentication } from '@/code/useAuthentication.js';
 //----------------------------------------------------------
 import UserprofileEdit from '../forms/UserprofileEdit.vue';
 //----------------------------------------------------------
 const api = useApi();
 const toasts = useToasts();
-const userprofileData = ref(null);
+const auth = useAuthentication();
 //----------------------------------------------------------
-const props = defineProps({});
-const emit = defineEmits([]);
+const userData = ref(null);
 //----------------------------------------------------------
 async function setProfile(data) {
   console.log(data)
-  const res = await api.userProfiles.update(userprofileData.value.id, data);
+  const res = await api.userProfiles.update(userData.value.id, data);
   console.log(res);
   if(res.success) {
     toasts.success("Profile saved.");
@@ -23,10 +23,7 @@ async function setProfile(data) {
 }
 //----------------------------------------------------------
 onMounted(async () => {
-  let res =  await api.auth.me();
-  console.log(res)
-
-  userprofileData.value = res.data;
+  userData.value = await auth.getCurrentUser();
 });
 //----------------------------------------------------------
 </script>
@@ -46,8 +43,8 @@ onMounted(async () => {
   <div class="card card-body mt-3">
 
     <UserprofileEdit 
-      v-if="userprofileData"
-      :userprofile-data="userprofileData"
+      v-if="userData"
+      :userprofile-data="userData"
       @save="setProfile"
     />
   </div>
