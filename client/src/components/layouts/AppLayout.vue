@@ -2,10 +2,10 @@
 //----------------------------------------------------------
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useApi } from '@/code/useApi';
-import { useDelayClose } from '@/code/useDelayClose.js';
+import { useApi } from '@/code/app/useApi';
+import { useDelayClose } from '@/code/app/useDelayClose.js';
 import { useDialog } from '@sf/dialogs'
-import { useAuthentication } from '@/code/useAuthentication.js';
+import { useAuthentication } from '@/code/app/useAuthentication.js';
 //----------------------------------------------------------
 const route = useRoute();
 const router = useRouter();

@@ -21,6 +21,7 @@ export default class ContentRequest {
   
   init(options) {
     this.id = parseInt(options.id) || this.id;
+    this.code = options.code || this.code;
     this.useraccount_id = parseInt(options.useraccount_id) || this.useraccount_id;
     this.contact_id = parseInt(options.contact_id) || this.contact_id;
     this.content_type = options.content_type || this.content_type;

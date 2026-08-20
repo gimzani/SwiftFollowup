@@ -2,7 +2,7 @@
 //----------------------------------------------------------
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useApi } from '@/code/useApi';
+import { useApi } from '@/code/app/useApi';
 import { QrCodeImage } from "@sf/qr-codes"
 //----------------------------------------------------------
 import ColumnLayout from '@/components/layouts/ColumnLayout.vue';

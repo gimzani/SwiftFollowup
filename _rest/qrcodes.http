@@ -1,0 +1,4 @@
+
+# @name List QR Codes
+GET {{apiRoot}}/qrcodes/1
+content-type: application/json

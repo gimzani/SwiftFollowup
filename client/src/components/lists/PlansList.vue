@@ -1,7 +1,7 @@
 <script setup>
 //----------------------------------------------------------
 import { ref, onMounted } from 'vue'
-import { useApi } from '@/code/useApi';
+import { useApi } from '@/code/app/useApi';
 //----------------------------------------------------------
 const api = useApi();
 //----------------------------------------------------------

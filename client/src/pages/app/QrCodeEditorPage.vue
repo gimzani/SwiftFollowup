@@ -2,7 +2,7 @@
 //----------------------------------------------------------
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useApi } from '@/code/useApi';
+import { useApi } from '@/code/app/useApi';
 import { useToasts } from '@sf/dialogs';
 import { QrCodeEditor } from '@sf/qr-codes'
 import { QrCode, QrCodeTemplate } from '@sf/models'

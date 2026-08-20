@@ -2,17 +2,19 @@
 //----------------------------------------------------------
 import { ref, reactive, onMounted } from 'vue'
 import { Modal } from "@sf/dialogs"
-import { useApi } from '@/code/useApi';
+import { useApi } from '@/code/app/useApi';
 import { useToasts, useDialog } from '@sf/dialogs';
 import { BizCardImage } from "@sf/bizcards"
-import { useAuthentication } from '@/code/useAuthentication.js';
+import { useAuthentication } from '@/code/app/useAuthentication.js';
 //----------------------------------------------------------
 import BizCardNew from '@/components/forms/BizCardNew.vue';
+import ContentRequestForm from '@/components/forms/ContentRequestForm.vue';
 //----------------------------------------------------------
 const api = useApi();
 const toasts = useToasts();
 const dialog = useDialog();
 const newBizCardModal = reactive({ show: false, data: null });
+const sendBizCardModal = reactive({ show: false, data: null });
 const auth = useAuthentication();
 //----------------------------------------------------------
 const userData = ref(null);
@@ -33,6 +35,8 @@ function newBizCard(data) {
 function resetModal() {
   newBizCardModal.show = false;
   newBizCardModal.data = null;
+  sendBizCardModal.show = false;
+  sendBizCardModal.data = null;
 }
 //----------------------------------------------------------
 async function saveBizCard(data) {  
@@ -48,6 +52,12 @@ async function saveBizCard(data) {
 }
 
 //----------------------------------------------------------
+function sendBizCard(b) {
+  sendBizCardModal.data = b;
+  sendBizCardModal.show=true;
+}
+
+//----------------------------------------------------------
 function viewBizCard(b) {
   const url = window.location.href.replace('bizcards', `bizcard/${b.code}`);
   window.open(url);
@@ -55,6 +65,10 @@ function viewBizCard(b) {
 //----------------------------------------------------------
 function editBizCard(b) {
   console.log(b)
+}
+//----------------------------------------------------------
+async function sendContentRequest(data) {
+  console.log(data)
 }
 
 //----------------------------------------------------------
@@ -79,6 +93,7 @@ onMounted(async () => {
         :card-data="b.bizcard_data"
       />
       <div>
+          <button class="btn btn-success ms-1" @click="sendBizCard(b)">Send</button>
           <button class="btn btn-secondary ms-1" @click="viewBizCard(b)">View</button>
           <button class="btn btn-primary ms-1" @click="editBizCard(b)">Edit</button>
       </div>
@@ -96,14 +111,12 @@ onMounted(async () => {
   
   
   <Modal :show="newBizCardModal.show" @close="newBizCardModal.show=false">      
-    <BizCardNew :user-info="userData" @cancel="newBizCardModal.show=false" @save="saveBizCard" />
+    <BizCardNew class="modal-form" :user-info="userData" @cancel="newBizCardModal.show=false" @save="saveBizCard" />
+  </Modal>
+
+  <Modal class="modal-lg" :show="sendBizCardModal.show" @close="sendBizCardModal.show=false">      
+    <ContentRequestForm class="modal-form" :bizcard="sendBizCardModal.data" @cancel="sendBizCardModal.show=false" @send="sendContentRequest" />
   </Modal>
 
 </div>
 </template>
-
-<style scoped>
-.bizcard-list {
-
-}
-</style>

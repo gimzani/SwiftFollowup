@@ -13,7 +13,9 @@ export default class UserProfile {
   web_address = null;             // text
   mobile_number = null;           // text
   avatar_url = null;              // text
-  preferences = null;             // json
+  preferences = {
+    cardshareMessage: "Here's a link to my business card:"
+  };                              // json
   is_default = null;              // text
   
   constructor(options) {

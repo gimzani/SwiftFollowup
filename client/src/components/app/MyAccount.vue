@@ -1,9 +1,9 @@
 <script setup>
 //----------------------------------------------------------
 import { ref, onMounted } from 'vue'
-import { useApi } from '@/code/useApi';
+import { useApi } from '@/code/app/useApi.js';
+import { useAuthentication } from '@/code/app/useAuthentication.js';
 import { useToasts } from '@sf/dialogs';
-import { useAuthentication } from '@/code/useAuthentication.js';
 //----------------------------------------------------------
 import UserprofileEdit from '../forms/UserprofileEdit.vue';
 //----------------------------------------------------------

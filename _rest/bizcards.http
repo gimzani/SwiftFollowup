@@ -1,0 +1,3 @@
+# @name List BizCards
+GET {{apiRoot}}/bizcards/1
+content-type: application/json

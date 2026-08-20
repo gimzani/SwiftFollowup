@@ -1,0 +1,12 @@
+
+# @name List User Accounts
+GET {{apiRoot}}/useraccounts
+content-type: application/json
+
+###
+
+# @name Get User Account by ID
+GET {{apiRoot}}/useraccount/1
+content-type: application/json
+
+###

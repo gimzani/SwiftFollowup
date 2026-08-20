@@ -1,0 +1,3 @@
+# @name List Contact Events
+GET {{apiRoot}}/contactevents/1
+content-type: application/json

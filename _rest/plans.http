@@ -1,0 +1,58 @@
+
+# @name List Plans
+GET {{apiRoot}}/plans
+content-type: application/json
+
+###
+
+# @name List ALL Plans
+GET {{apiRoot}}/plans?all=true
+content-type: application/json
+
+###
+
+# @name Get Plan By Code
+GET {{apiRoot}}/plan/SF_P_CONNECTIONS
+content-type: application/json
+
+###
+
+# @name Create Plan
+POST {{apiRoot}}/plans
+content-type: application/json
+
+{
+  "plan_name": "FAKE",
+  "code": "SF_P_FAKE",
+  "plan_cost": 29.99,
+  "plan_description": "FAKE BizCards and Contacts",
+  "plan_details": null,
+  "permissions": null,
+  "sort_order": 0,
+  "is_public": false
+}
+
+###
+
+# @name Update Plan
+PUT {{apiRoot}}/plan/SF_P_CONNECTIONS
+content-type: application/json
+
+{
+  "plan_name": "Connections",
+  "code": "SF_P_CONNECTIONS",
+  "plan_cost": 29.99,
+  "plan_description": "BizCards and Contacts",
+  "plan_details": null,
+  "permissions": null,
+  "sort_order": 0,
+  "is_public": true
+}
+
+###
+
+# @name Delete Plan By Code
+DELETE {{apiRoot}}/plan/SF_P_FAKE
+
+###
+

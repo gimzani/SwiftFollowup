@@ -2,8 +2,8 @@
 //----------------------------------------------------------
 import { reactive, ref, onMounted } from 'vue'
 import { Modal } from "@sf/dialogs"
-import { useApi } from '@/code/useApi';
-import { formatDate } from '@/code/useFormatters';
+import { useApi } from '@/code/app/useApi';
+import { formatDate } from '@/code/app/useFormatters';
 import { DataGrid } from '@sf/data-grid'
 //----------------------------------------------------------
 import UserAccountNewEdit from '@/components/forms/UserAccountNewEdit.vue';

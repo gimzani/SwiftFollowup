@@ -1,21 +1,42 @@
-//-----------------------------------------------
-$modal-mask-background: rgba(0, 0, 0, 0.5);
-$modal-window-background: #fff;
-//-----------------------------
-$modal-scroll-track: #333;
-$modal-scroll-thumb: #ccc;
-//-----------------------------
-$modal-close-border: #000;
-$modal-close-background: #999;
-//-----------------------------------------------
+
+:root {
+  --modal-mask-color: rgba(0, 0, 0, 0.5);
+  --modal-container-background: transparent;
+  --modal-track-color: #333;
+  --modal-thumb-color: #ccc;
+  --modal-close-background: #333;
+  --modal-close-color: #ccc;
+}
+
 .modal-mask {
   position: fixed;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background-color: $modal-mask-background;
+  background-color: var(--modal-mask-color);
   transition: opacity 0.3s ease;
   z-index: 9998;
+
+  &.modal-sm, 
+  &.modal-small {
+    .modal-wrapper .modal-container {
+      width: 60%;
+    }
+  }
+    
+  &.modal-md, 
+  &.modal-medium {
+    .modal-wrapper .modal-container {
+      width: 75%;
+    }
+  }
+
+  &.modal-lg, 
+  &.modal-large {
+    .modal-wrapper .modal-container {
+      width: 90%;
+    }
+  }
   
   .modal-wrapper {
     height: 100%;
@@ -28,34 +49,22 @@ $modal-close-background: #999;
       width: 6px;
     }
     &::-webkit-scrollbar-track {
-      background: $modal-scroll-track;
+      background: var(--modal-track-color);
       cursor: grab;
     }
     &::-webkit-scrollbar-thumb {
-      background: $modal-scroll-thumb; 
+      background:  var(--modal-thumb-color);
       cursor:grabbing;
     }
-    
+
     .modal-container {
       position: relative;
       margin: auto;
       border-radius: 2px;
       transition: transform 0.3s ease;
       padding: 3px 6px;      
-      background-color: $modal-window-background;
-
-      &.xl,
-      &.extra-large,
-      &.lg,
-      &.large,
-      &.md,
-      &.medium,
-      &.sm,
-      &.small
-      &.xs,
-      &.extra-small {
-        width: 98vw;
-      }
+      background-color: var(--modal-container-background);
+      min-width: 300px;
 
       .modal-header,
       header {
@@ -76,79 +85,47 @@ $modal-close-background: #999;
       position: absolute;
       top: -15px;
       right: -15px;
-      border: solid 1px  $modal-close-border;
-      background-color: $modal-close-background;
+      border: solid 1px transparent;
+      background-color: var(--modal-close-background);
+      color: var(--modal-close-color);
       border-radius: 50%;
       width: 30px;
       height: 30px;
       z-index: 100;
       cursor: pointer;
     }
-    
-  }
 
+  }
 }
 
 @media screen and (min-width: 768px) {
   .modal-mask {
-    .modal-wrapper {
-      .modal-container {
-        &.xl,
-        &.extra-large {
-          width: 760px;
-        }
-        &.lg,
-        &.large {
-          width: 640px;
-        }
-        &.md,
-        &.medium {
-          width: 550px;
-        }
-        &.sm,
-        &.small {
-          width: 420px;
-        }
-        &.xs,
-        &.extra-small {
-          width: 350px;
-        }
+
+    &.modal-sm, 
+    &.modal-small {
+      .modal-wrapper .modal-container {
+        width: 380px;
+      }
+    }
+      
+    &.modal-md, 
+    &.modal-medium {
+      .modal-wrapper .modal-container {
+        width: 650px;
+      }
+    }
+
+    &.modal-lg, 
+    &.modal-large {
+      .modal-wrapper .modal-container {
+        width: 95%;
       }
     }
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .modal-mask {
-    .modal-wrapper {
-      .modal-container {
-        &.xl,
-        &.extra-large {
-          width: 1200px;
-        }
-        &.lg,
-        &.large {
-          width: 900px;
-        }
-        &.md,
-        &.medium {
-          width: 750px;
-        }
-        &.sm,
-        &.small {
-          width: 420px;
-        }
-        &.xs,
-        &.extra-small {
-          width: 350px;
-        }
-      }
-    }
-  }
-}
 
-//-------------------------------------------------------------------------
-//------------------------------------------------------------  TRANSITIONS
+/*------------------------------------------------------------ VUE TRANSITIONS */
 .modal-enter-from {
   opacity: 0;
 }
@@ -161,4 +138,3 @@ $modal-close-background: #999;
 .modal-leave-active .modal-container {
   transform: scale(1.1);
 }
-//-------------------------------------------------------------------------

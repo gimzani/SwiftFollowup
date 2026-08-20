@@ -1,0 +1,19 @@
+
+# @name List Content Requests
+GET {{apiRoot}}/contentrequests/1
+content-type: application/json
+
+###
+
+# @name Create Content Request
+POST {{apiRoot}}/contentrequests
+content-type: application/json
+
+{
+  "code": "01M0DMYY47R32BQCHZN426162T",
+  "useraccount_id": 1,
+  "contact_id": 1,
+  "content_type": "bizcard",
+  "content_code": "01M0ADJA71H3HYFKDCZ6M8Q9M0",
+  "created_on": "2026-08-18 12:25:11.854"
+}

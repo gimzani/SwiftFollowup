@@ -18,6 +18,7 @@ export async function getContentrequestById(pg, id) {
 export async function createContentrequest(pg, contentrequest) {
   return await pg.query(
     `INSERT INTO contentrequest (
+       code,
        useraccount_id,
        contact_id,
        content_type,
@@ -25,9 +26,10 @@ export async function createContentrequest(pg, contentrequest) {
        created_on,
        viewed_on
      )
-     VALUES ($1,$2,$3,$4,$5,$6)
+     VALUES ($1,$2,$3,$4,$5,$6,$7)
      RETURNING *`,
     [
+      contentrequest.code,
       contentrequest.useraccount_id,
       contentrequest.contact_id,
       contentrequest.content_type,

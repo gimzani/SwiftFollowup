@@ -1,0 +1,3 @@
+# @name List BizCard Templates
+GET {{apiRoot}}/bizcardtemplates
+content-type: application/json

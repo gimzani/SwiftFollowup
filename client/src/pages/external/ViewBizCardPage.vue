@@ -2,7 +2,7 @@
 //----------------------------------------------------------
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useApi } from '@/code/useApi';
+import { useApi } from '@/code/app/useApi';
 import { BizCardImage } from "@sf/bizcards"
 //----------------------------------------------------------
 import ColumnLayout from '@/components/layouts/ColumnLayout.vue';

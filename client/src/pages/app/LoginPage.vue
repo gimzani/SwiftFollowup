@@ -3,7 +3,7 @@
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { LoginForm } from "@sf/auth-ui"
-import { useAuthentication } from '@/code/useAuthentication.js';
+import { useAuthentication } from '@/code/app/useAuthentication.js';
 //----------------------------------------------------------
 import ColumnLayout from '@/components/layouts/ColumnLayout.vue';
 import SwiftFollowupLogo from '@/components/app/SwiftFollowupLogo.vue';

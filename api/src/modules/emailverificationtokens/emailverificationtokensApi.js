@@ -22,9 +22,9 @@ export default async function routes (fastify) {
   })
 
   //-------------------------------------------------------- GET
-  fastify.get('/api/emailverificationtoken/:id', async (request, reply) => {
+  fastify.get('/api/emailverificationtoken/:token', async (request, reply) => {
     try {
-      let result = await emailverificationtokensService.getEmailVerificationTokenById(fastify.pg, request.params.id)
+      let result = await emailverificationtokensService.getEmailVerificationToken(fastify.pg, request.params.token)
       const item = result.rows.length === 1 ? new EmailVerificationToken(result.rows[0]) : null
       ok(reply, item, result.rowCount)
     } catch(err) {

@@ -1,0 +1,21 @@
+# @name List Contacts
+GET {{apiRoot}}/contacts/1
+content-type: application/json
+
+###
+
+# @name Create Contact
+POST {{apiRoot}}/contacts
+content-type: application/json
+
+{
+  "code": "01M0DN8BVM6YVCQTC99AFTT85C",
+  "useraccount_id": 1,
+  "relationship": "business",
+  "tags": "prospect",
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john.doe@example.com",
+  "mobile_number": "123-456-7890",
+  "created_on": "2026-08-18 12:25:11.854"
+}

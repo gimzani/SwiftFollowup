@@ -5,8 +5,8 @@ import { useRegle } from '@regle/core';
 import { required, url, withMessage } from '@regle/rules';
 import { BizCard, BizCardTemplate } from '@sf/models'
 import { BizCardImage } from "@sf/bizcards"
-import { useApi } from '@/code/useApi';
-import { formatPhone, textTransforms } from '@/code/useFormatters';
+import { useApi } from '@/code/app/useApi.js';
+import { formatPhone, textTransforms } from '@/code/app/useFormatters.js';
 //----------------------------------------------------------
 import BizCardDataForm from './BizCardDataForm.vue';
 //----------------------------------------------------------

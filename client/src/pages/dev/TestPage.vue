@@ -1,7 +1,7 @@
 <script setup>
 //----------------------------------------------------------
 import { onMounted, ref } from 'vue'
-import { useAuthentication } from '@/code/useAuthentication';
+import { useAuthentication } from '@/code/app/useAuthentication';
 //----------------------------------------------------------
 import AppLayout from '@/components/layouts/AppLayout.vue'
 //----------------------------------------------------------

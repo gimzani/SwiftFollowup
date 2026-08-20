@@ -5,7 +5,7 @@ import { useRegle } from '@regle/core';
 import { required, url, withMessage } from '@regle/rules';
 import { QrCode, QrCodeTemplate } from '@sf/models'
 import { QrCodeImage } from "@sf/qr-codes"
-import { useApi } from '@/code/useApi';
+import { useApi } from '@/code/app/useApi';
 //----------------------------------------------------------
 const api = useApi();
 //----------------------------------------------------------

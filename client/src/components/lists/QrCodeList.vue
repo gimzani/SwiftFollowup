@@ -3,10 +3,10 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { Modal } from "@sf/dialogs"
-import { useApi } from '@/code/useApi';
+import { useApi } from '@/code/app/useApi';
 import { useToasts, useDialog } from '@sf/dialogs';
 import { QrCodeImage } from "@sf/qr-codes"
-import { useAuthentication } from '@/code/useAuthentication.js';
+import { useAuthentication } from '@/code/app/useAuthentication.js';
 //----------------------------------------------------------
 import QrCodeNew from '@/components/forms/QrCodeNew.vue';
 //----------------------------------------------------------
