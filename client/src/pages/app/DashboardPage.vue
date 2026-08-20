@@ -3,7 +3,7 @@
 import { ref } from 'vue'
 import AppLayout from '@/components/layouts/AppLayout.vue'
 import BizCardGallery from '@/components/controls/BizCardGallery.vue'
-import ContactRequestList from '@/components/lists/ContactRequestList.vue'
+import ContentRequestList from '@/components/lists/ContentRequestList.vue'
 import ContactResponseList from '@/components/lists/ContactResponseList.vue'
 //----------------------------------------------------------
 </script>
@@ -16,7 +16,7 @@ import ContactResponseList from '@/components/lists/ContactResponseList.vue'
 
   <BizCardGallery></BizCardGallery>
 
-  <ContactRequestList></ContactRequestList>
+  <ContentRequestList></ContentRequestList>
 
   <ContactResponseList></ContactResponseList>
 

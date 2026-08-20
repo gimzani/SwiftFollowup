@@ -52,6 +52,22 @@ export function useApi() {
       delete: async (id) => apiRequest(`${apiRoot}/bizcardtemplate/${id}`, 'DELETE'),
     },
 
+    contacts: {
+      list: async (useraccount_id) => apiRequest(`${apiRoot}/contacts/${useraccount_id}`),
+      get: async (id) => apiRequest(`${apiRoot}/contact/${id}`),
+      create: async (payload) => apiBodyRequest(`${apiRoot}/contacts`, 'POST', payload),
+      update: async (id, payload) => apiBodyRequest(`${apiRoot}/contact/${id}`, 'PUT', payload),
+      delete: async (id) => apiRequest(`${apiRoot}/contact/${id}`, 'DELETE'),
+    },
+
+    contentRequests: {
+      list: async (useraccount_id) => apiRequest(`${apiRoot}/contentrequests/${useraccount_id}`),
+      get: async (id) => apiRequest(`${apiRoot}/contentrequest/${id}`),
+      create: async (payload) => apiBodyRequest(`${apiRoot}/contentrequests`, 'POST', payload),
+      update: async (id, payload) => apiBodyRequest(`${apiRoot}/contentrequest/${id}`, 'PUT', payload),
+      delete: async (id) => apiRequest(`${apiRoot}/contentrequest/${id}`, 'DELETE'),
+    },
+
     plans: {
       list: async () => apiRequest(`${apiRoot}/plans`),
       get: async (id) => apiRequest(`${apiRoot}/plan/${id}`),

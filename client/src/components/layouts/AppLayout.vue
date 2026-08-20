@@ -53,6 +53,9 @@ function checkPlan(m) {
 //----------------------------------------------------------
 onMounted(async () => {
   userData.value = await auth.getCurrentUser();
+  if(!userData.value) {
+    router.push('/');    // user logged out or session is expired
+  }
 });
 //----------------------------------------------------------
 </script>

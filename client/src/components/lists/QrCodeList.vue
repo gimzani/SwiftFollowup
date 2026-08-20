@@ -142,7 +142,7 @@ onMounted(async () => {
   </div>
 
    <Modal :show="newQrCodeModal.show" @close="newQrCodeModal.show=false">      
-    <QrCodeNew @cancel="newQrCodeModal.show=false" @save="saveQrCode" />
+    <QrCodeNew class="modal-form" @cancel="newQrCodeModal.show=false" @save="saveQrCode" />
   </Modal>
 
 </div>

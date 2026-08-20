@@ -47,7 +47,15 @@ export function useAuthentication() {
   }
   //-----------------------------------------------
   async function getCurrentUser() {
-    if(state.userData) return state.userData;  //escape valve
+
+    //escape valve
+    if(state.userData) {
+      if(state.userData.expires_on && new Date(state.userData.expires_on) < new Date()) {
+        state.userData = null;
+      }      
+      return state.userData;
+    } 
+    
     const res =  await api.auth.me();
     state.userData = res.success ? res.data : null;
     return state.userData;

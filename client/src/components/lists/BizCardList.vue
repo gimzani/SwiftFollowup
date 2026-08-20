@@ -67,6 +67,10 @@ function editBizCard(b) {
   console.log(b)
 }
 //----------------------------------------------------------
+function deleteBizCard(b) {
+  console.log(b)
+}
+//----------------------------------------------------------
 async function sendContentRequest(data) {
   console.log(data)
 }
@@ -87,17 +91,33 @@ onMounted(async () => {
   </section>
 
   <div>
-    <div v-for="b in bizCards">
-      <h4>{{ b.bizcard_name }}</h4>
-      <BizCardImage 
-        :card-data="b.bizcard_data"
-      />
-      <div>
+
+    <div class="card" v-for="b in bizCards">
+      
+      <header class="card-header">          
+        <h3 class="h4 text-center">{{ b.bizcard_name }}</h3>
+      </header>
+
+      <div class="card-body d-flex justify-content-center p-2">
+        <BizCardImage 
+          :card-data="b.bizcard_data"
+        />        
+      </div>
+
+      <div class="card-footer p-2">
+        <div>
+          <button class="btn btn-danger me-1" @click="deleteBizCard(b)">Delete</button>
+        </div>
+        <div>   
           <button class="btn btn-success ms-1" @click="sendBizCard(b)">Send</button>
           <button class="btn btn-secondary ms-1" @click="viewBizCard(b)">View</button>
           <button class="btn btn-primary ms-1" @click="editBizCard(b)">Edit</button>
+        </div>
       </div>
     </div>
+
+
+
   </div>
 
   <div class="alert alert-info text-center" v-if="bizCards.length===0" >

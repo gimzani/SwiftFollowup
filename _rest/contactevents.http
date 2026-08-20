@@ -1,3 +1,25 @@
-# @name List Contact Events
-GET {{apiRoot}}/contactevents/1
+# @name List Contact Events by Content Request
+GET {{apiRoot}}/contactevents/6
 content-type: application/json
+
+###
+
+# @name List Contact Events by Contact
+GET {{apiRoot}}/contactevents/contact/1
+content-type: application/json
+
+###
+
+# @name Create Contact Event
+POST {{apiRoot}}/contactevents
+content-type: application/json
+
+{
+  "contact_id": 1,
+  "contentrequest_id": 1,
+  "event_name": "View WebLink",
+  "event_type": "connection",
+  "event_weight": 0.5
+}
+
+###

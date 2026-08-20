@@ -8,13 +8,13 @@ const api = useApi();
 const auth = useAuthentication();
 //----------------------------------------------------------
 const userData = ref(null);
-const contacts = ref([]);
+const contentRequests = ref([]);
 //----------------------------------------------------------
 async function getContacts() {
-  let res = await api.contacts.list(userData.value.id);
+  let res = await api.contentRequests.list(userData.value.id);
   console.log(res)
   if(res.success) {
-    contacts.value = res.data;
+    contentRequests.value = res.data;
   }
 }
 //----------------------------------------------------------
@@ -25,16 +25,15 @@ onMounted(async () => {
 //----------------------------------------------------------
 </script>
 <template>
-<div class="contacts-list">
+<div class="contact-request-list">
 
-  CONTACTS LIST
+  CONTENT REQUEST LIST
 
-  <div>
-    <div v-for="c in contacts">
-      <span class="me-1">{{ c.first_name }}</span>
-      <span class="me-1">{{ c.last_name }}</span>
+   <div>
+    <div v-for="c in contentRequests">
+      {{ c }}
     </div>
   </div>
-  
+
 </div>
 </template>

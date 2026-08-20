@@ -186,10 +186,10 @@ Table contactevent {
   id bigint [pk, not null, increment]
   contact_id bigint [not null]
   contentrequest_id bigint [not null]
-  event_name varchar(16) [not null]
-  event_type varchar(16) [not null]         // request, connection, referral, change
-  event_value varchar(32)
-  event_action varchar(32) [not null]  
+  event_name varchar(32) [not null]
+  event_type varchar(32) [not null]                 // connection, referral, change
+  event_weight float                                // weight or significance of the event
+  event_value varchar(64)                           // additional info related to the event (mostly null)
   created_on timestamp [not null, default: `NOW()`]
   Note: 'Represents an event related to a contact.'
 

@@ -30,6 +30,7 @@ export default fp(async function authPlugin(fastify, opts) {
     if (!useraccount) {
       return reply.code(401).send({ error: 'Unauthorized' })
     }
+    req.session = session
     req.useraccount = useraccount
   })
   //------------------------------------------------------
@@ -108,8 +109,10 @@ export default fp(async function authPlugin(fastify, opts) {
       mobile_number: req.useraccount.mobile_number,
       avatar_url: req.useraccount.avatar_url,
       preferences: req.useraccount.preferences,
+      is_active: req.useraccount.is_active,
 
-      is_active: req.useraccount.is_active
+      expires_on: req.session.expires_on
+
     }
 
     return ok(reply, userAccountResponse, 1, "User account retrieved successfully")
